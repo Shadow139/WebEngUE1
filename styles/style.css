@@ -1,29 +1,61 @@
+/*
+-- Basic Reset
+*/
+
+* {margin: 0; padding: 0;}
+
+
+
+
 .site-header{
     background-color: #324d89;
+    display: block;
 }
 
 h1{
-    background-color: #324d89;
+    font-size: large;
+    padding-top:10px;
+    padding-left: 20px;
+    font-family: Arial;
+    color: white;
+    display: inline-block;
+
 }
 
 .logo{
-    
+    float:left;
+    padding:5px;
 }
 
-h2{
-display: inline;
+p{
+}
+
+.anmelden{
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    float:right;
+    border:thin;
+    border-radius: 1px;
+    background: #f07200;
+    text-align: center;
+    color: white;
 
 }
 
-.abmelden{
-display: inline;
-}
 
-.navigation{
-    display:inline;
-    background: blue;
-}
 
 footer{
 text-align: center;
+}
+
+/*  clearfix */
+
+.group:before, .group:after {
+    content: " ";
+    display:table;
+}
+
+.group:after{
+    clear:both;
 }

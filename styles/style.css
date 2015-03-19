@@ -4,7 +4,7 @@
 
 * {margin: 0; padding: 0;}
 
-/* Custom Styles */
+/* Custom Styles  index.html*/
 
 .site{
     font-family: arial;
@@ -51,6 +51,9 @@ h1{
     color: white;
 }
 
+.anmelden:hover{
+    background: #ef8c33;
+}
 .center input{
     margin-top:8px;
     margin-bottom: 8px;
@@ -62,10 +65,8 @@ h1{
 .center{
     margin-left: auto;
     margin-right: auto;
-    width: 35%;
+    width: 25%;
 }
-
-
 
 .site-textfield{
     border: 1px solid;
@@ -101,10 +102,76 @@ margin-top: 60px;
 margin-bottom: 60px;
 }
 
+/* Custom Styles game.html */
+
+.game-info{
+    margin-left: auto;
+    margin-right: auto;
+    width:50%;
+    text-align: center;
+    font-size: large;
+
+}
+
+.richtig{
+    color:#029902;
+    background: #FFFFFF;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border: 1px solid;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border-color: #029902;
+}
+
+.falsch{
+    color:#e60808;
+    background: #FFFFFF;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border: 1px solid;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border-color: #e60808;
+}
+
+.gewählt{
+    color:#000000;
+    background: #FFFFFF;
+    padding-bottom: 10px;
+    padding-top: 10px;    border: 1px solid;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border-color: #000000;
+}
+
+td{
+    color:#FFFFFF;
+    border: 1px solid;
+    background-color: #2f4a85;
 
 
+}
+
+.table-head td{
+    background-color: #ef7100;
+    color:#172b57;
+
+}
 
 
+.wählen{
+    width: 140px;
+    height: 36px;
+    border: 1px solid;
+    border-color:#116d01;
+    border-radius: 5px;
+    background-color: #31cc3f;
+    color: white;
+    font-size: large;
+    margin-top:28px;
+    margin-bottom:8px;
+}
 /*  clearfix */
 
 .group:before, .group:after {

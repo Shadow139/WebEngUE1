@@ -145,11 +145,18 @@ margin-bottom: 60px;
     border-color: #000000;
 }
 
+table{
+    width: 70%;
+}
+
 td{
     color:#FFFFFF;
     border: 1px solid;
     background-color: #2f4a85;
-
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    width:14%;
 
 }
 
@@ -159,6 +166,9 @@ td{
 
 }
 
+.game-avatars-panel{
+    float: right;
+}
 
 .wählen{
     width: 140px;

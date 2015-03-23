@@ -17,3 +17,11 @@ function checkForm(form) {
 
     return true;
 }
+
+function checkField(input){
+    if (input.value.length < 4 || input.value.length > 8) {
+        input.focus();
+        return false;
+    }
+    return true;
+}

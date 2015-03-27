@@ -55,21 +55,42 @@ h1{
     font-weight: bold;
 }
 
-.center input{
+.center input,select{
     margin-top:8px;
     margin-bottom: 8px;
 }
 
-.center label{
-}
 
 .center{
+    display: inline-block;
     margin-left: auto;
     margin-right: auto;
-    width: 25%;
+    width: 100%;
+}
+
+.lbl-div{
+    text-align: left;
+    display: inline-block;
+    width: 35%;
+    background-color: blue;
+}
+
+.input-div{
+    text-align: right;
+    display: inline-block;
+    width: 65%;
+    background-color: red;
 }
 
 .site-textfield{
+    border: 1px solid;
+    border-radius: 4px;
+    border-color:#03345f;
+    height:35px;
+    width:260px;
+}
+
+.site-select{
     border: 1px solid;
     border-radius: 4px;
     border-color:#03345f;
@@ -145,9 +166,18 @@ margin-bottom: 60px;
     margin-bottom: 4px;
     border-color: #000000;
 }
+.main{
+    width:100%;
+}
 
-table{
-    width: 70%;
+.main table{
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.game-avatars-panel{
+    width:35%;
 }
 
 td{
@@ -193,3 +223,6 @@ td{
 .group:after{
     clear:both;
 }
+
+/* Meadia Queries*/
+

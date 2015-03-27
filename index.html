@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8" ?>
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
@@ -23,16 +22,27 @@
             <p class="site-p">Persöhnliche Daten</p>
 
             <div class="lbl_div">
-                <label for="Vorname">Vorname:</label></div>
-            <div class="lbl_div">
-                <input class="site-textfield" type="text" id="Vorname" name="Vorname"/></div>
-            <br>
+                <label for="Vorname">Vorname:</label>
+            </div>
+            <span class="input_div">
+                <input class="site-textfield" type="text" id="Vorname" name="Vorname" autofocus=""/>
+            </span><br>
 
-            <label for="Nachname">Nachname:</label>
-            <input class="site-textfield" type="text" id="Nachname" name="Nachname"/><br>
-            <label for="Geburtstag">Geburtstag:</label>
-            <input class="site-textfield" type="text" id="Geburtstag" name="Geburtstag"/><br>
 
+            <span class="lbl_div">
+                <label for="Nachname">Nachname:</label>
+            </span>
+
+            <span class="input_div">
+                <input class="site-textfield" type="text" id="Nachname" name="Nachname"/><br>
+            </span>
+            <span class="lbl_div">
+                <label for="Geburtstag">Geburtstag:</label>
+            </span>
+
+            <span class="input_div">
+                <input class="site-textfield" type="text" id="Geburtstag" name="Geburtstag"/><br>
+            </span>
 
             <label for="sex">Geschlecht:</label>
             <input type="radio" name="sex" id="Männlich" value="Männlich">
@@ -43,12 +53,12 @@
 
             <p class="site-p">Spielerdaten</p>
             <label for="Avatar">Avatar:</label>
-            <select id="Avatar">
+            <select class="site-select" id="Avatar">
                 <option>Black Widow</option>
                 <option>Deadpool</option>
             </select><br>
 
-            <label onkeyup="return checkField(this)" for="Benutzername">Benutzername*:</label><br>
+            <label onkeyup="return checkField(this)" for="Benutzername">Benutzername*:</label>
             <input class="site-textfield" type="text" id="Benutzername" name="Benutzername"/><br>
             <label for="Passwort">Passwort*:</label>
             <input class="site-textfield" type="password" id="Passwort" name="Passwort"/><br>

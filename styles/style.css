@@ -62,24 +62,21 @@ h1{
 
 
 .center{
-    display: inline-block;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
+    width: 50%;
 }
 
-.lbl-div{
+.lbl_div{
+    display: inline-block;
     text-align: left;
-    display: inline-block;
-    width: 35%;
-    background-color: blue;
+    width: 25%;
 }
 
-.input-div{
-    text-align: right;
+.input_div{
     display: inline-block;
-    width: 65%;
-    background-color: red;
+    text-align: right;
+    width: 25%;
 }
 
 .site-textfield{

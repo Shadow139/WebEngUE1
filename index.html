@@ -18,52 +18,83 @@
         <input class="anmelden" type="button" value="Anmelden">
     </header>
     <div class="container">
-        <form class="center" name="registration-form">
+        <form class="center" id="reg-form" name="registration-form" onsubmit="return checkForm(this)">
             <p class="site-p">Persöhnliche Daten</p>
 
             <div class="lbl_div">
                 <label for="Vorname">Vorname:</label>
             </div>
-            <span class="input_div">
+            <div class="input_div">
                 <input class="site-textfield" type="text" id="Vorname" name="Vorname" autofocus=""/>
-            </span><br>
+            </div><br>
 
 
-            <span class="lbl_div">
+            <div class="lbl_div">
                 <label for="Nachname">Nachname:</label>
-            </span>
+            </div>
 
-            <span class="input_div">
-                <input class="site-textfield" type="text" id="Nachname" name="Nachname"/><br>
-            </span>
-            <span class="lbl_div">
+            <div class="input_div">
+                <input class="site-textfield" type="text" id="Nachname" name="Nachname"/>
+            </div><br>
+
+            <div class="lbl_div">
                 <label for="Geburtstag">Geburtstag:</label>
-            </span>
+            </div>
 
-            <span class="input_div">
+            <div class="input_div">
                 <input class="site-textfield" type="text" id="Geburtstag" name="Geburtstag"/><br>
-            </span>
+            </div><br>
 
-            <label for="sex">Geschlecht:</label>
-            <input type="radio" name="sex" id="Männlich" value="Männlich">
+            <div class="lbl_div">
+            <label>Geschlecht:</label>
+            </div>
+
+
+            <div class="input_div" style="text-align: left;">
+            <input type="radio" name="sex" id="Männlich" value="Männlich" checked>
             <label for="Männlich">Männlich</label>
             <input type="radio" name="sex" id="Weiblich" value="Weiblich">
             <label for="Weiblich">Weiblich</label>
+            </div><br>
+
 
 
             <p class="site-p">Spielerdaten</p>
+
+            <div class="lbl_div">
             <label for="Avatar">Avatar:</label>
+            </div>
+
+            <div class="input_div">
             <select class="site-select" id="Avatar">
                 <option>Black Widow</option>
                 <option>Deadpool</option>
-            </select><br>
+            </select>
+            </div><br>
 
-            <label onkeyup="return checkField(this)" for="Benutzername">Benutzername*:</label>
-            <input class="site-textfield" type="text" id="Benutzername" name="Benutzername"/><br>
+            <div class="lbl_div">
+            <label for="Benutzername">Benutzername*:</label>
+            </div>
+
+            <div class="input_div">
+            <input type ="text" class="site-textfield" id="Benutzername" onkeyup="return checkField(this)"/><br>
+            </div><br>
+
+            <div class="lbl_div">
             <label for="Passwort">Passwort*:</label>
-            <input class="site-textfield" type="password" id="Passwort" name="Passwort"/><br>
+            </div>
 
-            <input class="registrieren" type="submit" value="Registrieren">
+            <div class="input_div">
+            <input class="site-textfield" type="password" id="Passwort" name="Passwort" onkeyup="return checkField(this)"/><br>
+            </div><br>
+
+            <div class="lbl_div">
+            </div>
+
+            <div class="input_div">
+            <input class="registrieren"  min="4" max="8" type="submit" value="Registrieren">
+            </div>
+
 
             <p class="note">Mit "*" gekenneichnete Felder sind Pflichtfelder</p>
         </form>

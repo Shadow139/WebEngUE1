@@ -17,11 +17,18 @@
         <h1>Jeopardy!</h1>
         <input class="anmelden" type="button" value="Anmelden">
     </header>
-    <div class="container">
-        <form class="center" id="reg-form" name="registration-form" onsubmit="return checkForm(this)">
-            <p class="site-p">Persöhnliche Daten</p>
 
-            <div class="lbl_div">
+        <form class="center" id="reg-form" name="registration-form" onsubmit="return checkForm(this)">
+            <div class="container">
+
+                <div class="p_div">
+                <p class="site-p">Persöhnliche Daten</p>
+                </div><br>
+
+
+
+
+                <div class="lbl_div">
                 <label for="Vorname">Vorname:</label>
             </div>
             <div class="input_div">
@@ -58,10 +65,12 @@
             </div><br>
 
 
-
+            <div class="p_div">
             <p class="site-p">Spielerdaten</p>
+            </div><br>
 
-            <div class="lbl_div">
+
+                <div class="lbl_div">
             <label for="Avatar">Avatar:</label>
             </div>
 
@@ -97,8 +106,9 @@
 
 
             <p class="note">Mit "*" gekenneichnete Felder sind Pflichtfelder</p>
+            </div>
         </form>
-    </div>
+
     <footer>&copy; 2015 BIG Jeopardy</footer>
 
 </div>

@@ -251,4 +251,51 @@ td{
 }
 
 /* Media Queries*/
+@media (max-width: 50em) {
+    .lbl_div{
+        display: block;
+        text-align: left;
+        width: 100%;
+    }
+    .input_div{
+        display: block;
+        text-align: left;
+        width: 100%;
+    }
+    .center{
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: 98%;
+    }
+    .p_div{
+        text-align: left;
+        display: inline-block;
+        width: 100%;
+    }
+    .registrieren{
+    width: 60%;
+    height: 35px;
+    border: 1px solid;
+    border-color:#A2A2A1;
+    border-radius: 5px;
+    background-color: #CCCCCC;
+    color: white;
+    font-size: middle;
+    margin-top:8px;  
+    margin-bottom:8px;    
 
+    }.registrieren{
+        width: 100%;
+        height: 35px;
+        border: 1px solid;
+        border-color:#A2A2A1;
+        border-radius: 5px;
+        background-color: #CCCCCC;
+        color: white;
+        font-size: middle;
+        margin-top:8px;  
+        margin-bottom:8px;    
+
+    }
+}

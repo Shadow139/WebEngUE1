@@ -78,10 +78,6 @@ footer{
     margin-bottom: 8px;
 }
 
-input{
-
-}
-
 .center{
     margin-left: auto;
     margin-right: auto;
@@ -192,10 +188,11 @@ input{
     margin-left: auto;
     margin-right: auto;
     width:80%;
-    text-align: center;
     font-size: large;
     border: 1px solid;
+    text-align: center;
 }
+
 
 .game-table{
     width:90%;

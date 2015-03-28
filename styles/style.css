@@ -4,7 +4,8 @@
 
 * {margin: 0; padding: 0;}
 
-/* Custom Styles  index.html*/
+/* Custom Styles  All*/
+
 
 .site{
     font-family: arial;
@@ -37,6 +38,14 @@ h1{
     margin-bottom: 6px;
     margin-top: 6px;
 }
+
+footer{
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+/* Custom Styles  index.html*/
 
 .anmelden{
     display: inline-block;
@@ -134,22 +143,8 @@ input{
 
 }
 
-footer{
-text-align: center;
-margin-top: 60px;
-margin-bottom: 60px;
-}
-
 /* Custom Styles game.html */
 
-.game-info{
-    margin-left: auto;
-    margin-right: auto;
-    width:50%;
-    text-align: center;
-    font-size: large;
-
-}
 
 .richtig{
     color:#029902;
@@ -182,18 +177,36 @@ margin-bottom: 60px;
     margin-bottom: 4px;
     border-color: #000000;
 }
-.main{
+
+.game-container{
     width:100%;
 }
 
-.main table{
-    width: 65%;
+.table-panel{
+    width:74%;
+    display: inline-block;
+    border: 1px solid;
+}
+
+.game-info{
     margin-left: auto;
     margin-right: auto;
+    width:80%;
+    text-align: center;
+    font-size: large;
+    border: 1px solid;
+}
+
+.game-table{
+    width:90%;
+    margin-left:auto;
+    text-align: right;
 }
 
 .game-avatars-panel{
-    width:35%;
+    display: inline-block;
+    border: 1px solid;
+    width:25%;
 }
 
 td{

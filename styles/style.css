@@ -11,7 +11,6 @@
 }
 
 body{
-    height: 100%;
     background: linear-gradient(#fbfbfd, #d3d8e8);
 }
 
@@ -86,16 +85,12 @@ input{
     display: inline-block;
     text-align: left;
     width: 20%;
-    border:1px solid;
 }
 
 .input_div{
     display: inline-block;
     text-align: right;
     width: 30%;
-    border:1px solid;
-
-
 }
 
 .site-textfield{

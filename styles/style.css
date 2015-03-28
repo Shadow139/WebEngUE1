@@ -10,6 +10,11 @@
     font-family: arial;
 }
 
+html, body
+{
+    height: 100%;
+}
+
 body{
     background: linear-gradient(#fbfbfd, #d3d8e8);
 }

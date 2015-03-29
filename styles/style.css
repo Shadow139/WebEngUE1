@@ -104,22 +104,27 @@ footer{
     display: inline-block;
     text-align: right;
     width: 30%;
+    border: 0.1em solid;
 }
 
 .site-textfield{
     border: 0.1em solid;
     border-radius: 0.4em;
     border-color:#03345f;
-    height:3em;
+    height:2em;
     width: 100%;
+    font-size: large;
+    padding-left: 0.5em;
 }
 
 .site-select{
     border: 0.1em solid;
     border-radius: 0.4em;
     border-color:#03345f;
-    height:3em;
+    height:2em;
     width: 100%;
+    font-size: large;
+    padding-left: 0.2em;
 }
 
 .registrieren{
@@ -131,7 +136,8 @@ footer{
     background-color: #CCCCCC;
     color: white;
     font-size: middle;
-    margin-bottom:1em;    
+    margin-bottom:1em;
+    margin-top:2em;
 }
 
 .note{
@@ -252,6 +258,8 @@ td{
 }
 
 /* Media Queries*/
+
+/* Mobile devices */
 @media (max-width: 50em) {
     .lbl_div{
         display: block;
@@ -270,5 +278,6 @@ td{
         width: 100%;
     }.registrieren{
         width: 100%;
+        margin-top: 0em;
     }
 }

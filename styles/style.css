@@ -274,7 +274,7 @@ td{
 /* Media Queries*/
 
 /* Mobile devices */
-@media (max-width: 50em) {
+@media (max-width: 50em),(-webkit-device-pixel-ratio: 3) {
     .lbl_div{
         display: block;
         text-align: left;

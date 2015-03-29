@@ -165,7 +165,7 @@ footer{
 
 .game-info p{
     margin-bottom: 0.5em;
-    padding-bottom: 10px;
+    padding-bottom: 1em;
     padding-top: 10px;
     border: 1px solid;
 }
@@ -251,10 +251,20 @@ footer{
     vertical-align: top;
 }
 
+.ib-div p{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+
 #player{
     font-weight: bolder;
 }
 
+#player-img{
+    border: 3px solid;
+    border-color: #FA7227;
+}
 #question{
     font-weight: bolder;
     margin-top: 1em;
@@ -307,7 +317,7 @@ td{
 /* Media Queries*/
 
 /* Mobile devices */
-@media (max-width: 50em){
+@media (max-width: 50em),(max-device-width: 385px){
     .lbl_div{
         display: block;
         text-align: left;
@@ -338,9 +348,4 @@ td{
     body{
         background: linear-gradient(#fbfbfd, #d3d8e8);
     }
-}
-
-@media only screen and (min-device-width: 1536px) and (max-device-width: 2048px) and (-webkit-min-device-pixel-ratio: 2)
-{
-    body { background: red !important; }
 }

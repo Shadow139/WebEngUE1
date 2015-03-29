@@ -329,5 +329,34 @@ td{
 
 @media only screen and (min-device-width: 1536px) and (max-device-width: 2048px) and (-webkit-min-device-pixel-ratio: 2)
 {
-    body { background: red !important; }
+    .lbl_div{
+        display: block;
+        text-align: left;
+    }
+    .input_div{
+        display: block;
+        text-align: left;
+        width: 100%;
+    }
+    .center{
+        width: 98%;
+    }
+    .p_div{
+        width: 100%;
+    }.registrieren{
+         width: 100%;
+         margin-top: 0em;
+     }
+    .site-textfield{
+        padding-left: 1%;
+        width: 99%;
+    }
+    html, body
+    {
+        height: 73em;
+    }
+
+    body{
+        background: linear-gradient(#fbfbfd, #d3d8e8);
+    }
 }

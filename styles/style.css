@@ -213,9 +213,21 @@ td{
     width:14%;
 }
 
+.td-nostyle{
+    background-color: transparent;
+    border: none;
+}
+
+.td-disabled{
+    color:#919294;
+    background-color: #D2D7E2;
+    border-color: #5C5F63;
+}
+
 .table-head td{
     background-color: #ef7100;
     color:#172b57;
+    font-weight: bolder;
 }
 
 .table-lower{

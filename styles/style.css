@@ -49,7 +49,7 @@ footer{
 
 .anmelden{
     display: inline-block;
-    width: 6em;
+    width: 15%;
     height: 2em;
     float:right;
     border: 0.1em solid;
@@ -295,7 +295,7 @@ td{
 /* Media Queries*/
 
 /* Mobile devices */
-@media (max-width: 50em) {
+@media (max-width: 50em), @media screen and (device-width: 384px) and (device-height: 592px) and (-webkit-device-pixel-ratio: 2) {
     .lbl_div{
         display: block;
         text-align: left;

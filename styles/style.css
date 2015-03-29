@@ -201,6 +201,13 @@ footer{
     text-align: right;
 }
 
+.table-container{
+    border: 1px dashed;
+    text-align: center;
+    margin-left:auto;
+    width: 90%;
+}
+
 .game-avatars-panel{
     display: inline-block;
     border: 1px solid;

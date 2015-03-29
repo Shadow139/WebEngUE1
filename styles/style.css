@@ -221,10 +221,31 @@ footer{
     width: 90%;
 }
 
+.table-lower{
+    border: 2px dashed;
+    border-color: deeppink;
+}
+
+
+.table-lower p{
+    text-align: left;
+}
+
+.table-lower div{
+    border: 1px solid;
+    border-color: chartreuse;
+    width:8em;
+    margin-left: auto;
+}
+
 .game-avatars-panel{
     display: inline-block;
     border: 1px solid;
     width:25%;
+}
+
+.ib-div{
+    display: inline-block;
 }
 
 td{
@@ -249,7 +270,7 @@ td{
 }
 
 .wählen{
-    width: 140px;
+    width: 100%;
     height: 36px;
     border: 1px solid;
     border-color:#116d01;

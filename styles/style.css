@@ -8,7 +8,7 @@
 
 
 .site{
-    font-family: arial;
+    /*font-family: arial;*/
 }
 
 html, body
@@ -39,14 +39,6 @@ h1{
     margin-top: 0.5em;
 }
 
-footer{
-    text-align: center;
-    margin-top: 5em;
-    margin-bottom: 3em;
-}
-
-/* Custom Styles  index.html*/
-
 .anmelden{
     display: inline-block;
     width: 15%;
@@ -57,15 +49,24 @@ footer{
     background: #f07200;
     text-align: center;
     font-size: 1em;
-    font-style:bold;
     margin-top: 1em;
     margin-right: 1em;
     color: white;
 }
 
 .anmelden:hover{
+    cursor:pointer;
     background: #ef8c33;
 }
+
+footer{
+    text-align: center;
+    margin-top: 5em;
+    margin-bottom: 3em;
+}
+
+/* Custom Styles  index.html*/
+
 
 .site-p{
     margin-top: 2em;
@@ -310,6 +311,11 @@ td{
     font-size: large;
     margin-top:28px;
     margin-bottom:8px;
+}
+
+.wählen:hover{
+    cursor:pointer;
+    background-color: #75FF81;
 }
 /*  clearfix */
 

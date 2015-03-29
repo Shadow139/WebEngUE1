@@ -44,8 +44,7 @@ h1{
     width: 15%;
     height: 2em;
     float:right;
-    border: 0.1em solid;
-    border-color: #784600;
+    border: 0.1em solid #784600;
     background: #f07200;
     text-align: center;
     font-size: 1em;
@@ -107,9 +106,8 @@ footer{
 }
 
 .site-textfield{
-    border: 0.1em solid;
     border-radius: 0.4em;
-    border-color:#03345f;
+    border: 0.1em solid #03345f;
     height:2em;
     width: 97%;
     font-size: large;
@@ -117,9 +115,8 @@ footer{
 }
 
 .site-select{
-    border: 0.1em solid;
     border-radius: 0.4em;
-    border-color:#03345f;
+    border: 0.1em solid #03345f;
     height:2em;
     width: 100%;
     font-size: large;
@@ -129,12 +126,11 @@ footer{
 .registrieren_disabled{
     width: 60%;
     height:3em;
-    border: 0.1em solid;
-    border-color:#A2A2A1;
+    border: 0.1em solid #A2A2A1;
     border-radius: 0.4em;
     background-color: #CCCCCC;
     color: white;
-    font-size: middle;
+    font-size: 1em;
     margin-bottom:1em;
     margin-top:2em;
     pointer-events: none;
@@ -143,12 +139,11 @@ footer{
 .registrieren_enabled{
     width: 60%;
     height:3em;
-    border: 0.1em solid;
-    border-color:#A2A2A1;
+    border: 0.1em solid #A2A2A1;
     border-radius: 0.4em;
     background-color: #f07200;
     color: white;
-    font-size: middle;
+    font-size: 1em;
     margin-bottom:1em;
     margin-top:2em;
 }
@@ -288,8 +283,7 @@ td{
 }
 
 #player-img{
-    border: 3px solid;
-    border-color: #FA7227;
+    border: 3px solid #FA7227;
 }
 #question{
     font-weight: bolder;
@@ -303,8 +297,7 @@ td{
 .wählen{
     width: 100%;
     height: 36px;
-    border: 1px solid;
-    border-color:#116d01;
+    border: 1px solid #116d01;
     border-radius: 5px;
     background-color: #31cc3f;
     color: white;
@@ -348,7 +341,7 @@ td{
         width: 100%;
     }.registrieren{
          width: 100%;
-         margin-top: 0em;
+         margin-top: 0;
      }
     .site-textfield{
         padding-left: 1%;

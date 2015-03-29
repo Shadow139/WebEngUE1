@@ -140,6 +140,7 @@ footer{
     font-size: middle;
     margin-bottom:1em;
     margin-top:2em;
+    pointer-events: none;
 }
 
 .registrieren_enabled{

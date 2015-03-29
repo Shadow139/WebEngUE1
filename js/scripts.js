@@ -37,7 +37,7 @@ function checkForm(form) {
     return ret;
 }
 
-function checkField(input) {
+function checkField(input,other,registerButton) {
     var ret = true;
     if(document.getElementById("error-message") != null) {
         var tmp = document.getElementById("error-message");
@@ -61,7 +61,12 @@ function checkField(input) {
 
         ret = false;
     }
+    
+    if (ret && (other.value.length > 3 && other.value.length < 9)) {
+        registerButton.className = "registrieren_enabled";
+    } else {
+        registerButton.className = "registrieren_disabled";
+    }
 
     return ret;
 }
-

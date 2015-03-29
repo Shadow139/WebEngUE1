@@ -150,50 +150,39 @@ footer{
 
 /* Custom Styles game.html */
 
+.game-info p{
+    margin-bottom: 0.5em;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border: 1px solid;
+}
 
 .richtig{
     color:#029902;
     background: #FFFFFF;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    border: 1px solid;
-    margin-top: 4px;
-    margin-bottom: 4px;
     border-color: #029902;
 }
 
 .falsch{
     color:#e60808;
     background: #FFFFFF;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    border: 1px solid;
-    margin-top: 4px;
-    margin-bottom: 4px;
     border-color: #e60808;
 }
 
 .gewählt{
     color:#000000;
     background: #FFFFFF;
-    padding-bottom: 10px;
-    padding-top: 10px;    border: 1px solid;
-    margin-top: 4px;
-    margin-bottom: 4px;
     border-color: #000000;
 }
 
 .game-container{
     width:100%;
-    border: 2px dotted;
-    border-color: red;
+    margin-top: 2em;
 }
 
 .table-panel{
     width:74%;
     display: inline-block;
-    border: 1px solid;
-    border-color: green;
 }
 
 .game-info{
@@ -201,10 +190,7 @@ footer{
     margin-right: auto;
     width:80%;
     font-size: large;
-    border: 1px solid;
     text-align: center;
-    border: 5px dotted;
-    border-color: blueviolet;
 }
 
 
@@ -215,15 +201,13 @@ footer{
 }
 
 .table-container{
-    border: 1px dashed;
     text-align: center;
     margin-left:auto;
     width: 90%;
 }
 
 .table-lower{
-    border: 2px dashed;
-    border-color: deeppink;
+
 }
 
 
@@ -232,20 +216,35 @@ footer{
 }
 
 .table-lower div{
-    border: 1px solid;
-    border-color: chartreuse;
     width:8em;
     margin-left: auto;
 }
 
 .game-avatars-panel{
     display: inline-block;
-    border: 1px solid;
     width:25%;
+}
+
+.game-avatars-panel div img{
+    border: 1px solid;
+    border-radius: 2px;
+    background-color: white;
+    width: 6em;
+    height: 6em;
 }
 
 .ib-div{
     display: inline-block;
+    vertical-align: top;
+}
+
+#player{
+    font-weight: bolder;
+}
+
+#question{
+    font-weight: bolder;
+    margin-top: 1em;
 }
 
 td{
@@ -311,9 +310,9 @@ td{
     .p_div{
         width: 100%;
     }.registrieren{
-        width: 100%;
-        margin-top: 0em;
-    }
+         width: 100%;
+         margin-top: 0em;
+     }
     .site-textfield{
         padding-left: 1%;
         width: 99%;

@@ -304,7 +304,7 @@ td{
 /* Media Queries*/
 
 /* Mobile devices */
-@media (max-height: 99999px) and (max-width: 99999999px){
+@media (max-width: 50em){
     .lbl_div{
         display: block;
         text-align: left;
@@ -335,4 +335,9 @@ td{
     body{
         background: linear-gradient(#fbfbfd, #d3d8e8);
     }
+}
+
+@media only screen and (min-device-width: 1536px) and (max-device-width: 2048px) and (-webkit-min-device-pixel-ratio: 2)
+{
+    body { background: red !important; }
 }

@@ -294,7 +294,7 @@ td{
 /* Media Queries*/
 
 /* Mobile devices */
-@media (max-width: 50em), (max-width: 979px){
+@media (max-width: 50em), (max-device-width: 979px){
     .lbl_div{
         display: block;
         text-align: left;

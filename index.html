@@ -86,7 +86,7 @@
             </div>
 
             <div class="input_div">
-            <input type ="text" class="site-textfield" id="Benutzername" onblur="return checkField(this)"/><br>
+            <input type ="text" class="site-textfield" id="Benutzername" onblur="return checkField(this,Passwort,Registrieren)"/><br>
             </div><br>
 
             <div class="lbl_div">
@@ -94,14 +94,14 @@
             </div>
 
             <div class="input_div">
-            <input class="site-textfield" type="password" id="Passwort" name="Passwort" onblur="return checkField(this)"/><br>
+            <input class="site-textfield" type="password" id="Passwort" name="Passwort" onblur="return checkField(this,Benutzername,Registrieren)"/><br>
             </div><br>
 
             <div class="lbl_div">
             </div>
 
             <div class="input_div">
-            <input class="registrieren"  min="4" max="8" type="submit" value="Registrieren">
+            <input class="registrieren_disabled"  min="4" max="8" type="submit" value="Registrieren">
             </div>
 
 

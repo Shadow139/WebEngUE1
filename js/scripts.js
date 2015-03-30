@@ -37,7 +37,7 @@ function checkForm(form) {
     return ret;
 }
 
-function checkField(input,other,registerButton) {
+function checkField(input, other, registerButton) {
     var ret = true;
     if(document.getElementById("error-message") != null) {
         var tmp = document.getElementById("error-message");

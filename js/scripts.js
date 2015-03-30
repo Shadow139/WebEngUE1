@@ -48,6 +48,8 @@ function checkField(input, other, registerButton) {
         //alert("Error: Benutzername muss zwischen 4 und 8 Zeichen lang sein!");
         input.focus();
 
+        input.className = "site-textfield-error";
+        /*
         var para = document.createElement("p");
         para.id = "error-message";
         var node = document.createTextNode("Bitte zwischen 4 und 8 Zeichen eingeben!");
@@ -58,8 +60,10 @@ function checkField(input, other, registerButton) {
         element.appendChild(para);
 
         para.style.color="red";
-
+        */
         ret = false;
+    }else{
+        input.className = "site-textfield";
     }
     
     if (ret && (other.value.length > 3 && other.value.length < 9)) {

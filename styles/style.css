@@ -88,6 +88,17 @@ footer{
     width: 51%;
 }
 
+fieldset{
+    border: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+legend{
+    padding: 0;
+    display: inline-block;
+}
 .lbl_div{
     display: inline-block;
     text-align: left;

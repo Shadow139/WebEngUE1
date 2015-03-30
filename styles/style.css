@@ -114,6 +114,15 @@ footer{
     padding-left: 3%;
 }
 
+.site-textfield-error{
+    border-radius: 0.4em;
+    border: 0.2em solid red;
+    height:2em;
+    width: 97%;
+    font-size: large;
+    padding-left: 3%;
+}
+
 .site-select{
     border-radius: 0.4em;
     border: 0.1em solid #03345f;
@@ -357,6 +366,10 @@ td{
          margin-top: 0;  
     }
     .site-textfield{
+        padding-left: 1%;
+        width: 99%;
+    }
+    .site-textfield-error{
         padding-left: 1%;
         width: 99%;
     }

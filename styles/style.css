@@ -141,11 +141,16 @@ footer{
     height:3em;
     border: 0.1em solid #A2A2A1;
     border-radius: 0.4em;
-    background-color: #f07200;
+    background-color: #31CC3F;
     color: white;
     font-size: 1em;
     margin-bottom:1em;
     margin-top:2em;
+}
+
+.registrieren_enabled:hover{
+    cursor:pointer;
+    background-color: #75FF81;
 }
 
 .note{

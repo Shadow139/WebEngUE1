@@ -376,5 +376,39 @@ td{
 
 /* game.html*/
 @media (max-width: 50em){
-    
+    .game-avatars-panel{
+        display: block;
+        float: none;
+        width: 100%;
+    }
+    .game-avatars-panel div{
+        display: inline-block;
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+    #opponent-div{
+        float: right;
+    }
+    #opponent-ib-div{
+        display: inline-block;
+        text-align: right;
+        margin-right: 0.5em;
+    }
+    #opponent-div img{
+        float: right;
+    }
+    .table-panel{
+        width:100%;
+        display: block;
+        margin-top: 1em;
+    }
+    #question{
+        text-align: center;
+    }
+    .table-container{
+        width : 100%;
+    }
+    .table-lower div{
+        width:20%;
+    }
 }

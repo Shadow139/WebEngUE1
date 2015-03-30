@@ -7,10 +7,6 @@
 /* Custom Styles  All*/
 
 
-.site{
-    /*font-family: arial;*/
-}
-
 html, body
 {
     height: 100%;
@@ -18,6 +14,9 @@ html, body
 
 body{
     background: linear-gradient(#fbfbfd, #d3d8e8);
+    background-repeat: no-repeat;
+    background-position: center top;
+    font-family: "Arial";
 }
 
 .site-header{
@@ -73,7 +72,6 @@ footer{
     font-size: 1.3em;
     font-weight: bold;
 }
-
 
 .center{
     margin-left: auto;
@@ -213,7 +211,6 @@ footer{
     text-align: center;
 }
 
-
 .game-table{
     width:100%;
     margin-left:auto;
@@ -254,11 +251,6 @@ td{
     font-weight: bolder;
 }
 
-.table-lower{
-
-}
-
-
 .table-lower p{
     text-align: left;
 }
@@ -290,7 +282,6 @@ td{
     margin-top: 0.5em;
     margin-bottom: 0.5em;
 }
-
 
 #player{
     font-weight: bolder;
@@ -337,7 +328,7 @@ td{
 
 /* Media Queries*/
 
-/* Mobile devices */
+/* index.html */
 @media (max-width: 50em),(max-device-width: 719px){
     .lbl_div{
         display: block;
@@ -381,4 +372,9 @@ td{
     body{
         background: linear-gradient(#fbfbfd, #d3d8e8);
     }
+}
+
+/* game.html*/
+@media (max-width: 50em){
+    
 }

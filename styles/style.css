@@ -337,7 +337,7 @@ td{
 
 /* Media Queries*/
 
-/* Mobile devices */
+/* index.html */
 @media (max-width: 50em),(max-device-width: 719px){
     .lbl_div{
         display: block;
@@ -381,4 +381,9 @@ td{
     body{
         background: linear-gradient(#fbfbfd, #d3d8e8);
     }
+}
+
+/* game.html*/
+@media (max-width: 50em){
+    
 }

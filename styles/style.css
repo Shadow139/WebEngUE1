@@ -18,7 +18,9 @@ body{
     background-position: center top;
     font-family: "Arial";
 }
-
+nav{
+    display: inline;
+}
 .site-header{
     background-color: #324d89;
 }

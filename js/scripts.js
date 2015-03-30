@@ -50,7 +50,7 @@ function checkField(input, other, registerButton) {
 
         var para = document.createElement("p");
         para.id = "error-message";
-        var node = document.createTextNode("Error: Feld muss zwischen 4 und 8 Zeichen lang sein!");
+        var node = document.createTextNode("Bitte zwischen 4 und 8 Zeichen eingeben!");
         para.appendChild(node);
 
         //var element = document.getElementById("input_error");

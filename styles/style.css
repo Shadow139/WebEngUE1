@@ -348,6 +348,14 @@ td{
          width: 100%;
          margin-top: 0;
      }
+    .registrieren_disabled{
+         width: 100%;
+         margin-top: 0;  
+    }
+    .registrieren_enabled{
+         width: 100%;
+         margin-top: 0;  
+    }
     .site-textfield{
         padding-left: 1%;
         width: 99%;

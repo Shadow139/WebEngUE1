@@ -70,3 +70,11 @@ function checkField(input, other, registerButton) {
 
     return ret;
 }
+
+function checkDate(input) {
+    date = /^(\d{1,2})\.(\d{1,2})\.(\d{4})$/;
+    if(!input.value.match(date)) {
+        
+    }
+}
+    

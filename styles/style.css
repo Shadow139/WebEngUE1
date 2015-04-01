@@ -458,6 +458,9 @@ td{
     body{
         background: linear-gradient(#fbfbfd, #d3d8e8);
     }
+    .anmelden{
+        width: 6em
+    }
 }
 
 /* game.html*/

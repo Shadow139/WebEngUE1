@@ -461,7 +461,7 @@ td{
 }
 
 /* game.html*/
-@media (max-width: 50em){
+@media (max-width: 65em){
     .game-avatars-panel{
         display: inline-block;
         float: none;

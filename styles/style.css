@@ -242,8 +242,8 @@ legend{
 .category{
     display: inline-block;
     width: 100%;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
     border: 0.1em solid #784600;
     background: #f07200;
     text-align: bottom;
@@ -257,8 +257,8 @@ legend{
     cursor: pointer;
     display: inline-block;
     width: 100%;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
     border: 0.1em solid black;
     background: #2f4a85;
     text-align: bottom;
@@ -271,8 +271,8 @@ input[type=radio]:checked + .answer {
     cursor: pointer;
     display: inline-block;
     width: 100%;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
     border: 0.1em solid black;
     background: #f07200;
     text-align: bottom;
@@ -285,8 +285,8 @@ input[type=radio]:disabled + .answer {
     cursor: default;
     display: inline-block;
     width: 100%;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
     border: 0.1em solid black;
     background: #D2D7E2;
     text-align: bottom;
@@ -470,11 +470,11 @@ td{
     .game-avatars-panel div{
         display: inline-block;
         margin-left: 1em;
-        margin-right: 1em;
     }
     #opponent-div{
         float: right;
         display: inline-block;
+        margin-right: 1em;
     }
     #opponent-ib-div{
         display: inline-block;
@@ -497,5 +497,16 @@ td{
     }
     .table-lower div{
         width:20%;
+    }
+}
+@media (max-width: 40em),(max-device-width: 719px){
+    .game-column{
+        display: block;
+        width: 100%;
+        margin-bottom: 1em;
+    }
+    .game-avatars-panel div img{
+        width: 3.3em;
+        height:3.3em;
     }
 }

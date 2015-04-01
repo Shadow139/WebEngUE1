@@ -212,7 +212,7 @@ legend{
 }
 
 .table-panel{
-    width:74%;
+    width:75%;
     display: inline-block;
 }
 
@@ -224,11 +224,84 @@ legend{
     text-align: center;
 }
 
+/* column div*/
+.game-column{
+    display: inline-block;
+    width: 19%;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+}
+
+.game-column input[type = radio]{
+    background-color: red;
+    display:none;
+    cursor: pointer;
+}
+
+.category{
+    display: inline-block;
+    width: 100%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border: 0.1em solid #784600;
+    background: #f07200;
+    text-align: bottom;
+    font-size: 1em;
+    margin-top: 0.2em;
+    color: black;
+    font-weight: bold;
+}
+
+.answer{
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border: 0.1em solid black;
+    background: #2f4a85;
+    text-align: bottom;
+    font-size: 1em;
+    margin-top: 0.2em;
+    color: white;
+}
+
+input[type=radio]:checked + .answer {
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border: 0.1em solid black;
+    background: #f07200;
+    text-align: bottom;
+    font-size: 1em;
+    margin-top: 0.2em;
+    color: white;
+}
+
+input[type=radio]:disabled + .answer {
+    cursor: default;
+    display: inline-block;
+    width: 100%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border: 0.1em solid black;
+    background: #D2D7E2;
+    text-align: bottom;
+    font-size: 1em;
+    margin-top: 0.2em;
+    color: #919294;
+    border-color: #5C5F63;
+}
+/*column div end*/
+
 .game-table{
+    /*border: 3px dotted red;*/
     width:100%;
     margin-left:auto;
     margin-top: 1.5em;
-    text-align: right;
 }
 
 .table-container{
@@ -390,7 +463,7 @@ td{
 /* game.html*/
 @media (max-width: 50em){
     .game-avatars-panel{
-        display: block;
+        display: inline-block;
         float: none;
         width: 100%;
     }
@@ -401,6 +474,7 @@ td{
     }
     #opponent-div{
         float: right;
+        display: inline-block;
     }
     #opponent-ib-div{
         display: inline-block;

@@ -1,7 +1,7 @@
-<!doctype html>
-<html lang="en">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
 <head>
-    <meta charset="utf-8"/>
     <title>Jeopardy!</title>
     <link rel="stylesheet" type="text/css" href="styles/style.css"/>
     <script src="js/jquery.js" type="text/javascript"></script>
@@ -10,28 +10,28 @@
 <body>
 <div class="site">
 
-    <header class="site-header group">
-        <img class="logo" src="img/big-logo-small.png" alt="Logo">
+    <div class="site-header group">
+        <img class="logo" src="img/big-logo-small.png" alt="Logo"/>
 
         <h1>Jeopardy!</h1>
-        <nav><input class="anmelden" type="button" value="Abmelden"></nav>
-    </header>
+        <nav><input class="anmelden" type="button" value="Abmelden"/></nav>
+    </div>
 
     <div class="game-container">
 
         <div class="game-avatars-panel">
-            <div id=player-div>
-                <img id="player-img" src="img/avatar/black-widow_head.png" alt="Avatar_1">
+            <div id="player-div">
+                <img id="player-img" src="img/avatar/black-widow_head.png" alt="Avatar_1"/>
                 <div class="ib-div" id="player">
                     <p>Black Widow (Du)</p>
-                    <p>2000 &euro;</p></div>
+                    <p>2000 &#8364;</p></div>
             </div>
 
-            <div id=opponent-div>
-                <img src="img/avatar/deadpool_head.png" alt="Avatar_2">
-                <div class="ib-div" id=opponent-ib-div>
+            <div id="opponent-div">
+                <img src="img/avatar/deadpool_head.png" alt="Avatar_2"/>
+                <div class="ib-div" id="opponent-ib-div">
                     <p>Deadpool</p>
-                    <p>400 &euro;</p></div>
+                    <p>400 &#8364;</p></div>
             </div>
 
             <p id="question">Fragen: 2 / 10</p>
@@ -41,75 +41,75 @@
 
             <div class="table-container">
                 <div class="game-info">
-                    <p class="richtig">Du hast richtig geantwortet: +1000&euro;</p>
-                    <p class="falsch">Deadpool hat falsch geantwortet: -500&euro;</p>
-                    <p class="gewählt">Deadpool hat TUWIEN für 1000&euro; gewählt.</p>
+                    <p class="richtig">Du hast richtig geantwortet: +1000&#8364;</p>
+                    <p class="falsch">Deadpool hat falsch geantwortet: -500&#8364;</p>
+                    <p class="gewählt">Deadpool hat TUWIEN für 1000&#8364; gewählt.</p>
                 </div>
                     <div class="game-table">
                         <div class="game-column">
-                            <label class="category" value="">TV</label><p></p>
-                            <input type="radio" name="antwort" id="antwort11" value="antwort11" disabled>
-                            <label class="answer" for="antwort11">&euro; 100</label><p></p>
-                            <input type="radio" name="antwort" id="antwort12" value="antwort12">
-                            <label class="answer" for="antwort12">&euro; 200</label><p></p>
-                            <input type="radio" name="antwort" id="antwort13" value="antwort13">
-                            <label class="answer" for="antwort13">&euro; 500</label><p></p>
-                            <input type="radio" name="antwort" id="antwort14" value="antwort14">
-                            <label class="answer" for="antwort14">&euro; 750</label><p></p>
+                            <label class="category" >TV</label><p></p>
+                            <input type="radio" name="antwort" id="antwort11" value="antwort11" disabled="disabled"/>
+                            <label class="answer" for="antwort11">&#8364; 100</label><p></p>
+                            <input type="radio" name="antwort" id="antwort12" value="antwort12"/>
+                            <label class="answer" for="antwort12">&#8364; 200</label><p></p>
+                            <input type="radio" name="antwort" id="antwort13" value="antwort13"/>
+                            <label class="answer" for="antwort13">&#8364; 500</label><p></p>
+                            <input type="radio" name="antwort" id="antwort14" value="antwort14"/>
+                            <label class="answer" for="antwort14">&#8364; 750</label><p></p>
                         </div>
                         <div class="game-column">
-                            <label class="category" value="">SSD</label><p></p>
-                            <input type="radio" name="antwort" id="antwort21" value="antwort21">
-                            <label class="answer" for="antwort21">&euro; 100</label><p></p>
-                            <input type="radio" name="antwort" id="antwort22" value="antwort22">
-                            <label class="answer" for="antwort22">&euro; 200</label><p></p>
-                            <input type="radio" name="antwort" id="antwort23" value="antwort23">
-                            <label class="answer" for="antwort23">&euro; 500</label><p></p>
-                            <input type="radio" name="antwort" id="antwort24" value="antwort24">
-                            <label class="answer" for="antwort24">&euro; 750</label><p></p>
-                            <input type="radio" name="antwort" id="antwort25" value="antwort25">
-                            <label class="answer" for="antwort25">&euro; 1000</label><p></p>
+                            <label class="category" >SSD</label><p></p>
+                            <input type="radio" name="antwort" id="antwort21" value="antwort21"/>
+                            <label class="answer" for="antwort21">&#8364; 100</label><p></p>
+                            <input type="radio" name="antwort" id="antwort22" value="antwort22"/>
+                            <label class="answer" for="antwort22">&#8364; 200</label><p></p>
+                            <input type="radio" name="antwort" id="antwort23" value="antwort23"/>
+                            <label class="answer" for="antwort23">&#8364; 500</label><p></p>
+                            <input type="radio" name="antwort" id="antwort24" value="antwort24"/>
+                            <label class="answer" for="antwort24">&#8364; 750</label><p></p>
+                            <input type="radio" name="antwort" id="antwort25" value="antwort25"/>
+                            <label class="answer" for="antwort25">&#8364; 1000</label><p></p>
                         </div>
                         <div class="game-column">
-                            <label class="category" value="">Web</label><p></p>
-                            <input type="radio" name="antwort" id="antwort31" value="antwort31">
-                            <label class="answer" for="antwort31">&euro; 100</label><p></p>
-                            <input type="radio" name="antwort" id="antwort32" value="antwort32">
-                            <label class="answer" for="antwort32">&euro; 200</label><p></p>
-                            <input type="radio" name="antwort" id="antwort33" value="antwort33">
-                            <label class="answer" for="antwort33">&euro; 500</label><p></p>
-                            <input type="radio" name="antwort" id="antwort34" value="antwort34" disabled>
-                            <label class="answer" for="antwort34">&euro; 750</label><p></p>
-                            <input type="radio" name="antwort" id="antwort35" value="antwort35">
-                            <label class="answer" for="antwort35">&euro; 1000</label><p></p>
+                            <label class="category" >Web</label><p></p>
+                            <input type="radio" name="antwort" id="antwort31" value="antwort31"/>
+                            <label class="answer" for="antwort31">&#8364; 100</label><p></p>
+                            <input type="radio" name="antwort" id="antwort32" value="antwort32"/>
+                            <label class="answer" for="antwort32">&#8364; 200</label><p></p>
+                            <input type="radio" name="antwort" id="antwort33" value="antwort33"/>
+                            <label class="answer" for="antwort33">&#8364; 500</label><p></p>
+                            <input type="radio" name="antwort" id="antwort34" value="antwort34" disabled="disabled"/>
+                            <label class="answer" for="antwort34">&#8364; 750</label><p></p>
+                            <input type="radio" name="antwort" id="antwort35" value="antwort35"/>
+                            <label class="answer" for="antwort35">&#8364; 1000</label><p></p>
                         </div>
                         <div class="game-column">
-                            <label class="category" value="">Sport</label><p></p>
-                            <input type="radio" name="antwort" id="antwort41" value="antwort41">
-                            <label class="answer" for="antwort41">&euro; 100</label><p></p>
-                            <input type="radio" name="antwort" id="antwort42" value="antwort42" disabled>
-                            <label class="answer" for="antwort42">&euro; 200</label><p></p>
-                            <input type="radio" name="antwort" id="antwort43" value="antwort43">
-                            <label class="answer" for="antwort43">&euro; 500</label><p></p>
-                            <input type="radio" name="antwort" id="antwort44" value="antwort44">
-                            <label class="answer" for="antwort44">&euro; 750</label><p></p>
+                            <label class="category" >Sport</label><p></p>
+                            <input type="radio" name="antwort" id="antwort41" value="antwort41"/>
+                            <label class="answer" for="antwort41">&#8364; 100</label><p></p>
+                            <input type="radio" name="antwort" id="antwort42" value="antwort42" disabled="disabled"/>
+                            <label class="answer" for="antwort42">&#8364; 200</label><p></p>
+                            <input type="radio" name="antwort" id="antwort43" value="antwort43"/>
+                            <label class="answer" for="antwort43">&#8364; 500</label><p></p>
+                            <input type="radio" name="antwort" id="antwort44" value="antwort44"/>
+                            <label class="answer" for="antwort44">&#8364; 750</label><p></p>
                         </div>
                         <div class="game-column">
-                            <label class="category" value="">TUWIEN</label><p></p>
-                            <input type="radio" name="antwort" id="antwort51" value="antwort51">
-                            <label class="answer" for="antwort51">&euro; 100</label><p></p>
-                            <input type="radio" name="antwort" id="antwort52" value="antwort52">
-                            <label class="answer" for="antwort52">&euro; 200</label><p></p>
-                            <input type="radio" name="antwort" id="antwort53" value="antwort53">
-                            <label class="answer" for="antwort53">&euro; 500</label><p></p>
-                            <input type="radio" name="antwort" id="antwort54" value="antwort54">
-                            <label class="answer" for="antwort54">&euro; 750</label><p></p>
-                            <input type="radio" name="antwort" id="antwort55" value="antwort55" disabled>
-                            <label class="answer" for="antwort55">&euro; 1000</label><p></p>
+                            <label class="category" >TUWIEN</label><p></p>
+                            <input type="radio" name="antwort" id="antwort51" value="antwort51"/>
+                            <label class="answer" for="antwort51">&#8364; 100</label><p></p>
+                            <input type="radio" name="antwort" id="antwort52" value="antwort52"/>
+                            <label class="answer" for="antwort52">&#8364; 200</label><p></p>
+                            <input type="radio" name="antwort" id="antwort53" value="antwort53"/>
+                            <label class="answer" for="antwort53">&#8364; 500</label><p></p>
+                            <input type="radio" name="antwort" id="antwort54" value="antwort54"/>
+                            <label class="answer" for="antwort54">&#8364; 750</label><p></p>
+                            <input type="radio" name="antwort" id="antwort55" value="antwort55" disabled="disabled"/>
+                            <label class="answer" for="antwort55">&#8364; 1000</label><p></p>
                         </div>
                     </div>
                 <div class="table-lower">
-                    <div><input class="wählen" type="submit" value="wählen"></div>
+                    <div><input class="wählen" type="submit" value="wählen"/></div>
 
                     <p>Letztes Spiel: 22.2.2015 11:07:00</p>
                 </div>

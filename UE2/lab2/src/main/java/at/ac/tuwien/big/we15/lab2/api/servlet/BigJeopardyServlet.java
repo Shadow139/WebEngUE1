@@ -35,33 +35,24 @@ public class BigJeopardyServlet extends HttpServlet {
     
     private void getSubmit(HttpServletRequest request,HttpServletResponse response) throws IOException {
     	
-    	String sumbitParam = request.getParameter("action");
+    	String sumbitParam = request.getParameter("submit");
     	System.out.println(sumbitParam);
-    	System.out.println("test");
 
     	
     	if(sumbitParam == null){
     		redirectToHome(response);
     		return;
     	}
- 	   	
-    	
+ 	   	    	
     	switch(sumbitParam){
-    	case "Anmelden":
-    		debugHttp(request,response);
-        	response.sendRedirect("jeopardy.xhtml");
-    		break;
-    	case "wählen": 
-    		debugHttp(request,response);
+    	case "waehlen": 
+        	response.sendRedirect("question.xhtml");
     		break;
     	case "antworten": 
-        	
+        	response.sendRedirect("jeopardy.xhtml");
     		break;
     	case "Neues Spiel": 
         	startQuiz(request,response);
-    		break;
-    	case "3": 
-        	response.sendRedirect("question.xhtml");
     		break;
     	default: 
     		redirectToHome(response);

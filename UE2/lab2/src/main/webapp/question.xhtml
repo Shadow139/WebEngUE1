@@ -18,7 +18,7 @@
             <span class="accessibility">Business Informatics Group </span><span class="gametitle">Jeopardy!</span>
          </h1>
       </header>
-      
+
       <!-- Navigation -->
 		<nav role="navigation" aria-labelledby="navheading">
 			<h2 id="navheading" class="accessibility">Navigation</h2>
@@ -26,9 +26,9 @@
 				<li><a class="orangelink navigationlink" id="logoutlink" title="Klicke hier um dich abzumelden" href="login.xhtml" accesskey="l">Abmelden</a></li>
 			</ul>
 		</nav>
-      
+
       <!-- Content -->
-      <div role="main"> 
+      <div role="main">
          <!-- info -->
          <section id="gameinfo" aria-labelledby="gameinfoinfoheading">
             <h2 id="gameinfoinfoheading" class="accessibility">Spielinformationen</h2>
@@ -62,10 +62,10 @@
             </section>
             <p id="round">Frage: 3 / 10</p>
          </section>
-            
+
       <!-- Question -->
       <section id="question" aria-labelledby="questionheading">
-            <form id="questionform" action="jeopardy.xhtml" method="get">
+            <form id="questionform" action="BigJeopardyServlet" method="get">
                <h2 id="questionheading" class="accessibility">Frage</h2>
                <p id="questiontype">TUWIEN für € 300</p>
                <p id="questiontext">Diese Lehrveranstaltungen bilden das Modul EWA.</p>
@@ -76,10 +76,10 @@
                   <li><input name="answers" id="answer_4" value="4" type="checkbox"/><label class="tile clickable" for="answer_4">Was ist Objektorientierte Modellierung?</label></li>
                </ul>
                <input id="timeleftvalue" type="hidden" value="100"/>
-               <input class="greenlink formlink clickable" name="answer_submit" id="next" type="submit" value="antworten" accesskey="s"/>
+               <input class="greenlink formlink clickable" name="submit" id="next" type="submit" value="antworten" accesskey="s"/>
             </form>
          </section>
-            
+
          <section id="timer" aria-labelledby="timerheading">
             <h2 id="timerheading" class="accessibility">Timer</h2>
             <p><span id="timeleftlabel">Verbleibende Zeit:</span> <time id="timeleft">00:30</time></p>
@@ -89,46 +89,46 @@
 
       <!-- footer -->
       <footer role="contentinfo">© 2015 BIG Jeopardy!</footer>
-        
+
       <script type="text/javascript">
             //<![CDATA[
-            
+
             // initialize time
             $(document).ready(function() {
                 var maxtime = 30;
                 var hiddenInput = $("#timeleftvalue");
                 var meter = $("#timer meter");
                 var timeleft = $("#timeleft");
-                
+
                 hiddenInput.val(maxtime);
                 meter.val(maxtime);
                 meter.attr('max', maxtime);
                 meter.attr('low', maxtime/100*20);
                 timeleft.text(secToMMSS(maxtime));
             });
-            
+
             // update time
             function timeStep() {
                 var hiddenInput = $("#timeleftvalue");
                 var meter = $("#timer meter");
                 var timeleft = $("#timeleft");
-                
+
                 var value = $("#timeleftvalue").val();
                 if(value > 0) {
-                    value = value - 1;   
+                    value = value - 1;
                 }
-                
+
                 hiddenInput.val(value);
                 meter.val(value);
                 timeleft.text(secToMMSS(value));
-                
+
                 if(value <= 0) {
                     $('#questionform').submit();
                 }
             }
-            
+
             window.setInterval(timeStep, 1000);
-            
+
             //]]>
         </script>
     </body>

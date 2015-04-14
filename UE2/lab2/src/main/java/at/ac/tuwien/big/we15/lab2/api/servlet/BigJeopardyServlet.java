@@ -20,6 +20,8 @@ import at.ac.tuwien.big.we15.lab2.api.impl.ServletJeopardyFactory;
 @WebServlet(name = "BigJeopardyServlet", urlPatterns = {"/BigJeopardyServlet"})
 public class BigJeopardyServlet extends HttpServlet {
 
+	ServletJeopardyFactory servletFactory;
+	QuestionDataProvider provider;
 
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
@@ -95,8 +97,8 @@ public class BigJeopardyServlet extends HttpServlet {
     private void initServletData(){
         ServletContext context = getServletContext();
         
-        ServletJeopardyFactory servletFactory = new ServletJeopardyFactory(context);
-        QuestionDataProvider provider = servletFactory.createQuestionDataProvider();
+        servletFactory = new ServletJeopardyFactory(context);
+        provider = servletFactory.createQuestionDataProvider();
 
     }
     

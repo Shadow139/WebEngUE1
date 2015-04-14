@@ -40,6 +40,7 @@ public class BigJeopardyServlet extends HttpServlet {
     }
     
     private void getSubmit(HttpServletRequest request,HttpServletResponse response) throws IOException {
+
     	
     	String sumbitParam = request.getParameter("submit");
     	System.out.println(sumbitParam);
@@ -51,9 +52,12 @@ public class BigJeopardyServlet extends HttpServlet {
     	}
  	   	    	
     	switch(sumbitParam){
+    	case "Anmelden": 
+        	initServletData(request);
+        	response.sendRedirect("jeopardy.jsp");
+    		break;
     	case "waehlen": 
         	response.sendRedirect("question.jsp");
-        	initServletData(request);
     		break;
     	case "antworten": 
         	response.sendRedirect("jeopardy.jsp");
@@ -112,14 +116,4 @@ public class BigJeopardyServlet extends HttpServlet {
 
     }
 
-    
-    private void debugHttp(HttpServletRequest request,
-            HttpServletResponse response) throws IOException{
-    	System.out.println("test");
-    	response.getWriter().write("response: ");
-    	response.getWriter().write(response.toString());
-    	
-    	response.getWriter().write("request: ");
-    	response.getWriter().write(request.toString());
-    }
 }

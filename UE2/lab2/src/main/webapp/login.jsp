@@ -23,14 +23,14 @@
         <div role="main">
             <section id="login" aria-labelledby="loginheading">
                <h2 id="loginheading" class="accessibility">Login</h2>
-                <form action="jeopardy.jsp" method="post">
+                <form action="BigJeopardyServlet" method="post">
                     <fieldset>
                         <legend id="logindata">Login</legend>
                         <label for="username">Benutzername:</label>
                         <input name="username" id="username" type="text" required="required"/>
                         <label for="password">Passwort:</label>
                         <input name="password" id="password" type="password" required="required"/>
-                        <input name="login" id="loginsubmit" class="greenlink formlink clickable" type="submit" value="Anmelden"/>
+                        <input name="submit" id="loginsubmit" class="greenlink formlink clickable" type="submit" value="Anmelden"/>
                     </fieldset>
                 </form>
             </section>

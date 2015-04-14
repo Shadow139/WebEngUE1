@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
     <head>
@@ -11,7 +11,7 @@
 
     <body id="login-page">
       <a class="accessibility" href="#login">Zum Login springen</a>
-	  <a class="accessibility" title="Klicke hier um dich zu registrieren" href="register.xhtml" accesskey="r">Registrieren</a>
+	  <a class="accessibility" title="Klicke hier um dich zu registrieren" href="register.jsp" accesskey="r">Registrieren</a>
       <!-- Header -->
       <header role="banner" aria-labelledby="bannerheading">
          <h1 id="bannerheading">
@@ -23,7 +23,7 @@
         <div role="main">
             <section id="login" aria-labelledby="loginheading">
                <h2 id="loginheading" class="accessibility">Login</h2>
-                <form action="jeopardy.xhtml" method="post">
+                <form action="jeopardy.jsp" method="post">
                     <fieldset>
                         <legend id="logindata">Login</legend>
                         <label for="username">Benutzername:</label>
@@ -38,7 +38,7 @@
             <section id="registerforward" aria-labelledby="registerheading">
                 <h2 id="registerheading" class="accessibility">Registrierung</h2>
                 <p id="registerhint">Nicht registriert?</p>
-                <a class="contentlink orangelink" title="Klicke hier um dich zu registrieren" href="register.xhtml" accesskey="r">Zur Registrierung</a>
+                <a class="contentlink orangelink" title="Klicke hier um dich zu registrieren" href="register.jsp" accesskey="r">Zur Registrierung</a>
             </section>
         </div>
 

@@ -46,10 +46,10 @@ public class BigJeopardyServlet extends HttpServlet {
  	   	    	
     	switch(sumbitParam){
     	case "waehlen": 
-        	response.sendRedirect("question.xhtml");
+        	response.sendRedirect("question.jsp");
     		break;
     	case "antworten": 
-        	response.sendRedirect("jeopardy.xhtml");
+        	response.sendRedirect("jeopardy.jsp");
     		break;
     	case "Neues Spiel": 
         	startQuiz(request,response);
@@ -61,14 +61,14 @@ public class BigJeopardyServlet extends HttpServlet {
     }
     
     private void redirectToHome(HttpServletResponse response) throws IOException{
-    	response.sendRedirect("login.xhtml");
+    	response.sendRedirect("login.jsp");
     }
     
     private void startQuiz(HttpServletRequest request,
             HttpServletResponse response){
     	
         ServletContext context = getServletContext();
-        RequestDispatcher dispatcher = context.getRequestDispatcher("/question.xhtml");
+        RequestDispatcher dispatcher = context.getRequestDispatcher("/question.jsp");
 
         
     	
@@ -88,7 +88,7 @@ public class BigJeopardyServlet extends HttpServlet {
     private void showHomePage(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException{
         ServletContext context = getServletContext();
-        RequestDispatcher dispatcher = context.getRequestDispatcher("/login.xhtml");
+        RequestDispatcher dispatcher = context.getRequestDispatcher("/login.jsp");
         dispatcher.forward(request, response);
     }
     

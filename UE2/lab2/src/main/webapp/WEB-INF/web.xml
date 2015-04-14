@@ -3,7 +3,7 @@
   <!-- Add your deployment description here -->
   <display-name>BigJeopardyServlet</display-name>
   <welcome-file-list>
-   <welcome-file>login.xhtml</welcome-file>
+   <welcome-file>login.jsp</welcome-file>
 </welcome-file-list>
 	<servlet>  
    		<display-name>BigJeopardyServlet</display-name>    

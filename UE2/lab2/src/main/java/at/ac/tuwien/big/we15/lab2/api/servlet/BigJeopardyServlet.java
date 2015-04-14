@@ -1,6 +1,8 @@
 package at.ac.tuwien.big.we15.lab2.api.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import at.ac.tuwien.big.we15.lab2.api.Avatar;
+import at.ac.tuwien.big.we15.lab2.api.Category;
 import at.ac.tuwien.big.we15.lab2.api.QuestionDataProvider;
 import at.ac.tuwien.big.we15.lab2.api.impl.JSONQuestionDataProvider;
 import at.ac.tuwien.big.we15.lab2.api.impl.ServletJeopardyFactory;
@@ -22,6 +25,7 @@ public class BigJeopardyServlet extends HttpServlet {
 
 	ServletJeopardyFactory servletFactory;
 	QuestionDataProvider provider;
+	List<Category> categoryList;
 
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
@@ -49,6 +53,7 @@ public class BigJeopardyServlet extends HttpServlet {
     	switch(sumbitParam){
     	case "waehlen": 
         	response.sendRedirect("question.jsp");
+        	initServletData(request);
     		break;
     	case "antworten": 
         	response.sendRedirect("jeopardy.jsp");
@@ -94,13 +99,19 @@ public class BigJeopardyServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
     
-    private void initServletData(){
+    private void initServletData(HttpServletRequest request){
         ServletContext context = getServletContext();
+        RequestDispatcher dispatcher = context.getRequestDispatcher("/jeopardy.jsp");
         
         servletFactory = new ServletJeopardyFactory(context);
         provider = servletFactory.createQuestionDataProvider();
+        
+        categoryList = provider.getCategoryData();
+        
+        request.getSession().setAttribute("categoryList", categoryList);
 
     }
+
     
     private void debugHttp(HttpServletRequest request,
             HttpServletResponse response) throws IOException{
@@ -110,7 +121,5 @@ public class BigJeopardyServlet extends HttpServlet {
     	
     	response.getWriter().write("request: ");
     	response.getWriter().write(request.toString());
-
-
     }
 }

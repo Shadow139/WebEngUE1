@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html>
+
+  <jsp:useBean id="categoryList" scope="session" class="java.util.List"/>
+   <%@page import="at.ac.tuwien.big.we15.lab2.api.Category"%>
+   <%@page import="at.ac.tuwien.big.we15.lab2.api.Question"%>
+   <%@page import="java.util.List"%>
+
+   <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
     <head>
         <meta charset="utf-8"/>
@@ -70,19 +76,20 @@
             <p class="user-info negative-change">Deadpool hat falsch geantwortet: -500 €</p>
             <p class="user-info">Deadpool hat TUWIEN für € 1000 gewählt.</p>
             <form id="questionform" action="BigJeopardyServlet" method="post">
+
                <fieldset>
                <legend class="accessibility">Fragenauswahl</legend>
                <section class="questioncategory" aria-labelledby="tvheading">
-                  <h3 id="tvheading" class="tile category-title"><span class="accessibility">Kategorie: </span>TV</h3>
+                  <h3 id="tvheading" class="tile category-title"><span class="accessibility">Kategorie: </span><% categoryList.get(0).getName()%></h3>
                   <ol class="category_questions">
-                     <li><input name="question_selection" id="question_1" value="1" type="radio" disabled="disabled" /><label class="tile clickable" for="question_1">€ 100</label></li>
-                     <li><input name="question_selection" id="question_2" value="2" type="radio"/><label class="tile clickable" for="question_2">€ 200</label></li>
+                     <li><input name="question_selection" id="question_1" value="1" type="radio" disabled="disabled" /><label class="tile clickable" for="question_1"><% categoryList.get(0).getName()%></label></li>
+                     <li><input name="question_selection" id="question_2" value="2" type="radio"/><label class="tile clickable" for="question_2">€ hallo</label></li>
                      <li><input name="question_selection" id="question_3" value="3" type="radio"/><label class="tile clickable" for="question_3">€ 500</label></li>
                      <li><input name="question_selection" id="question_4" value="4" type="radio"/><label class="tile clickable" for="question_4">€ 750</label></li>
                   </ol>
                </section>
                <section class="questioncategory" aria-labelledby="ssdheading">
-                  <h3 id="ssdheading" class="tile category-title"><span class="accessibility">Kategorie: </span>SSD</h3>
+                  <h3 id="ssdheading" class="tile category-title"><span class="accessibility">Kategorie: </span><% categoryList.get(1).getName()%></h3>
                   <ol class="category_questions">
                      <li><input name="question_selection" id="question_5" value="5" type="radio" /><label class="tile clickable" for="question_5">€ 100</label></li>
                      <li><input name="question_selection" id="question_6" value="6" type="radio" /><label class="tile clickable" for="question_6">€ 200</label></li>
@@ -92,7 +99,7 @@
                   </ol>
                </section>
                <section class="questioncategory" aria-labelledby="webheading">
-                  <h3 id="webheading" class="tile category-title"><span class="accessibility">Kategorie: </span>Web</h3>
+                  <h3 id="webheading" class="tile category-title"><span class="accessibility">Kategorie: </span><% categoryList.get(2).getName()%></h3>
                   <ol class="category_questions">
                      <li><input name="question_selection" id="question_10" value="10" type="radio" /><label class="tile clickable" for="question_10">€ 100</label></li>
                      <li><input name="question_selection" id="question_11" value="11" type="radio" /><label class="tile clickable" for="question_11">€ 200</label></li>
@@ -102,7 +109,7 @@
                   </ol>
                </section>
                <section class="questioncategory" aria-labelledby="sportheading">
-                  <h3 id="sportheading" class="tile category-title"><span class="accessibility">Kategorie: </span>Sport</h3>
+                  <h3 id="sportheading" class="tile category-title"><span class="accessibility">Kategorie: </span><% categoryList.get(3).getName()%></h3>
                   <ol class="category_questions">
                      <li><input name="question_selection" id="question_15" value="15" type="radio" /><label class="tile clickable" for="question_15">€ 100</label></li>
                      <li><input name="question_selection" id="question_16" value="16" type="radio" disabled="disabled" /><label class="tile clickable" for="question_16">€ 200</label></li>
@@ -111,7 +118,7 @@
                   </ol>
                </section>
                <section class="questioncategory" aria-labelledby="tuwienheading">
-                  <h3 id="tuwienheading" class="tile category-title"><span class="accessibility">Kategorie: </span>TUWIEN</h3>
+                  <h3 id="tuwienheading" class="tile category-title"><span class="accessibility">Kategorie: </span><% categoryList.get(4).getName()%></h3>
                   <ol class="category_questions">
                      <li><input name="question_selection" id="question_19" value="19" type="radio" /><label class="tile clickable" for="question_19">€ 100</label></li>
                      <li><input name="question_selection" id="question_20" value="20" type="radio" /><label class="tile clickable" for="question_20">€ 200</label></li>

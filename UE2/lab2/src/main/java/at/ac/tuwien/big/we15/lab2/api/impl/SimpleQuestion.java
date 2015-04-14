@@ -25,6 +25,8 @@ public class SimpleQuestion implements Question {
 	private String text;
 
 	private int value;
+	
+	private boolean active = true;
 
 	private List<Answer> wrongAnswers;
 
@@ -89,6 +91,14 @@ public class SimpleQuestion implements Question {
 	@Override
 	public void setValue(int value) {
 		this.value = value;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@Override

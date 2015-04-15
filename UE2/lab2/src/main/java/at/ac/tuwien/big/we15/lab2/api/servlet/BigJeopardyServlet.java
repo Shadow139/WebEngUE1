@@ -15,9 +15,13 @@ import javax.servlet.http.HttpSession;
 
 import at.ac.tuwien.big.we15.lab2.api.Avatar;
 import at.ac.tuwien.big.we15.lab2.api.Category;
+import at.ac.tuwien.big.we15.lab2.api.Game;
+import at.ac.tuwien.big.we15.lab2.api.Player;
 import at.ac.tuwien.big.we15.lab2.api.QuestionDataProvider;
 import at.ac.tuwien.big.we15.lab2.api.impl.JSONQuestionDataProvider;
 import at.ac.tuwien.big.we15.lab2.api.impl.ServletJeopardyFactory;
+import at.ac.tuwien.big.we15.lab2.api.impl.SimpleGame;
+import at.ac.tuwien.big.we15.lab2.api.impl.SimplePlayer;
 
 //@WebServlet("/home")
 @WebServlet(name = "BigJeopardyServlet", urlPatterns = {"/BigJeopardyServlet"})
@@ -53,17 +57,18 @@ public class BigJeopardyServlet extends HttpServlet {
  	   	    	
     	switch(sumbitParam){
     	case "Anmelden": 
-        	initServletData(request);
+    		startQuiz(request);
         	response.sendRedirect("jeopardy.jsp");
     		break;
     	case "waehlen": 
+    		getSelectedQuestion();
         	response.sendRedirect("question.jsp");
     		break;
     	case "antworten": 
         	response.sendRedirect("jeopardy.jsp");
     		break;
     	case "Neues Spiel": 
-        	startQuiz(request,response);
+        	startQuiz(request);
     		break;
     	default: 
     		redirectToHome(response);
@@ -71,18 +76,39 @@ public class BigJeopardyServlet extends HttpServlet {
     	}
     }
     
-    private void redirectToHome(HttpServletResponse response) throws IOException{
+    private void getSelectedQuestion() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void redirectToHome(HttpServletResponse response) throws IOException{
     	response.sendRedirect("login.jsp");
     }
     
-    private void startQuiz(HttpServletRequest request,
-            HttpServletResponse response){
+    private void startQuiz(HttpServletRequest request){
     	
         ServletContext context = getServletContext();
-        RequestDispatcher dispatcher = context.getRequestDispatcher("/question.jsp");
-
+        RequestDispatcher dispatcher = context.getRequestDispatcher("/jeopardy.jsp");
         
-    	
+        servletFactory = new ServletJeopardyFactory(context);
+        provider = servletFactory.createQuestionDataProvider();
+        
+        categoryList = provider.getCategoryData();
+        
+        
+        Player player1 = new SimplePlayer("Black Widow");
+        Player player2 = new SimplePlayer("Deadpool");
+        
+        Game game = new SimpleGame(player1, player2);
+        
+        game.setCategoryList(categoryList);
+        
+        
+        request.getSession().setAttribute("categoryList", categoryList);
+
+        request.getSession().setAttribute("game", game);
+
+
     }
     
     private void showCategory(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
@@ -102,18 +128,6 @@ public class BigJeopardyServlet extends HttpServlet {
         RequestDispatcher dispatcher = context.getRequestDispatcher("/login.jsp");
         dispatcher.forward(request, response);
     }
-    
-    private void initServletData(HttpServletRequest request){
-        ServletContext context = getServletContext();
-        RequestDispatcher dispatcher = context.getRequestDispatcher("/jeopardy.jsp");
-        
-        servletFactory = new ServletJeopardyFactory(context);
-        provider = servletFactory.createQuestionDataProvider();
-        
-        categoryList = provider.getCategoryData();
-        
-        request.getSession().setAttribute("categoryList", categoryList);
 
-    }
 
 }

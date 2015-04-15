@@ -10,6 +10,7 @@
  */
 package at.ac.tuwien.big.we15.lab2.api.impl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +20,9 @@ import at.ac.tuwien.big.we15.lab2.api.Question;
 /**
  *
  */
-public class SimpleCategory implements Category {
+public class SimpleCategory implements Category, Serializable {
 
+	private static final long serialVersionUID = -3284413794967142800L;
 	private String name;
 	private List<Question> questions;
 

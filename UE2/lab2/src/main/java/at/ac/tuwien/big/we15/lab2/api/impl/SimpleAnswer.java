@@ -10,11 +10,17 @@
  */
 package at.ac.tuwien.big.we15.lab2.api.impl;
 
+import java.io.Serializable;
+
 import at.ac.tuwien.big.we15.lab2.api.Answer;
 import at.ac.tuwien.big.we15.lab2.api.Question;
 
-public class SimpleAnswer implements Answer {
+public class SimpleAnswer implements Answer, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8552017193380158332L;
 	private int id;
 	private String text;
 	private Question question;

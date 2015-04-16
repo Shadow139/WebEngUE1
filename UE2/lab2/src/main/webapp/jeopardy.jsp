@@ -89,12 +89,13 @@
                <section class="questioncategory" aria-labelledby="tvheading">
                   <h3 id="tvheading" class="tile category-title"><span class="accessibility">Kategorie: </span><%= categoryList.get(0).getName()%></h3>
                   <ol class="category_questions">
-                  
+                   
                  <% for (int i = 0; i < categoryList.get(0).getQuestions().size(); i++) { %>
                   
                      <li><input name="question_selection" id="question_<%= i+1 %>" value="<%= i+1 %>" type="radio"/><label class="tile clickable" for="question_<%= i+1 %>"><%= categoryList.get(0).getQuestions().get(i).getValue() %></label></li>
                     
                   <% } %>   
+                  <% int previousSize = categoryList.get(0).getQuestions().size(); %>
                   
                   </ol>
                </section>
@@ -104,10 +105,11 @@
                   
                  <% for (int i = 0; i < categoryList.get(1).getQuestions().size(); i++) { %>
                   
-                     <li><input name="question_selection" id="question_<%= i+1 %>" value="<%= i+1 %>" type="radio"/><label class="tile clickable" for="question_<%= i+1 %>"><%= categoryList.get(1).getQuestions().get(i).getValue() %></label></li>
+                     <li><input name="question_selection" id="question_<%= i+1+previousSize %>" value="<%= i+1+previousSize %>" type="radio"/><label class="tile clickable" for="question_<%= i+1+previousSize %>"><%= categoryList.get(1).getQuestions().get(i).getValue() %></label></li>
                     
                   <% } %> 
-                  
+                  <% previousSize += categoryList.get(1).getQuestions().size(); %>
+                 
                   </ol>
                </section>
                <section class="questioncategory" aria-labelledby="webheading">
@@ -116,9 +118,10 @@
                   
                  <% for (int i = 0; i < categoryList.get(2).getQuestions().size(); i++) { %>
                   
-                     <li><input name="question_selection" id="question_<%= i+1 %>" value="<%= i+1 %>" type="radio"/><label class="tile clickable" for="question_<%= i+1 %>"><%= categoryList.get(2).getQuestions().get(i).getValue() %></label></li>
+                     <li><input name="question_selection" id="question_<%= i+1+previousSize %>" value="<%= i+1+previousSize %>" type="radio"/><label class="tile clickable" for="question_<%= i+1+previousSize %>"><%= categoryList.get(2).getQuestions().get(i).getValue() %></label></li>
                     
                   <% } %>   
+                  <% previousSize += categoryList.get(2).getQuestions().size(); %>
                   
                   </ol>
                </section>
@@ -128,9 +131,10 @@
                   
                  <% for (int i = 0; i < categoryList.get(3).getQuestions().size(); i++) { %>
                   
-                     <li><input name="question_selection" id="question_<%= i+1 %>" value="<%= i+1 %>" type="radio"/><label class="tile clickable" for="question_<%= i+1 %>"><%= categoryList.get(3).getQuestions().get(i).getValue() %></label></li>
+                     <li><input name="question_selection" id="question_<%= i+1+previousSize %>" value="<%= i+1+previousSize %>" type="radio"/><label class="tile clickable" for="question_<%= i+1+previousSize %>"><%= categoryList.get(3).getQuestions().get(i).getValue() %></label></li>
                     
                   <% } %>   
+                  <% previousSize += categoryList.get(3).getQuestions().size(); %>
                   
                   </ol>
                </section>
@@ -140,7 +144,7 @@
                   
                  <% for (int i = 0; i < categoryList.get(4).getQuestions().size(); i++) { %>
                   
-                     <li><input name="question_selection" id="question_<%= i+1 %>" value="<%= i+1 %>" type="radio"/><label class="tile clickable" for="question_<%= i+1 %>"><%= categoryList.get(4).getQuestions().get(i).getValue() %></label></li>
+                     <li><input name="question_selection" id="question_<%= i+1+previousSize %>" value="<%= i+1+previousSize %>" type="radio"/><label class="tile clickable" for="question_<%= i+1+previousSize %>"><%= categoryList.get(4).getQuestions().get(i).getValue() %></label></li>
                     
                   <% } %>   
                   

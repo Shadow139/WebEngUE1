@@ -17,6 +17,7 @@ import at.ac.tuwien.big.we15.lab2.api.Avatar;
 import at.ac.tuwien.big.we15.lab2.api.Category;
 import at.ac.tuwien.big.we15.lab2.api.Game;
 import at.ac.tuwien.big.we15.lab2.api.Player;
+import at.ac.tuwien.big.we15.lab2.api.Question;
 import at.ac.tuwien.big.we15.lab2.api.QuestionDataProvider;
 import at.ac.tuwien.big.we15.lab2.api.impl.JSONQuestionDataProvider;
 import at.ac.tuwien.big.we15.lab2.api.impl.ServletJeopardyFactory;
@@ -62,7 +63,7 @@ public class BigJeopardyServlet extends HttpServlet {
         	response.sendRedirect("jeopardy.jsp");
     		break;
     	case "waehlen": 
-    		getSelectedQuestion();
+    		getSelectedQuestion(request);
         	response.sendRedirect("question.jsp");
     		break;
     	case "antworten": 
@@ -77,9 +78,19 @@ public class BigJeopardyServlet extends HttpServlet {
     	}
     }
     
-    private void getSelectedQuestion() {
+    private void getSelectedQuestion(HttpServletRequest request) {
 		// TODO Auto-generated method stub
-		
+    	int questionNumber = Integer.parseInt(request.getParameter("question_selection"));
+    	int i = 0;
+    	for(Category c: categoryList){
+    		for(Question q: c.getQuestions()){
+    			i++;
+    			if(i == questionNumber){
+    				request.getSession().setAttribute("selectedQuestion", q);
+    				break;
+    			}
+    		}
+    	}
 	}
 
 	private void redirectToHome(HttpServletResponse response) throws IOException{

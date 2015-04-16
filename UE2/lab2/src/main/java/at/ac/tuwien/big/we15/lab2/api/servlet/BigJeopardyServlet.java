@@ -83,20 +83,16 @@ public class BigJeopardyServlet extends HttpServlet {
     }
     
     private void checkAnswer(HttpServletRequest request) {
-    	System.out.println(currentQuestionId);
-    	System.out.println(request.getParameter("selectedQuestionId"));
     	int qid = Integer.parseInt(request.getParameter("selectedQuestionId"));
     	Question question = getQuestionById(qid);
 		boolean correct = true;
 		boolean containsAnswer = false;
     	String[] answers = request.getParameterValues("answers");
-		System.out.println(answers.length);
 
 		for(int i = 0; i < answers.length ;i++){
 			containsAnswer = false;
 			System.out.println(answers[i]);
-			/*
-	    	for(Answer ans: currentQuestion.getCorrectAnswers()){
+	    	for(Answer ans: question.getCorrectAnswers()){
 				if(!answers[i].contains(ans.getText() + "")){
 					correct = false;
 					break;
@@ -108,9 +104,9 @@ public class BigJeopardyServlet extends HttpServlet {
 	    	if(!containsAnswer){
 	    		correct = false;
 	    		break;
-	    	}*/
+	    	}
 		}
-		
+		System.out.println("Is answer correct? "+correct);
 	}
 
 	private void getSelectedQuestion(HttpServletRequest request) {

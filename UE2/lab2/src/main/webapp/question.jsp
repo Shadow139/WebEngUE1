@@ -9,7 +9,6 @@
 	<%
 	Game game = (Game) session.getAttribute("game");
 	Question selectedQuestion = (Question) session.getAttribute("selectedQuestion");
-	request.setAttribute("selectedQuestionId", selectedQuestion.getId());
 	%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
@@ -81,6 +80,7 @@
                <h2 id="questionheading" class="accessibility">Frage</h2>
                <p id="questiontype"><%= selectedQuestion.getCategory().getName() %> für € <%= selectedQuestion.getValue() %></p>
                <p id="questiontext"><%= selectedQuestion.getText() %></p>
+               <input type = "hidden" name = "selectedQuestionId" value = "<%= selectedQuestion.getId() %>"/>
                <ul id="answers">
                
                <% List<Answer> answers = selectedQuestion.getAllAnswers(); %>

@@ -34,7 +34,7 @@ public class BigJeopardyServlet extends HttpServlet {
 	QuestionDataProvider provider;
 	List<Category> categoryList;
 	Game game;
-	Question currentQuestion;
+	int currentQuestionId;
 
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
@@ -83,6 +83,7 @@ public class BigJeopardyServlet extends HttpServlet {
     }
     
     private void checkAnswer(HttpServletRequest request) {
+    	System.out.println(currentQuestionId);
     	System.out.println(request.getParameter("selectedQuestionId"));
     	int qid = Integer.parseInt(request.getParameter("selectedQuestionId"));
     	Question question = getQuestionById(qid);
@@ -93,11 +94,7 @@ public class BigJeopardyServlet extends HttpServlet {
 
 		for(int i = 0; i < answers.length ;i++){
 			containsAnswer = false;
-	    	for(Answer ans: question.getCorrectAnswers()){
-				if(!playerAnswers.contains(ans.getText() + "")){
 			System.out.println(answers[i]);
-			
-			System.out.println(currentQuestion == null);
 			/*
 	    	for(Answer ans: currentQuestion.getCorrectAnswers()){
 				if(!answers[i].contains(ans.getText() + "")){
@@ -129,7 +126,7 @@ public class BigJeopardyServlet extends HttpServlet {
     		for(Question q: c.getQuestions()){
     			i++;
     			if(i == questionNumber){
-    				currentQuestion = q;
+    				currentQuestionId = q.getId();
     				question = q;
     				break;
     			}

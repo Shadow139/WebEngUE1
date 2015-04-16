@@ -83,12 +83,15 @@ public class BigJeopardyServlet extends HttpServlet {
     }
     
     private void checkAnswer(HttpServletRequest request) {
+    	System.out.println(request.getParameter("selectedQuestionId"));
+    	int qid = Integer.parseInt(request.getParameter("selectedQuestionId"));
+    	Question question = getQuestionById(qid);
 		boolean correct = true;
 		boolean containsAnswer = false;
     	ArrayList<String> playerAnswers = new ArrayList(Arrays.asList(request.getParameterValues("answers")));
 		for(String playerAnswer: playerAnswers){
 			containsAnswer = false;
-	    	for(Answer ans: currentQuestion.getCorrectAnswers()){
+	    	for(Answer ans: question.getCorrectAnswers()){
 				if(!playerAnswers.contains(ans.getText() + "")){
 					correct = false;
 					break;
@@ -108,18 +111,25 @@ public class BigJeopardyServlet extends HttpServlet {
 	private void getSelectedQuestion(HttpServletRequest request) {
 		// TODO Auto-generated method stub
     	int questionNumber = Integer.parseInt(request.getParameter("question_selection"));
-    	int i = 0;
+    	request.getSession().setAttribute("selectedQuestion", getQuestionById(questionNumber));
+	}
+	
+	private Question getQuestionById(int questionNumber){
+		Question question = null;
+		int i = 0;
     	for(Category c: categoryList){
     		for(Question q: c.getQuestions()){
     			i++;
     			if(i == questionNumber){
     				currentQuestion = q;
-    				request.getSession().setAttribute("selectedQuestion", q);
+    				question = q;
     				break;
     			}
     		}
     	}
+		return question;
 	}
+	
 
 	private void redirectToHome(HttpServletResponse response) throws IOException{
     	response.sendRedirect("login.jsp");

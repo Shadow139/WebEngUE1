@@ -2,11 +2,13 @@
 	<%@page import="at.ac.tuwien.big.we15.lab2.api.Category"%>
 	<%@page import="at.ac.tuwien.big.we15.lab2.api.Question"%>
 	<%@page import="at.ac.tuwien.big.we15.lab2.api.Game"%>
+	<%@page import="at.ac.tuwien.big.we15.lab2.api.Answer"%>
 	<%@page import="at.ac.tuwien.big.we15.lab2.api.Player"%>
 	<%@page import="java.util.List"%>
 	
 	<%
 	Game game = (Game) session.getAttribute("game");
+	Question selectedQuestion = (Question) session.getAttribute("selectedQuestion");
 	%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
@@ -76,13 +78,25 @@
       <section id="question" aria-labelledby="questionheading">
             <form id="questionform" action="BigJeopardyServlet" method="get">
                <h2 id="questionheading" class="accessibility">Frage</h2>
-               <p id="questiontype">TUWIEN für € 300</p>
-               <p id="questiontext">Diese Lehrveranstaltungen bilden das Modul EWA.</p>
+               <p id="questiontype"><%= selectedQuestion.getCategory().getName() %> für € <%= selectedQuestion.getValue() %> %></p>
+               <p id="questiontext"><%= selectedQuestion.getText() %></p>
                <ul id="answers">
+               
+               <% List<Answer> answers = selectedQuestion.getAllAnswers(); %>
+               
+               <% for (int i = 0; i < answers.size(); i++) { %>
+               
+               		<li><input name="answers" id="answer_<%= i+1 %>" value="<%= i+1 %>" type="checkbox"/><label class="tile clickable" for="answer_<%= i+1 %>"><%= answers.get(i).getText() %></label></li>
+               
+               <% } %>   
+
+               <!-- 
                   <li><input name="answers" id="answer_1" value="1" type="checkbox"/><label class="tile clickable" for="answer_1">Was ist IT Strategie?</label></li>
                   <li><input name="answers" id="answer_2" value="2" type="checkbox"/><label class="tile clickable" for="answer_2">Was ist Web Engineering?</label></li>
                   <li><input name="answers" id="answer_3" value="3" type="checkbox"/><label class="tile clickable" for="answer_3">Was ist Semistrukturierte Daten?</label></li>
                   <li><input name="answers" id="answer_4" value="4" type="checkbox"/><label class="tile clickable" for="answer_4">Was ist Objektorientierte Modellierung?</label></li>
+                -->
+               
                </ul>
                <input id="timeleftvalue" type="hidden" value="100"/>
                <input class="greenlink formlink clickable" name="submit" id="next" type="submit" value="antworten" accesskey="s"/>

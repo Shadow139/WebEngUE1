@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+	<%@page import="at.ac.tuwien.big.we15.lab2.api.Category"%>
+	<%@page import="at.ac.tuwien.big.we15.lab2.api.Question"%>
+	<%@page import="at.ac.tuwien.big.we15.lab2.api.Game"%>
+	<%@page import="at.ac.tuwien.big.we15.lab2.api.Player"%>
+	<%@page import="java.util.List"%>
+	
+	<%
+	Game game = (Game) session.getAttribute("game");
+	%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
     <head>
@@ -38,11 +47,11 @@
                <table>
                   <tr>
                      <th class="accessibility">Spielername</th>
-                     <td class="playername">Black Widow (Du)</td>
+                     <td class="playername"><%= game.getPlayer1().getName() %> (Du)</td>
                   </tr>
                   <tr>
                      <th class="accessibility">Spielerpunkte</th>
-                     <td class="playerpoints">2000 €</td>
+                     <td class="playerpoints"><%= game.getPlayer1().getWinnings() %> €</td>
                   </tr>
                </table>
             </section>
@@ -52,15 +61,15 @@
                <table>
                   <tr>
                      <th class="accessibility">Spielername</th>
-                     <td class="playername">Deadpool</td>
+                     <td class="playername"><%= game.getPlayer2().getName() %></td>
                   </tr>
                   <tr>
                      <th class="accessibility">Spielerpunkte</th>
-                     <td class="playerpoints">400 €</td>
+                     <td class="playerpoints"><%= game.getPlayer2().getWinnings() %> €</td>
                   </tr>
                </table>
             </section>
-            <p id="round">Frage: 3 / 10</p>
+            <p id="round">Fragen: <%= game.getQuestionsAsked() %> / 10</p>
          </section>
 
       <!-- Question -->

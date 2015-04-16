@@ -30,6 +30,7 @@ public class BigJeopardyServlet extends HttpServlet {
 	ServletJeopardyFactory servletFactory;
 	QuestionDataProvider provider;
 	List<Category> categoryList;
+	Game game;
 
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
@@ -99,7 +100,7 @@ public class BigJeopardyServlet extends HttpServlet {
         Player player1 = new SimplePlayer("Black Widow");
         Player player2 = new SimplePlayer("Deadpool");
         
-        Game game = new SimpleGame(player1, player2);
+        game = new SimpleGame(player1, player2);
         
         game.setCategoryList(categoryList);
         

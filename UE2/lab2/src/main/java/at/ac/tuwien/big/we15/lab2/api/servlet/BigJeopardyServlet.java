@@ -2,6 +2,7 @@ package at.ac.tuwien.big.we15.lab2.api.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import at.ac.tuwien.big.we15.lab2.api.Answer;
 import at.ac.tuwien.big.we15.lab2.api.Avatar;
 import at.ac.tuwien.big.we15.lab2.api.Category;
 import at.ac.tuwien.big.we15.lab2.api.Game;
@@ -32,6 +34,7 @@ public class BigJeopardyServlet extends HttpServlet {
 	QuestionDataProvider provider;
 	List<Category> categoryList;
 	Game game;
+	Question currentQuestion;
 
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
@@ -67,6 +70,7 @@ public class BigJeopardyServlet extends HttpServlet {
         	response.sendRedirect("question.jsp");
     		break;
     	case "antworten": 
+    		checkAnswer(request);
         	response.sendRedirect("jeopardy.jsp");
     		break;
     	case "Neues Spiel": 
@@ -78,7 +82,29 @@ public class BigJeopardyServlet extends HttpServlet {
     	}
     }
     
-    private void getSelectedQuestion(HttpServletRequest request) {
+    private void checkAnswer(HttpServletRequest request) {
+		boolean correct = true;
+		boolean containsAnswer = false;
+    	ArrayList<String> playerAnswers = new ArrayList(Arrays.asList(request.getParameterValues("answers")));
+		for(String playerAnswer: playerAnswers){
+			containsAnswer = false;
+	    	for(Answer ans: currentQuestion.getCorrectAnswers()){
+				if(!playerAnswers.contains(ans.getId() + "")){
+					correct = false;
+					break;
+				}
+				if(playerAnswer.equals(ans.getId()+"")){
+					containsAnswer = true;
+				}
+			}
+	    	if(!containsAnswer){
+	    		correct = false;
+	    		break;
+	    	}
+		}
+	}
+
+	private void getSelectedQuestion(HttpServletRequest request) {
 		// TODO Auto-generated method stub
     	int questionNumber = Integer.parseInt(request.getParameter("question_selection"));
     	int i = 0;
@@ -86,6 +112,7 @@ public class BigJeopardyServlet extends HttpServlet {
     		for(Question q: c.getQuestions()){
     			i++;
     			if(i == questionNumber){
+    				currentQuestion = q;
     				request.getSession().setAttribute("selectedQuestion", q);
     				break;
     			}

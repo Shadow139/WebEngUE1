@@ -89,7 +89,7 @@ public class BigJeopardyServlet extends HttpServlet {
 		for(String playerAnswer: playerAnswers){
 			containsAnswer = false;
 	    	for(Answer ans: currentQuestion.getCorrectAnswers()){
-				if(!playerAnswers.contains(ans.getId() + "")){
+				if(!playerAnswers.contains(ans.getText() + "")){
 					correct = false;
 					break;
 				}
@@ -102,6 +102,7 @@ public class BigJeopardyServlet extends HttpServlet {
 	    		break;
 	    	}
 		}
+		
 	}
 
 	private void getSelectedQuestion(HttpServletRequest request) {

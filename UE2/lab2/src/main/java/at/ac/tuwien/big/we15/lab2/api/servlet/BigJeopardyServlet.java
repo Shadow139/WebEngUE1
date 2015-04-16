@@ -85,22 +85,28 @@ public class BigJeopardyServlet extends HttpServlet {
     private void checkAnswer(HttpServletRequest request) {
 		boolean correct = true;
 		boolean containsAnswer = false;
-    	ArrayList<String> playerAnswers = new ArrayList(Arrays.asList(request.getParameterValues("answers")));
-		for(String playerAnswer: playerAnswers){
+    	String[] answers = request.getParameterValues("answers");
+		System.out.println(answers.length);
+
+		for(int i = 0; i < answers.length ;i++){
 			containsAnswer = false;
+			System.out.println(answers[i]);
+			
+			System.out.println(currentQuestion == null);
+			/*
 	    	for(Answer ans: currentQuestion.getCorrectAnswers()){
-				if(!playerAnswers.contains(ans.getText() + "")){
+				if(!answers[i].contains(ans.getText() + "")){
 					correct = false;
 					break;
 				}
-				if(playerAnswer.equals(ans.getId()+"")){
+				if(answers[i].equals(ans.getId()+"")){
 					containsAnswer = true;
 				}
 			}
 	    	if(!containsAnswer){
 	    		correct = false;
 	    		break;
-	    	}
+	    	}*/
 		}
 		
 	}

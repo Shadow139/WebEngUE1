@@ -86,7 +86,7 @@
                
                <% for (int i = 0; i < answers.size(); i++) { %>
                
-               		<li><input name="answers" id="answer_<%= i+1 %>" value="<%= i+1 %>" type="checkbox"/><label class="tile clickable" for="answer_<%= i+1 %>"><%= answers.get(i).getText() %></label></li>
+               		<li><input name="answers" id="answer_<%= i+1 %>" value="<%= answers.get(i).getText() %>" type="checkbox"/><label class="tile clickable" for="answer_<%= i+1 %>"><%= answers.get(i).getText() %></label></li>
                
                <% } %>   
 

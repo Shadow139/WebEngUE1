@@ -32,6 +32,7 @@ public class BigJeopardyServlet extends HttpServlet {
 	QuestionDataProvider provider;
 	List<Category> categoryList;
 	Game game;
+	
 
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {

@@ -85,11 +85,23 @@ public class BigJeopardyServlet extends HttpServlet {
     private void checkAnswer(HttpServletRequest request) {
     	int qid = Integer.parseInt(request.getParameter("selectedQuestionId"));
     	Question question = getQuestionById(qid);
-		boolean correct = true;
+    	
+		//boolean correct = true;
 		boolean containsAnswer = false;
+		
     	String[] answers = request.getParameterValues("answers");
-
+    	List<Answer> correctAnswers = question.getCorrectAnswers();
+    	
 		for(int i = 0; i < answers.length ;i++){
+			containsAnswer = isCorrect(answers[i],correctAnswers);
+			
+			if(containsAnswer == false){
+				break;
+			}
+		}
+
+
+		/*for(int i = 0; i < answers.length ;i++){
 			containsAnswer = false;
 			System.out.println(answers[i]);
 	    	for(Answer ans: question.getCorrectAnswers()){
@@ -105,8 +117,28 @@ public class BigJeopardyServlet extends HttpServlet {
 	    		correct = false;
 	    		break;
 	    	}
-		}
-		System.out.println("Is answer correct? "+correct);
+		}*/
+    	
+		System.out.println("Is answer correct? "+containsAnswer);
+	}
+
+	private boolean isCorrect(String answer, List<Answer> correctAnswers) {
+
+	System.out.println("----------------------");
+	System.out.println(answer);
+	System.out.println("correct Answers ->");
+
+		
+	for(Answer a: correctAnswers){
+		System.out.println(a.getText());
+
+		System.out.println("is it equal?  :  " + a.equals(answer));
+		if(a.getText().equals(answer)){
+				return true;
+		}	
+	}
+	System.out.println("----------------------");
+		return false;
 	}
 
 	private void getSelectedQuestion(HttpServletRequest request) {
@@ -116,7 +148,7 @@ public class BigJeopardyServlet extends HttpServlet {
 	}
 	
 	private Question getQuestionById(int questionNumber){
-		Question question = null;
+		/*Question question = null;
 		int i = 0;
     	for(Category c: categoryList){
     		for(Question q: c.getQuestions()){
@@ -128,7 +160,17 @@ public class BigJeopardyServlet extends HttpServlet {
     			}
     		}
     	}
-		return question;
+		return question;*/
+		
+    	for(Category c: categoryList){
+    		for(Question q: c.getQuestions()){
+    			if(questionNumber == q.getId()){
+    				return q;
+    			}    			
+    		}
+    	}
+    	
+    	return null;
 	}
 	
 

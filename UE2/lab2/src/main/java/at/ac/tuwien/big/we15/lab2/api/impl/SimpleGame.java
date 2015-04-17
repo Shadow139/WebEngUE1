@@ -14,6 +14,8 @@ public class SimpleGame implements Game, Serializable {
 	private static final long serialVersionUID = 2588919783375566848L;
 	private Player player1;
 	private Player player2;
+	private Player currentPlayer;
+
 
 	private List<Category> categoryList;
 	private int questionsAsked;
@@ -21,6 +23,7 @@ public class SimpleGame implements Game, Serializable {
 	public SimpleGame(Player p1, Player p2){
 		this.player1 = p1;
 		this.player2 = p2;
+		this.setCurrentPlayer(player1);
 		this.questionsAsked = 0;
 	}
 
@@ -58,6 +61,14 @@ public class SimpleGame implements Game, Serializable {
 	
 	public void increaseQuestionsAskedCount(){
 		this.questionsAsked++;
+	}
+
+	public Player getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public void setCurrentPlayer(Player currentPlayer) {
+		this.currentPlayer = currentPlayer;
 	}
 	
 	

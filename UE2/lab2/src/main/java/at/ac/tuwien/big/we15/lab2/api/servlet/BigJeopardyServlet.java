@@ -52,7 +52,7 @@ public class BigJeopardyServlet extends HttpServlet {
 
     	
     	String sumbitParam = request.getParameter("submit");
-    	System.out.println(sumbitParam);
+    	System.out.println("submit:                      " + sumbitParam);
 
     	
     	if(sumbitParam == null){
@@ -70,7 +70,7 @@ public class BigJeopardyServlet extends HttpServlet {
         	response.sendRedirect("question.jsp");
     		break;
     	case "antworten": 
-    		checkAnswer(request);
+    		processAnswer(request,response);
         	response.sendRedirect("jeopardy.jsp");
     		break;
     	case "Neues Spiel": 
@@ -82,9 +82,28 @@ public class BigJeopardyServlet extends HttpServlet {
     	}
     }
     
-    private void checkAnswer(HttpServletRequest request) {
+    private void processAnswer(HttpServletRequest request,HttpServletResponse response) throws IOException {
     	int qid = Integer.parseInt(request.getParameter("selectedQuestionId"));
     	Question question = getQuestionById(qid);
+    	
+		if(checkAnswer(request,question)){
+			game.getCurrentPlayer().increaseWinnings(question.getValue());
+			
+		}else{
+			game.getCurrentPlayer().decreaseWinnings(question.getValue());
+
+		}
+		
+		game.increaseQuestionsAskedCount();
+		
+		if(game.getQuestionsAsked() == 10){
+        	response.sendRedirect("winner.jsp");
+		}
+	}
+
+	private boolean checkAnswer(HttpServletRequest request,Question question) {
+    	//int qid = Integer.parseInt(request.getParameter("selectedQuestionId"));
+    	//Question question = getQuestionById(qid);
     	
 		//boolean correct = true;
 		boolean containsAnswer = false;
@@ -94,9 +113,10 @@ public class BigJeopardyServlet extends HttpServlet {
     	
 		for(int i = 0; i < answers.length ;i++){
 			containsAnswer = isCorrect(answers[i],correctAnswers);
-			
+			System.out.println("<<<<< " + containsAnswer);
+
 			if(containsAnswer == false){
-				break;
+				return false;
 			}
 		}
 
@@ -119,25 +139,25 @@ public class BigJeopardyServlet extends HttpServlet {
 	    	}
 		}*/
     	
-		System.out.println("Is answer correct? "+containsAnswer);
+		System.out.println("Is answer correct? " + containsAnswer);
+		
+		return containsAnswer;
 	}
 
 	private boolean isCorrect(String answer, List<Answer> correctAnswers) {
 
 	System.out.println("----------------------");
 	System.out.println(answer);
-	System.out.println("correct Answers ->");
+	System.out.println("<-------------------->");
 
 		
 	for(Answer a: correctAnswers){
-		System.out.println(a.getText());
-
-		System.out.println("is it equal?  :  " + a.equals(answer));
+		System.out.println(a.getText() + " equal " + answer + "     :     " + a.getText().equals(answer));
 		if(a.getText().equals(answer)){
-				return true;
+			System.out.println("<---------------------->");
+				return true;  // freagt nur eine instanz ab nicht alle muss gefixt werden bsp SSD frage 2  Was ist DOM?
 		}	
 	}
-	System.out.println("----------------------");
 		return false;
 	}
 

@@ -8,6 +8,8 @@ public interface Game {
 	public void setPlayer1(Player player1);
 	public Player getPlayer2();
 	public void setPlayer2(Player player2);
+	public Player getCurrentPlayer();
+	public void setCurrentPlayer(Player currentPlayer);
 	public List<Category> getCategoryList();
 	public void setCategoryList(List<Category> categoryList);
 	public int getQuestionsAsked();

@@ -35,6 +35,12 @@ public class SimplePlayer implements Player,Serializable {
 	public void setWinnings(int winnings) {
 		this.winnings = winnings;
 	}
-	
+	public void increaseWinnings(int amount) {
+		this.winnings += amount;
+	}
+
+	public void decreaseWinnings(int amount) {
+		this.winnings -= amount;
+	}
 
 }

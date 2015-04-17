@@ -93,7 +93,7 @@ public class BigJeopardyServlet extends HttpServlet {
 			game.getCurrentPlayer().increaseWinnings(question.getValue());
 			request.getSession().setAttribute("player1info", question.getValue());
 		}else{
-			game.getCurrentPlayer().decreaseWinnings(question.getValue());
+			game.getCurrentPlayer().decreaseWinnings(question.getValue()/2);
 			request.getSession().setAttribute("player1info", -1*question.getValue()/2);
 		}
 		request.getSession().setAttribute("player2info", 9001);

@@ -100,4 +100,7 @@ public interface Question {
 	 *            the category to set
 	 */
 	public void setCategory(Category category);
+	public void setActive(boolean active);
+	public boolean isActive();
+	public List<String> getCorrectAnswersInString();
 }

@@ -122,8 +122,10 @@ public class BigJeopardyServlet extends HttpServlet {
     	int answer;
     	if (l == 0) {
     		answer = -questions.get(q).getValue()/2;
+    	} else { 
+    		answer = questions.get(q).getValue();
     	}
-    	answer = questions.get(q).getValue();
+    	game.getPlayer2().increaseWinnings(answer);
     	request.getSession().setAttribute("player2info", answer);
 		request.getSession().setAttribute("player2Choice", questions.get(q).getCategory().getName());
     }

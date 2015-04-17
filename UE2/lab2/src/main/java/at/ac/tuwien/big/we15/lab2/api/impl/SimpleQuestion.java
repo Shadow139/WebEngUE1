@@ -123,6 +123,16 @@ public class SimpleQuestion implements Question,Serializable {
 	public List<Answer> getCorrectAnswers() {
 		return rightAnswers;
 	}
+	
+	public List<String> getCorrectAnswersInString() {
+		List<String> list = new ArrayList<String>();
+		
+		for(Answer s: rightAnswers){
+			list.add(s.getText());
+		}
+		
+		return list;
+	}
 
 	@Override
 	public void addAnswer(Answer answer, boolean isCorrect) {

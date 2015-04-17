@@ -72,7 +72,11 @@ public class BigJeopardyServlet extends HttpServlet {
     		break;
     	case "waehlen": 
     		getSelectedQuestion(request);
+    		
         	response.sendRedirect("question.jsp");
+        	if (game.getPlayer1().getWinnings()<=game.getPlayer2().getWinnings()) {
+    			doShit(request);
+    		}
     		break;
     	case "antworten": 
     		processAnswer(request,response);
@@ -116,9 +120,9 @@ public class BigJeopardyServlet extends HttpServlet {
     
     private void doShit(HttpServletRequest request) {
     	List<Question> questions = activeQuestions();
-    	int q = RandomNumberGenerator.getRandIntBetween(0,questions.size()-1);
+    	int q = RandomNumberGenerator.getRandIntBetween(0,questions.size());
     	questions.get(q).setActive(false);
-    	int l = RandomNumberGenerator.getRandIntBetween(0,1);
+    	int l = RandomNumberGenerator.getRandIntBetween(0,2);
     	int answer;
     	if (l == 0) {
     		answer = -questions.get(q).getValue()/2;

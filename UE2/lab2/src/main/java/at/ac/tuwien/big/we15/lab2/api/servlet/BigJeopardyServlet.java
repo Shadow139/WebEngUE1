@@ -63,6 +63,10 @@ public class BigJeopardyServlet extends HttpServlet {
     	switch(sumbitParam){
     	case "Anmelden": 
     		startQuiz(request);
+    		int player1info = 9999;
+    		/*request.getSession().setAttribute("player1info", player1info);
+    		request.getSession().setAttribute("player2info", player1info);
+    		request.getSession().setAttribute("player2Choice", "HAHHAHAHAHAHAHAHAAHAH");*/
         	response.sendRedirect("jeopardy.jsp");
     		break;
     	case "waehlen": 
@@ -85,14 +89,14 @@ public class BigJeopardyServlet extends HttpServlet {
     private void processAnswer(HttpServletRequest request,HttpServletResponse response) throws IOException {
     	int qid = Integer.parseInt(request.getParameter("selectedQuestionId"));
     	Question question = getQuestionById(qid);
-    	
 		if(checkAnswer(request,question)){
 			game.getCurrentPlayer().increaseWinnings(question.getValue());
-			
+			request.getSession().setAttribute("player1info", question.getValue());
 		}else{
 			game.getCurrentPlayer().decreaseWinnings(question.getValue());
-
+			request.getSession().setAttribute("player1info", -1*question.getValue()/2);
 		}
+		request.getSession().setAttribute("player2info", 9001);
 		
 		game.increaseQuestionsAskedCount();
 		

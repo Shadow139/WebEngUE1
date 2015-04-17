@@ -163,13 +163,6 @@
             	  });
             	  var cb = document.getElementById("next"); //element to click on
             	  var canceled = !cb.dispatchEvent(evt);
-            	  if(canceled) {
-            	    // A handler called preventDefault
-            	    alert("canceled");
-            	  } else {
-            	    // None of the handlers called preventDefault
-            	    alert("not canceled");
-            	  }
             	}
 
             //]]>

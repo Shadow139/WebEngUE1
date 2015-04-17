@@ -65,8 +65,8 @@ public class BigJeopardyServlet extends HttpServlet {
     		startQuiz(request);
     		int player1info = 9999;
     		/*request.getSession().setAttribute("player1info", player1info);
-    		request.getSession().setAttribute("player2info", player1info);
-    		request.getSession().setAttribute("player2Choice", "HAHHAHAHAHAHAHAHAAHAH");*/
+    		request.getSession().setAttribute("player2info", player1info);*/
+    		request.getSession().setAttribute("player2Choice", "HAHHAHAHAHAHAHAHAAHAH");
         	response.sendRedirect("jeopardy.jsp");
     		break;
     	case "waehlen": 

@@ -22,6 +22,7 @@ import at.ac.tuwien.big.we15.lab2.api.Player;
 import at.ac.tuwien.big.we15.lab2.api.Question;
 import at.ac.tuwien.big.we15.lab2.api.QuestionDataProvider;
 import at.ac.tuwien.big.we15.lab2.api.impl.JSONQuestionDataProvider;
+import at.ac.tuwien.big.we15.lab2.api.impl.RandomNumberGenerator;
 import at.ac.tuwien.big.we15.lab2.api.impl.ServletJeopardyFactory;
 import at.ac.tuwien.big.we15.lab2.api.impl.SimpleGame;
 import at.ac.tuwien.big.we15.lab2.api.impl.SimplePlayer;
@@ -66,7 +67,7 @@ public class BigJeopardyServlet extends HttpServlet {
     		int player1info = 9999;
     		/*request.getSession().setAttribute("player1info", player1info);
     		request.getSession().setAttribute("player2info", player1info);*/
-    		request.getSession().setAttribute("player2Choice", "HAHHAHAHAHAHAHAHAAHAH");
+    		//request.getSession().setAttribute("player2Choice", "HAHHAHAHAHAHAHAHAAHAH");
         	response.sendRedirect("jeopardy.jsp");
     		break;
     	case "waehlen": 
@@ -89,6 +90,7 @@ public class BigJeopardyServlet extends HttpServlet {
     private void processAnswer(HttpServletRequest request,HttpServletResponse response) throws IOException {
     	int qid = Integer.parseInt(request.getParameter("selectedQuestionId"));
     	Question question = getQuestionById(qid);
+    	
 		if(checkAnswer(request,question)){
 			game.getCurrentPlayer().increaseWinnings(question.getValue());
 			request.getSession().setAttribute("player1info", question.getValue());
@@ -108,9 +110,36 @@ public class BigJeopardyServlet extends HttpServlet {
         	response.sendRedirect("winner.jsp");
 		}
 		if(game.getPlayer1().getWinnings()>game.getPlayer2().getWinnings()){
-			//Deadpool does stuff
+	    	doShit(request);
 		}
 	}
+    
+    private void doShit(HttpServletRequest request) {
+    	List<Question> questions = activeQuestions();
+    	int q = RandomNumberGenerator.getRandIntBetween(0,questions.size()-1);
+    	questions.get(q).setActive(false);
+    	int l = RandomNumberGenerator.getRandIntBetween(0,1);
+    	int answer;
+    	if (l == 0) {
+    		answer = -questions.get(q).getValue()/2;
+    	}
+    	answer = questions.get(q).getValue();
+    	request.getSession().setAttribute("player2info", answer);
+		request.getSession().setAttribute("player2Choice", questions.get(q).getCategory().getName());
+    }
+    
+    private List<Question> activeQuestions() {
+    	List<Category> categories = game.getCategoryList();
+    	List<Question> questions = new ArrayList<Question>();
+    	for (Category c : categories) {
+    		for (Question q : c.getQuestions()) {
+    			if (q.isActive()) {
+    				questions.add(q);
+    			}
+    		}
+    	}
+    	return questions;
+    }
 
 	private boolean checkAnswer(HttpServletRequest request,Question question) {
     	//int qid = Integer.parseInt(request.getParameter("selectedQuestionId"));

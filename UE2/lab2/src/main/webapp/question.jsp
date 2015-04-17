@@ -163,7 +163,7 @@
             	  });
             	  var cb = document.getElementById("next"); //element to click on
             	  var canceled = !cb.dispatchEvent(evt);
-            	}
+            }
 
             //]]>
         </script>

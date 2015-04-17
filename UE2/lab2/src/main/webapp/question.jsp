@@ -146,12 +146,31 @@
                 meter.val(value);
                 timeleft.text(secToMMSS(value));
 
-                if(value <= 0) {
-                    $('#questionform').submit();
+                if(value == 0) {
+                	//alert(value);
+                	simulateClick();
+                    //$("#questionform").submit();
                 }
             }
 
             window.setInterval(timeStep, 1000);
+            
+            function simulateClick() {
+            	  var evt = new MouseEvent("click", {
+            	    bubbles: true,
+            	    cancelable: true,
+            	    view: window,
+            	  });
+            	  var cb = document.getElementById("next"); //element to click on
+            	  var canceled = !cb.dispatchEvent(evt);
+            	  if(canceled) {
+            	    // A handler called preventDefault
+            	    alert("canceled");
+            	  } else {
+            	    // None of the handlers called preventDefault
+            	    alert("not canceled");
+            	  }
+            	}
 
             //]]>
         </script>

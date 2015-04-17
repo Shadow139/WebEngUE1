@@ -9,6 +9,9 @@
 	<%
 	List<Category> categoryList = (List) session.getAttribute("categoryList");
 	Game game = (Game) session.getAttribute("game");
+	Integer player1info = (Integer) session.getAttribute("player1info");
+	Integer player2info = (Integer) session.getAttribute("player2info");
+	String player2Choice = (String) session.getAttribute("player2Choice");
 	%>
    
 
@@ -79,9 +82,32 @@
          <!-- Question -->
          <section id="question-selection" aria-labelledby="questionheading">
             <h2 id="questionheading" class="black accessibility">Jeopardy</h2>
-            <p class="user-info positive-change">Du hast richtig geantwortet: +1000 €</p>
-            <p class="user-info negative-change">Deadpool hat falsch geantwortet: -500 €</p>
-            <p class="user-info">Deadpool hat TUWIEN für € 1000 gewählt.</p>
+            <%if(player1info != null){
+            	if(player1info > 0){
+            		%>
+            			<p class="user-info positive-change">Du hast richtig geantwortet: +<%= player1info %> €</p>
+            		<%
+            	}else{
+            		%>
+	        			<p class="user-info negative-change">Du hast falsch geantwortet: <%= player1info %> €</p>
+	        		<%
+            	}
+            	if(player2info > 0){
+            		%>
+            			<p class="user-info positive-change">Deadpool hat richtig geantwortet: +<%= player2info %> €</p>
+            		<%
+            	}else{
+            		%>
+	        			<p class="user-info negative-change">Deadpool hat falsch geantwortet: <%= player2info %> €</p>
+	        		<%
+            	}
+            	if(player2Choice != null){
+            		%>
+            			<p class="user-info"><%= player2Choice%> </p>
+            		<%
+            	}
+            }
+            %>
             <form id="questionform" action="BigJeopardyServlet" method="post">
 
                <fieldset>

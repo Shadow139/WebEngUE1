@@ -118,7 +118,7 @@
                    
                  <% for (int i = 0; i < categoryList.get(0).getQuestions().size(); i++) { %>
                   
-                     <li><input name="question_selection" id="question_<%= i+1 %>" value="<%= i+1 %>" type="radio"/><label class="tile clickable" for="question_<%= i+1 %>"><%= categoryList.get(0).getQuestions().get(i).getValue() %></label></li>
+                     <li><input name="question_selection" id="question_<%= i+1 %>" value="<%= i+1 %>" type="radio" <%if(!categoryList.get(0).getQuestions().get(i).isActive()){%> disabled = "disabled" <% }  %>/><label class="tile clickable" for="question_<%= i+1 %>"><%= categoryList.get(0).getQuestions().get(i).getValue() %></label></li>
                     
                   <% } %>   
                   <% int previousSize = categoryList.get(0).getQuestions().size(); %>
@@ -131,7 +131,7 @@
                   
                  <% for (int i = 0; i < categoryList.get(1).getQuestions().size(); i++) { %>
                   
-                     <li><input name="question_selection" id="question_<%= i+1+previousSize %>" value="<%= i+1+previousSize %>" type="radio"/><label class="tile clickable" for="question_<%= i+1+previousSize %>"><%= categoryList.get(1).getQuestions().get(i).getValue() %></label></li>
+                     <li><input name="question_selection" id="question_<%= i+1+previousSize %>" value="<%= i+1+previousSize %>" type="radio" <%if(!categoryList.get(1).getQuestions().get(i).isActive()){%> disabled = "disabled" <% }  %>/><label class="tile clickable" for="question_<%= i+1+previousSize %>"><%= categoryList.get(1).getQuestions().get(i).getValue() %></label></li>
                     
                   <% } %> 
                   <% previousSize += categoryList.get(1).getQuestions().size(); %>
@@ -144,7 +144,7 @@
                   
                  <% for (int i = 0; i < categoryList.get(2).getQuestions().size(); i++) { %>
                   
-                     <li><input name="question_selection" id="question_<%= i+1+previousSize %>" value="<%= i+1+previousSize %>" type="radio"/><label class="tile clickable" for="question_<%= i+1+previousSize %>"><%= categoryList.get(2).getQuestions().get(i).getValue() %></label></li>
+                     <li><input name="question_selection" id="question_<%= i+1+previousSize %>" value="<%= i+1+previousSize %>" type="radio" <%if(!categoryList.get(2).getQuestions().get(i).isActive()){%> disabled = "disabled" <% }  %>/><label class="tile clickable" for="question_<%= i+1+previousSize %>"><%= categoryList.get(2).getQuestions().get(i).getValue() %></label></li>
                     
                   <% } %>   
                   <% previousSize += categoryList.get(2).getQuestions().size(); %>
@@ -157,7 +157,7 @@
                   
                  <% for (int i = 0; i < categoryList.get(3).getQuestions().size(); i++) { %>
                   
-                     <li><input name="question_selection" id="question_<%= i+1+previousSize %>" value="<%= i+1+previousSize %>" type="radio"/><label class="tile clickable" for="question_<%= i+1+previousSize %>"><%= categoryList.get(3).getQuestions().get(i).getValue() %></label></li>
+                     <li><input name="question_selection" id="question_<%= i+1+previousSize %>" value="<%= i+1+previousSize %>" type="radio" <%if(!categoryList.get(3).getQuestions().get(i).isActive()){%> disabled = "disabled" <% }  %>/><label class="tile clickable" for="question_<%= i+1+previousSize %>"><%= categoryList.get(3).getQuestions().get(i).getValue() %></label></li>
                     
                   <% } %>   
                   <% previousSize += categoryList.get(3).getQuestions().size(); %>
@@ -169,8 +169,10 @@
                   <ol class="category_questions">
                   
                  <% for (int i = 0; i < categoryList.get(4).getQuestions().size(); i++) { %>
-                  
-                     <li><input name="question_selection" id="question_<%= i+1+previousSize %>" value="<%= i+1+previousSize %>" type="radio"/><label class="tile clickable" for="question_<%= i+1+previousSize %>"><%= categoryList.get(4).getQuestions().get(i).getValue() %></label></li>
+                  	<%if(!categoryList.get(4).getQuestions().get(i).isActive()){
+                  		System.out.println(categoryList.get(4).getQuestions().get(i).getText());
+                  	}%>
+                     <li><input name="question_selection" id="question_<%= i+1+previousSize %>" value="<%= i+1+previousSize %>" type="radio" <%if(!categoryList.get(4).getQuestions().get(i).isActive()){System.out.println("this question is disabled: " + categoryList.get(4).getQuestions().get(i).getText());%> disabled = "disabled" <% }  %>/><label class="tile clickable" for="question_<%= i+1+previousSize %>"><%= categoryList.get(4).getQuestions().get(i).getValue() %></label></li>
                     
                   <% } %>   
                   

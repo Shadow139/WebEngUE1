@@ -99,9 +99,16 @@ public class BigJeopardyServlet extends HttpServlet {
 		request.getSession().setAttribute("player2info", 9001);
 		
 		game.increaseQuestionsAskedCount();
-		
+		System.out.println("DEACTIVATE PLS");
+		System.out.println(question.getText());
+		System.out.println(question.isActive());
+		question.setActive(false);
+		System.out.println("DEACTIVATE DID IT WORK");
 		if(game.getQuestionsAsked() == 10){
         	response.sendRedirect("winner.jsp");
+		}
+		if(game.getPlayer1().getWinnings()>game.getPlayer2().getWinnings()){
+			//Deadpool does stuff
 		}
 	}
 
@@ -113,6 +120,9 @@ public class BigJeopardyServlet extends HttpServlet {
 		boolean containsAnswer = false;
 		
     	String[] answers = request.getParameterValues("answers");
+    	if(answers == null){
+    		return false;
+    	}
     	List<Answer> correctAnswers = question.getCorrectAnswers();
     	
 		for(int i = 0; i < answers.length ;i++){
@@ -123,25 +133,6 @@ public class BigJeopardyServlet extends HttpServlet {
 				return false;
 			}
 		}
-
-
-		/*for(int i = 0; i < answers.length ;i++){
-			containsAnswer = false;
-			System.out.println(answers[i]);
-	    	for(Answer ans: question.getCorrectAnswers()){
-				if(!answers[i].contains(ans.getText() + "")){
-					correct = false;
-					break;
-				}
-				if(answers[i].equals(ans.getId()+"")){
-					containsAnswer = true;
-				}
-			}
-	    	if(!containsAnswer){
-	    		correct = false;
-	    		break;
-	    	}
-		}*/
     	
 		System.out.println("Is answer correct? " + containsAnswer);
 		

@@ -60,10 +60,15 @@ public class BigJeopardyServlet extends HttpServlet {
  	   	    	
     	switch(sumbitParam){
     	case "Anmelden": 
+    		//game = (Game) request.getAttribute("game");
+    		request.getSession().setAttribute("player1info", null);
+			request.getSession().setAttribute("player2info", null);
+			request.getSession().setAttribute("player2Choice", null);
     		startQuiz(request);
         	response.sendRedirect("jeopardy.jsp");
     		break;
     	case "waehlen": 
+    		game = (Game) request.getSession().getAttribute("game");
     		getSelectedQuestion(request);
         	response.sendRedirect("question.jsp");
         	if (game.getPlayer1().getWinnings()<=game.getPlayer2().getWinnings()) {
@@ -71,6 +76,7 @@ public class BigJeopardyServlet extends HttpServlet {
     		}
     		break;
     	case "antworten":  
+    		game = (Game) request.getSession().getAttribute("game");
     		processAnswer(request,response);
     		String redirect = "jeopardy.jsp";
     		
@@ -80,13 +86,17 @@ public class BigJeopardyServlet extends HttpServlet {
         	response.sendRedirect(redirect);
     		break;
     	case "Neues Spiel": 
+    		
         	startQuiz(request);
         	response.sendRedirect("jeopardy.jsp");
     		break;
     	default: 
+    		game = (Game) request.getSession().getAttribute("game");
     		redirectToHome(response);
         	response.sendRedirect("jeopardy.jsp");
-
+			request.getSession().setAttribute("player1info", null);
+			request.getSession().setAttribute("player2info", null);
+			request.getSession().setAttribute("player2Choice", null);
     		return;
     	}
     }

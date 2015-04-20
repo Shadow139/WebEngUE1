@@ -9,6 +9,8 @@
 	
 	<%
 	Game game = (Game) session.getAttribute("game");
+    Integer player1info = (Integer) session.getAttribute("player1info");
+	Integer player2info = (Integer) session.getAttribute("player2info");
 	%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
     <head>
@@ -41,8 +43,27 @@
       <div role="main">
          <section id="gameinfo" aria-labelledby="winnerinfoheading">
             <h2 id="winnerinfoheading" class="accessibility">Gewinnerinformationen</h2>
-            <p class="user-info positive-change">Du hast richtig geantwortet: +1000 &#8364;</p>
-            <p class="user-info negative-change">Deadpool hat falsch geantwortet: -500 &#8364;</p>
+            <%if(player1info != null){
+            	if(player1info > 0){
+            		%>
+            			<p class="user-info positive-change">Du hast richtig geantwortet: +<%= player1info %> &#8364;</p>
+            		<%
+            	}else{
+            		%>
+	        			<p class="user-info negative-change">Du hast falsch geantwortet: <%= player1info %> &#8364;</p>
+	        		<%
+            	}
+            	if(player2info > 0){
+            		%>
+            			<p class="user-info positive-change"><%= game.getPlayer2().getName() %> hat richtig geantwortet: +<%= player2info %> &#8364;</p>
+            		<%
+            	}else{
+            		%>
+	        			<p class="user-info negative-change"><%= game.getPlayer2().getName() %> hat falsch geantwortet: <%= player2info %> &#8364;</p>
+	        		<%
+            	}
+            }
+            %>
             <section class="playerinfo leader" aria-labelledby="winnerannouncement">
                <h3 id="winnerannouncement">Gewinner: <%= game.getWinner().getName() %></h3>
                <img class="avatar" src="img/avatar/<%= game.getWinner().getAvatar().getImageFull() %>" alt="Spieler-Avatar <%= game.getWinner().getAvatar().getName() %>" />

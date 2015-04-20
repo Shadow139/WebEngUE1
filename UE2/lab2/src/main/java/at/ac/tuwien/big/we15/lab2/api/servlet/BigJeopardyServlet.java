@@ -62,9 +62,6 @@ public class BigJeopardyServlet extends HttpServlet {
     	case "Anmelden": 
     		startQuiz(request);
     		int player1info = 0;
-    		/*request.getSession().setAttribute("player1info", player1info);
-    		request.getSession().setAttribute("player2info", player1info);*/
-    		//request.getSession().setAttribute("player2Choice", "HAHHAHAHAHAHAHAHAAHAH");
         	response.sendRedirect("jeopardy.jsp");
     		break;
     	case "waehlen": 
@@ -74,7 +71,7 @@ public class BigJeopardyServlet extends HttpServlet {
     			doShit(request);
     		}
     		break;
-    	case "antworten": 
+    	case "antworten":  
     		processAnswer(request,response);
     		String redirect = "jeopardy.jsp";
     		
@@ -85,9 +82,12 @@ public class BigJeopardyServlet extends HttpServlet {
     		break;
     	case "Neues Spiel": 
         	startQuiz(request);
+        	response.sendRedirect("jeopardy.jsp");
     		break;
     	default: 
     		redirectToHome(response);
+        	response.sendRedirect("jeopardy.jsp");
+
     		return;
     	}
     }
@@ -196,20 +196,7 @@ public class BigJeopardyServlet extends HttpServlet {
 	}
 	
 	private Question getQuestionById(int questionNumber){
-		/*Question question = null;
-		int i = 0;
-    	for(Category c: categoryList){
-    		for(Question q: c.getQuestions()){
-    			i++;
-    			if(i == questionNumber){
-    				currentQuestionId = q.getId();
-    				question = q;
-    				break;
-    			}
-    		}
-    	}
-		return question;*/
-		
+
     	for(Category c: categoryList){
     		for(Question q: c.getQuestions()){
     			if(questionNumber == q.getId()){
@@ -235,11 +222,7 @@ public class BigJeopardyServlet extends HttpServlet {
         provider = servletFactory.createQuestionDataProvider();
         
         categoryList = provider.getCategoryData();
-        
-        Player test = new SimplePlayer();
-        
-        System.out.println(test.getAvatar().getImageFull());
-        
+                
         Player player1 = new SimplePlayer();
         Player player2 = new SimplePlayer();
         
@@ -247,24 +230,12 @@ public class BigJeopardyServlet extends HttpServlet {
         
         game.setCategoryList(categoryList);
         
-        
         request.getSession().setAttribute("categoryList", categoryList);
 
         request.getSession().setAttribute("game", game);
 
-
     }
-    
-    private void showCategory(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
-        HttpSession session = request.getSession(false);
-        if(session == null){
-        	showHomePage(request,response);
-        	return;
-        }
-        ServletContext context = getServletContext();
 
-        
-    }
     
     private void showHomePage(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException{

@@ -74,8 +74,8 @@
          </section>
          <section id="newgame" aria-labelledby="newgameheading">
              <h2 id="newgameheading" class="accessibility">Neues Spiel</h2>
-         	<form action="jeopardy.xhtml" method="post">
-               	<input class="clickable orangelink contentlink" id="submit" type="submit" name="restart" value="Neues Spiel" />
+         	<form action="BigJeopardyServlet" method="post">
+               	<input class="clickable orangelink contentlink" id="submit" type="submit" name="submit" value="Neues Spiel" />
             </form>
          </section>
       </div>

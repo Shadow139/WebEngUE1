@@ -45,7 +45,7 @@
             <h2 id="gameinfoinfoheading" class="accessibility">Spielinformationen</h2>
             <section id="firstplayer" class="playerinfo leader" aria-labelledby="firstplayerheading">
                <h3 id="firstplayerheading" class="accessibility">Führender Spieler</h3>
-               <img class="avatar" src="img/avatar/black-widow_head.png" alt="Spieler-Avatar Black Widow" />
+               <img class="avatar" src="img/avatar/<%= game.getPlayer1().getAvatar().getImageFull() %>" alt="Spieler-Avatar <%= game.getPlayer1().getAvatar().getName() %>" />
                <table>
                   <tr>
                      <th class="accessibility">Spielername</th>
@@ -59,7 +59,7 @@
             </section>
             <section id="secondplayer" class="playerinfo" aria-labelledby="secondplayerheading">
                <h3 id="secondplayerheading" class="accessibility">Zweiter Spieler</h3>
-               <img class="avatar" src="img/avatar/deadpool_head.png" alt="Spieler-Avatar Deadpool" />
+               <img class="avatar" src="img/avatar/<%= game.getPlayer2().getAvatar().getImageFull() %>" alt="Spieler-Avatar <%= game.getPlayer2().getAvatar().getName() %>" />
                <table>
                   <tr>
                      <th class="accessibility">Spielername</th>

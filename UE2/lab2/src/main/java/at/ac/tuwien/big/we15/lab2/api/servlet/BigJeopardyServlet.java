@@ -11,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import at.ac.tuwien.big.we15.lab2.api.Answer;
 import at.ac.tuwien.big.we15.lab2.api.Category;
@@ -31,7 +30,7 @@ public class BigJeopardyServlet extends HttpServlet {
 	ServletJeopardyFactory servletFactory;
 	QuestionDataProvider provider;
 	List<Category> categoryList;
-	Game game;
+	
 	int currentQuestionId;
 
     protected void doGet(HttpServletRequest request,
@@ -47,7 +46,7 @@ public class BigJeopardyServlet extends HttpServlet {
     }
     
     private void getSubmit(HttpServletRequest request,HttpServletResponse response) throws IOException {
-
+    	Game game;
     	
     	String sumbitParam = request.getParameter("submit");
     	System.out.println("submit:                      " + sumbitParam);
@@ -63,7 +62,7 @@ public class BigJeopardyServlet extends HttpServlet {
     		//game = (Game) request.getAttribute("game");
     		request.getSession().setAttribute("player1info", null);
 			request.getSession().setAttribute("player2info", null);
-			request.getSession().setAttribute("player2Choice", null);
+			request.getSession().setAttribute("player2Choice", "Bananaphone");
     		startQuiz(request);
         	response.sendRedirect("jeopardy.jsp");
     		break;
@@ -76,27 +75,29 @@ public class BigJeopardyServlet extends HttpServlet {
     		}
     		break;
     	case "antworten":  
-    		game = (Game) request.getSession().getAttribute("game");
+    		
     		processAnswer(request,response);
     		String redirect = "jeopardy.jsp";
-    		
+    		game = (Game) request.getSession().getAttribute("game");
     		if(game.getQuestionsAsked() == 10)
             	redirect = "winner.jsp";
     		
         	response.sendRedirect(redirect);
     		break;
     	case "Neues Spiel": 
-    		
         	startQuiz(request);
+        	request.getSession().setAttribute("player1info", null);
+			request.getSession().setAttribute("player2info", null);
+			request.getSession().setAttribute("player2Choice", "Bananaphone");
         	response.sendRedirect("jeopardy.jsp");
     		break;
     	default: 
     		game = (Game) request.getSession().getAttribute("game");
     		redirectToHome(response);
-        	response.sendRedirect("jeopardy.jsp");
-			request.getSession().setAttribute("player1info", null);
+    		request.getSession().setAttribute("player1info", null);
 			request.getSession().setAttribute("player2info", null);
-			request.getSession().setAttribute("player2Choice", null);
+			request.getSession().setAttribute("player2Choice", "Bananaphone");
+        	response.sendRedirect("jeopardy.jsp");
     		return;
     	}
     }
@@ -104,7 +105,8 @@ public class BigJeopardyServlet extends HttpServlet {
     private void processAnswer(HttpServletRequest request,HttpServletResponse response) throws IOException {
     	int qid = Integer.parseInt(request.getParameter("selectedQuestionId"));
     	Question question = getQuestionById(qid);
-    	
+    	ServletContext context = request.getServletContext();
+    	Game game = (Game) context.getAttribute("game");
 		if(checkAnswer(request,question)){
 			game.getCurrentPlayer().increaseWinnings(question.getValue());
 			request.getSession().setAttribute("player1info", question.getValue());
@@ -114,19 +116,16 @@ public class BigJeopardyServlet extends HttpServlet {
 		}
 		
 		game.increaseQuestionsAskedCount();
-		System.out.println("DEACTIVATE PLS");
-		System.out.println(question.getText());
-		System.out.println(question.isActive());
 		question.setActive(false);
-		System.out.println("DEACTIVATE DID IT WORK");
-
 		if(game.getPlayer1().getWinnings()>game.getPlayer2().getWinnings()){
 	    	doShit(request);
 		}
 	}
     
     private void doShit(HttpServletRequest request) {
-    	List<Question> questions = activeQuestions();
+    	ServletContext context = request.getServletContext();
+    	Game game = (Game) context.getAttribute("game");
+    	List<Question> questions = activeQuestions(request);
     	int q = RandomNumberGenerator.getRandIntBetween(0,questions.size());
     	questions.get(q).setActive(false);
     	int l = RandomNumberGenerator.getRandIntBetween(0,2);
@@ -141,7 +140,9 @@ public class BigJeopardyServlet extends HttpServlet {
 		request.getSession().setAttribute("player2Choice", questions.get(q).getCategory().getName());
     }
     
-    private List<Question> activeQuestions() {
+    private List<Question> activeQuestions(HttpServletRequest request) {
+    	ServletContext context = request.getServletContext();
+    	Game game = (Game) context.getAttribute("game");
     	List<Category> categories = game.getCategoryList();
     	List<Question> questions = new ArrayList<Question>();
     	for (Category c : categories) {
@@ -223,8 +224,7 @@ public class BigJeopardyServlet extends HttpServlet {
     }
     
     private void startQuiz(HttpServletRequest request){
-    	
-        ServletContext context = getServletContext();
+        ServletContext context = request.getServletContext();
         RequestDispatcher dispatcher = context.getRequestDispatcher("/jeopardy.jsp");
         
         servletFactory = new ServletJeopardyFactory(context);
@@ -236,7 +236,7 @@ public class BigJeopardyServlet extends HttpServlet {
         Player player1 = new SimplePlayer();
         Player player2 = new SimplePlayer();
         
-        game = new SimpleGame(player1, player2);
+        Game game = new SimpleGame(player1, player2);
         
         game.setCategoryList(categoryList);
         
@@ -249,7 +249,7 @@ public class BigJeopardyServlet extends HttpServlet {
     
     private void showHomePage(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException{
-        ServletContext context = getServletContext();
+        ServletContext context = request.getServletContext();
         RequestDispatcher dispatcher = context.getRequestDispatcher("/login.jsp");
         dispatcher.forward(request, response);
     }

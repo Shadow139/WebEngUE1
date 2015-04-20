@@ -50,7 +50,7 @@
             <h2 id="gameinfoinfoheading" class="accessibility">Spielinformationen</h2>
             <section id="firstplayer" class="playerinfo leader" aria-labelledby="firstplayerheading">
                <h3 id="firstplayerheading" class="accessibility">Führender Spieler</h3>
-               <img class="avatar" src="img/avatar/black-widow_head.png" alt="Spieler-Avatar Black Widow" />
+               <img class="avatar" src="img/avatar/<%= game.getPlayer1().getAvatar().getImageFull() %>" alt="Spieler-Avatar Black Widow" />
                <table>
                   <tr>
                      <th class="accessibility">Spielername</th>
@@ -58,13 +58,13 @@
                   </tr>
                   <tr>
                      <th class="accessibility">Spielerpunkte</th>
-                     <td class="playerpoints"><%= game.getPlayer1().getWinnings() %> €</td>
+                     <td class="playerpoints"><%= game.getPlayer1().getWinnings() %> &#8364;</td>
                   </tr>
                </table>
             </section>
             <section id="secondplayer" class="playerinfo" aria-labelledby="secondplayerheading">
                <h3 id="secondplayerheading" class="accessibility">Zweiter Spieler</h3>
-               <img class="avatar" src="img/avatar/deadpool_head.png" alt="Spieler-Avatar Deadpool" />
+               <img class="avatar" src="img/avatar/<%= game.getPlayer2().getAvatar().getImageFull() %>" alt="Spieler-Avatar Deadpool" />
                <table>
                   <tr>
                      <th class="accessibility">Spielername</th>
@@ -72,7 +72,7 @@
                   </tr>
                   <tr>
                      <th class="accessibility">Spielerpunkte</th>
-                     <td class="playerpoints"><%= game.getPlayer2().getWinnings() %> €</td>
+                     <td class="playerpoints"><%= game.getPlayer2().getWinnings() %> &#8364;</td>
                   </tr>
                </table>
             </section>
@@ -85,20 +85,20 @@
             <%if(player1info != null){
             	if(player1info > 0){
             		%>
-            			<p class="user-info positive-change">Du hast richtig geantwortet: +<%= player1info %> €</p>
+            			<p class="user-info positive-change">Du hast richtig geantwortet: +<%= player1info %> &#8364;</p>
             		<%
             	}else{
             		%>
-	        			<p class="user-info negative-change">Du hast falsch geantwortet: <%= player1info %> €</p>
+	        			<p class="user-info negative-change">Du hast falsch geantwortet: <%= player1info %> &#8364;</p>
 	        		<%
             	}
             	if(player2info > 0){
             		%>
-            			<p class="user-info positive-change">Deadpool hat richtig geantwortet: +<%= player2info %> €</p>
+            			<p class="user-info positive-change">Deadpool hat richtig geantwortet: +<%= player2info %> &#8364;</p>
             		<%
             	}else{
             		%>
-	        			<p class="user-info negative-change">Deadpool hat falsch geantwortet: <%= player2info %> €</p>
+	        			<p class="user-info negative-change">Deadpool hat falsch geantwortet: <%= player2info %> &#8364;</p>
 	        		<%
             	}
             	if(player2Choice != null){
@@ -118,7 +118,7 @@
                    
                  <% for (int i = 0; i < categoryList.get(0).getQuestions().size(); i++) { %>
                   
-                     <li><input name="question_selection" id="question_<%= i+1 %>" value="<%= i+1 %>" type="radio" <%if(!categoryList.get(0).getQuestions().get(i).isActive()){%> disabled = "disabled" <% }  %>/><label class="tile clickable" for="question_<%= i+1 %>"><%= categoryList.get(0).getQuestions().get(i).getId() %> / <%=i+1 %> %></label></li>
+                     <li><input name="question_selection" id="question_<%= i+1 %>" value="<%= i+1 %>" type="radio" <%if(!categoryList.get(0).getQuestions().get(i).isActive()){%> disabled = "disabled" <% }  %>/><label class="tile clickable" for="question_<%= i+1 %>"><%= categoryList.get(0).getQuestions().get(i).getId() %> / <%=i+1 %></label></li>
                     
                   <% } %>   
                   <% int previousSize = categoryList.get(0).getQuestions().size(); %>
@@ -131,7 +131,7 @@
                   
                  <% for (int i = 0; i < categoryList.get(1).getQuestions().size(); i++) { %>
                   
-                     <li><input name="question_selection" id="question_<%= i+1+previousSize %>" value="<%= i+1+previousSize %>" type="radio" <%if(!categoryList.get(1).getQuestions().get(i).isActive()){%> disabled = "disabled" <% }  %>/><label class="tile clickable" for="question_<%= categoryList.get(0).getQuestions().get(i).getId() %>"><%= categoryList.get(1).getQuestions().get(i).getValue() %> %></label></li>
+                     <li><input name="question_selection" id="question_<%= i+1+previousSize %>" value="<%= i+1+previousSize %>" type="radio" <%if(!categoryList.get(1).getQuestions().get(i).isActive()){%> disabled = "disabled" <% }  %>/><label class="tile clickable" for="question_<%= i+1+previousSize %>"><%= categoryList.get(0).getQuestions().get(i).getId() %> / <%= categoryList.get(1).getQuestions().get(i).getValue() %></label></li>
                     
                   <% } %> 
                   <% previousSize += categoryList.get(1).getQuestions().size(); %>
@@ -144,7 +144,7 @@
                   
                  <% for (int i = 0; i < categoryList.get(2).getQuestions().size(); i++) { %>
                   
-                     <li><input name="question_selection" id="question_<%= categoryList.get(2).getQuestions().get(i).getId() %>" value="<%= categoryList.get(2).getQuestions().get(i).getId() %>" type="radio" <%if(!categoryList.get(2).getQuestions().get(i).isActive()){%> disabled = "disabled" <% }  %>/><label class="tile clickable" for="question_<%= categoryList.get(2).getQuestions().get(i).getId() %>"><%= categoryList.get(2).getQuestions().get(i).getValue() %> %></label></li>
+                     <li><input name="question_selection" id="question_<%= categoryList.get(2).getQuestions().get(i).getId() %>" value="<%= categoryList.get(2).getQuestions().get(i).getId() %>" type="radio" <%if(!categoryList.get(2).getQuestions().get(i).isActive()){%> disabled = "disabled" <% }  %>/><label class="tile clickable" for="question_<%= categoryList.get(2).getQuestions().get(i).getId() %>"><%= categoryList.get(2).getQuestions().get(i).getValue() %></label></li>
                     
                   <% } %>   
                   <% previousSize += categoryList.get(2).getQuestions().size(); %>
@@ -157,7 +157,7 @@
                   
                  <% for (int i = 0; i < categoryList.get(3).getQuestions().size(); i++) { %>
                   
-                     <li><input name="question_selection" id="question_<%= categoryList.get(3).getQuestions().get(i).getId() %>" value="<%= categoryList.get(3).getQuestions().get(i).getId() %>" type="radio" <%if(!categoryList.get(3).getQuestions().get(i).isActive()){%> disabled = "disabled" <% }  %>/><label class="tile clickable" for="question_<%= categoryList.get(3).getQuestions().get(i).getId() %>"><%= categoryList.get(3).getQuestions().get(i).getValue() %> %></label></li>
+                     <li><input name="question_selection" id="question_<%= categoryList.get(3).getQuestions().get(i).getId() %>" value="<%= categoryList.get(3).getQuestions().get(i).getId() %>" type="radio" <%if(!categoryList.get(3).getQuestions().get(i).isActive()){%> disabled = "disabled" <% }  %>/><label class="tile clickable" for="question_<%= categoryList.get(3).getQuestions().get(i).getId() %>"><%= categoryList.get(3).getQuestions().get(i).getValue() %> </label></li>
                     
                   <% } %>   
                   <% previousSize += categoryList.get(3).getQuestions().size(); %>

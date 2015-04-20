@@ -15,6 +15,7 @@ public class SimpleGame implements Game, Serializable {
 	private Player player1;
 	private Player player2;
 	private Player currentPlayer;
+	private String lastGame = "Nie";
 
 
 	private List<Category> categoryList;
@@ -71,6 +72,20 @@ public class SimpleGame implements Game, Serializable {
 		this.currentPlayer = currentPlayer;
 	}
 	
+	public Player getWinner(){
+		if(player1.getWinnings() >= player2.getWinnings()){
+			return player1;
+		}else{
+			return player2;
+		}
+	}
 	
+	public Player getLooser(){
+		if(player1.getWinnings() < player2.getWinnings()){
+			return player1;
+		}else{
+			return player2;
+		}
+	}
 	
 }

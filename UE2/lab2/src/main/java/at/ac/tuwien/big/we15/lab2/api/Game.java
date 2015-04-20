@@ -15,4 +15,6 @@ public interface Game {
 	public int getQuestionsAsked();
 	public void setQuestionsAsked(int questionsAsked);
 	public void increaseQuestionsAskedCount();
+	public Player getWinner();
+	public Player getLooser();
 }

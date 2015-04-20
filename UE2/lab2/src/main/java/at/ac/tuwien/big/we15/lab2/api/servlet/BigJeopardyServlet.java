@@ -2,7 +2,6 @@ package at.ac.tuwien.big.we15.lab2.api.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -15,13 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import at.ac.tuwien.big.we15.lab2.api.Answer;
-import at.ac.tuwien.big.we15.lab2.api.Avatar;
 import at.ac.tuwien.big.we15.lab2.api.Category;
 import at.ac.tuwien.big.we15.lab2.api.Game;
 import at.ac.tuwien.big.we15.lab2.api.Player;
 import at.ac.tuwien.big.we15.lab2.api.Question;
 import at.ac.tuwien.big.we15.lab2.api.QuestionDataProvider;
-import at.ac.tuwien.big.we15.lab2.api.impl.JSONQuestionDataProvider;
 import at.ac.tuwien.big.we15.lab2.api.impl.RandomNumberGenerator;
 import at.ac.tuwien.big.we15.lab2.api.impl.ServletJeopardyFactory;
 import at.ac.tuwien.big.we15.lab2.api.impl.SimpleGame;
@@ -64,7 +61,7 @@ public class BigJeopardyServlet extends HttpServlet {
     	switch(sumbitParam){
     	case "Anmelden": 
     		startQuiz(request);
-    		int player1info = 9999;
+    		int player1info = 0;
     		/*request.getSession().setAttribute("player1info", player1info);
     		request.getSession().setAttribute("player2info", player1info);*/
     		//request.getSession().setAttribute("player2Choice", "HAHHAHAHAHAHAHAHAAHAH");
@@ -72,7 +69,6 @@ public class BigJeopardyServlet extends HttpServlet {
     		break;
     	case "waehlen": 
     		getSelectedQuestion(request);
-    		
         	response.sendRedirect("question.jsp");
         	if (game.getPlayer1().getWinnings()<=game.getPlayer2().getWinnings()) {
     			doShit(request);
@@ -80,7 +76,12 @@ public class BigJeopardyServlet extends HttpServlet {
     		break;
     	case "antworten": 
     		processAnswer(request,response);
-        	response.sendRedirect("jeopardy.jsp");
+    		String redirect = "jeopardy.jsp";
+    		
+    		if(game.getQuestionsAsked() == 10)
+            	redirect = "winner.jsp";
+    		
+        	response.sendRedirect(redirect);
     		break;
     	case "Neues Spiel": 
         	startQuiz(request);
@@ -102,7 +103,6 @@ public class BigJeopardyServlet extends HttpServlet {
 			game.getCurrentPlayer().decreaseWinnings(question.getValue()/2);
 			request.getSession().setAttribute("player1info", -1*question.getValue()/2);
 		}
-		request.getSession().setAttribute("player2info", 9001);
 		
 		game.increaseQuestionsAskedCount();
 		System.out.println("DEACTIVATE PLS");
@@ -110,9 +110,7 @@ public class BigJeopardyServlet extends HttpServlet {
 		System.out.println(question.isActive());
 		question.setActive(false);
 		System.out.println("DEACTIVATE DID IT WORK");
-		if(game.getQuestionsAsked() == 10){
-        	response.sendRedirect("winner.jsp");
-		}
+
 		if(game.getPlayer1().getWinnings()>game.getPlayer2().getWinnings()){
 	    	doShit(request);
 		}
@@ -238,9 +236,12 @@ public class BigJeopardyServlet extends HttpServlet {
         
         categoryList = provider.getCategoryData();
         
+        Player test = new SimplePlayer();
         
-        Player player1 = new SimplePlayer("Black Widow");
-        Player player2 = new SimplePlayer("Deadpool");
+        System.out.println(test.getAvatar().getImageFull());
+        
+        Player player1 = new SimplePlayer();
+        Player player2 = new SimplePlayer();
         
         game = new SimpleGame(player1, player2);
         

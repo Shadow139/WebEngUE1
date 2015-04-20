@@ -53,7 +53,7 @@
                   </tr>
                   <tr>
                      <th class="accessibility">Spielerpunkte</th>
-                     <td class="playerpoints"><%= game.getPlayer1().getWinnings() %> €</td>
+                     <td class="playerpoints"><%= game.getPlayer1().getWinnings() %> &#8364;</td>
                   </tr>
                </table>
             </section>
@@ -67,7 +67,7 @@
                   </tr>
                   <tr>
                      <th class="accessibility">Spielerpunkte</th>
-                     <td class="playerpoints"><%= game.getPlayer2().getWinnings() %> €</td>
+                     <td class="playerpoints"><%= game.getPlayer2().getWinnings() %> &#8364;</td>
                   </tr>
                </table>
             </section>
@@ -78,7 +78,7 @@
       <section id="question" aria-labelledby="questionheading">
             <form id="questionform" action="BigJeopardyServlet" method="get">
                <h2 id="questionheading" class="accessibility">Frage</h2>
-               <p id="questiontype"><%= selectedQuestion.getCategory().getName() %> für € <%= selectedQuestion.getValue() %></p>
+               <p id="questiontype"><%= selectedQuestion.getCategory().getName() %> für &#8364; <%= selectedQuestion.getValue() %></p>
                <p id="questiontext"><%= selectedQuestion.getText() %></p>
                <input type = "hidden" name = "selectedQuestionId" value = "<%= selectedQuestion.getId() %>"/>
                <ul id="answers">

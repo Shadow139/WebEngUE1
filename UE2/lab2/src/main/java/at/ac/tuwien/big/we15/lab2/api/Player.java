@@ -8,4 +8,6 @@ public interface Player {
 	public void setWinnings(int winnings);
 	public void increaseWinnings(int amount);
 	public void decreaseWinnings(int amount);
+	public Avatar getAvatar();
+	public void setAvatar(Avatar avatar);
 }

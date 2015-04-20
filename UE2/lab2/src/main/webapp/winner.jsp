@@ -80,7 +80,7 @@
          </section>
       </div>
         <!-- footer -->
-        <footer role="contentinfo">© 2015 BIG Jeopardy</footer>
+        <footer role="contentinfo">&#169; 2015 BIG Jeopardy</footer>
 		<script type="text/javascript">
         //<![CDATA[
            $(document).ready(function(){

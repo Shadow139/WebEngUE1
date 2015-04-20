@@ -43,6 +43,6 @@
         </div>
 
         <!-- footer -->
-        <footer role="contentinfo">© 2015 BIG Jeopardy</footer>
+        <footer role="contentinfo">&#169; 2015 BIG Jeopardy</footer>
     </body>
 </html>

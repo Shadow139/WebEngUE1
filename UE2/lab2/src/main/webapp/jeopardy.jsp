@@ -94,11 +94,11 @@
             	}
             	if(player2info > 0){
             		%>
-            			<p class="user-info positive-change">Deadpool hat richtig geantwortet: +<%= player2info %> &#8364;</p>
+            			<p class="user-info positive-change"><%= game.getPlayer2().getName() %> hat richtig geantwortet: +<%= player2info %> &#8364;</p>
             		<%
             	}else{
             		%>
-	        			<p class="user-info negative-change">Deadpool hat falsch geantwortet: <%= player2info %> &#8364;</p>
+	        			<p class="user-info negative-change"><%= game.getPlayer2().getName() %> hat falsch geantwortet: <%= player2info %> &#8364;</p>
 	        		<%
             	}
             	if(player2Choice != null){
@@ -179,7 +179,7 @@
                   </ol>
                </section>
                </fieldset>
-               <input class="greenlink formlink clickable" name="submit" id="next" type="submit" value="waehlen" accesskey="s" />
+               <input class="greenlink formlink clickable" name="submit" id="next" type="submit" value="waehlen" accesskey="s" disabled="disabled" />
             </form>
          </section>
 
@@ -190,7 +190,7 @@
 		</div>
 
       <!-- footer -->
-      <footer role="contentinfo">© 2015 BIG Jeopardy!</footer>
+      <footer role="contentinfo">&#169; 2015 BIG Jeopardy!</footer>
 
 	  <script type="text/javascript">
             //<![CDATA[
@@ -210,6 +210,10 @@
 	                }
             	}
             });
+            
+            $(":radio").bind('click', function() {
+            	  $("#next").prop('disabled', false);
+            	});
             //]]>
         </script>
     </body>

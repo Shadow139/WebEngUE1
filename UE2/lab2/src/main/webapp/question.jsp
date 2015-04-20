@@ -78,7 +78,7 @@
       <section id="question" aria-labelledby="questionheading">
             <form id="questionform" action="BigJeopardyServlet" method="get">
                <h2 id="questionheading" class="accessibility">Frage</h2>
-               <p id="questiontype"><%= selectedQuestion.getCategory().getName() %> für &#8364; <%= selectedQuestion.getValue() %></p>
+               <p id="questiontype"><%= selectedQuestion.getCategory().getName() %> f&uuml;r &#8364; <%= selectedQuestion.getValue() %></p>
                <p id="questiontext"><%= selectedQuestion.getText() %></p>
                <input type = "hidden" name = "selectedQuestionId" value = "<%= selectedQuestion.getId() %>"/>
                <ul id="answers">
@@ -112,7 +112,7 @@
       </div>
 
       <!-- footer -->
-      <footer role="contentinfo">© 2015 BIG Jeopardy!</footer>
+      <footer role="contentinfo">&#169; 2015 BIG Jeopardy!</footer>
 
       <script type="text/javascript">
             //<![CDATA[

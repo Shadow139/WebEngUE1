@@ -61,7 +61,6 @@ public class BigJeopardyServlet extends HttpServlet {
     	switch(sumbitParam){
     	case "Anmelden": 
     		startQuiz(request);
-    		int player1info = 0;
         	response.sendRedirect("jeopardy.jsp");
     		break;
     	case "waehlen": 
@@ -222,6 +221,7 @@ public class BigJeopardyServlet extends HttpServlet {
         provider = servletFactory.createQuestionDataProvider();
         
         categoryList = provider.getCategoryData();
+        
                 
         Player player1 = new SimplePlayer();
         Player player2 = new SimplePlayer();

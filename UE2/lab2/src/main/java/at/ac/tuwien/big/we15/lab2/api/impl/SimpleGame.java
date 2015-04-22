@@ -25,7 +25,7 @@ public class SimpleGame implements Game, Serializable {
 		this.player1 = p1;
 		this.player2 = p2;
 		this.setCurrentPlayer(player1);
-		this.questionsAsked = 0;
+		this.questionsAsked = 1;
 	}
 
 	public Player getPlayer1() {

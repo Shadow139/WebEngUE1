@@ -73,7 +73,7 @@ public class BigJeopardyServlet extends HttpServlet {
     		processAnswer(request,response);
     		String redirect = "jeopardy.jsp";
     		game = (Game) request.getSession().getAttribute("game");
-    		if(game.getQuestionsAsked() >= 10)
+    		if(game.getQuestionsAsked() > 10)
             	redirect = "winner.jsp";
     		
         	response.sendRedirect(redirect);

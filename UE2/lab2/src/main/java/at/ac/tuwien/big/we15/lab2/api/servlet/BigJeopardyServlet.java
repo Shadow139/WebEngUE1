@@ -27,13 +27,6 @@ import at.ac.tuwien.big.we15.lab2.api.impl.SimplePlayer;
 @WebServlet(name = "BigJeopardyServlet", urlPatterns = {"/BigJeopardyServlet"})
 public class BigJeopardyServlet extends HttpServlet {
 
-<<<<<<< HEAD
-=======
-	ServletJeopardyFactory servletFactory;
-	QuestionDataProvider provider;
-	List<Category> categoryList;
-
->>>>>>> 6e6eb946b17933a6706607ce45234e60af217ec6
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
     	//response.getWriter().write("Herro");

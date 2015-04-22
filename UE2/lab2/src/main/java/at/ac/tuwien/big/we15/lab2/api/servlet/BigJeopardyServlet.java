@@ -27,12 +27,6 @@ import at.ac.tuwien.big.we15.lab2.api.impl.SimplePlayer;
 @WebServlet(name = "BigJeopardyServlet", urlPatterns = {"/BigJeopardyServlet"})
 public class BigJeopardyServlet extends HttpServlet {
 
-	ServletJeopardyFactory servletFactory;
-	QuestionDataProvider provider;
-	List<Category> categoryList;
-	
-	int currentQuestionId;
-
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
     	//response.getWriter().write("Herro");
@@ -104,9 +98,10 @@ public class BigJeopardyServlet extends HttpServlet {
     
     private void processAnswer(HttpServletRequest request,HttpServletResponse response) throws IOException {
     	int qid = Integer.parseInt(request.getParameter("selectedQuestionId"));
-    	Question question = getQuestionById(qid);
-    	ServletContext context = request.getServletContext();
-    	Game game = (Game) context.getAttribute("game");
+    	Question question = getQuestionById(request, qid);
+    	Game game = (Game) request.getSession().getAttribute("game");
+    	System.out.println("[processAnswer]Game is: " + game);
+
 		if(checkAnswer(request,question)){
 			game.getCurrentPlayer().increaseWinnings(question.getValue());
 			request.getSession().setAttribute("player1info", question.getValue());
@@ -123,8 +118,8 @@ public class BigJeopardyServlet extends HttpServlet {
 	}
     
     private void doShit(HttpServletRequest request) {
-    	ServletContext context = request.getServletContext();
-    	Game game = (Game) context.getAttribute("game");
+    	Game game = (Game) request.getSession().getAttribute("game");
+    	System.out.println("[doShit]Game is: " + game);
     	List<Question> questions = activeQuestions(request);
     	int q = RandomNumberGenerator.getRandIntBetween(0,questions.size());
     	questions.get(q).setActive(false);
@@ -141,8 +136,8 @@ public class BigJeopardyServlet extends HttpServlet {
     }
     
     private List<Question> activeQuestions(HttpServletRequest request) {
-    	ServletContext context = request.getServletContext();
-    	Game game = (Game) context.getAttribute("game");
+    	Game game = (Game) request.getSession().getAttribute("game");
+    	System.out.println("[activeQuestions]Game is: " + game);
     	List<Category> categories = game.getCategoryList();
     	List<Question> questions = new ArrayList<Question>();
     	for (Category c : categories) {
@@ -202,11 +197,13 @@ public class BigJeopardyServlet extends HttpServlet {
 	private void getSelectedQuestion(HttpServletRequest request) {
 		// TODO Auto-generated method stub
     	int questionNumber = Integer.parseInt(request.getParameter("question_selection"));
-    	request.getSession().setAttribute("selectedQuestion", getQuestionById(questionNumber));
+    	request.getSession().setAttribute("selectedQuestion", getQuestionById(request,questionNumber));
 	}
 	
-	private Question getQuestionById(int questionNumber){
-
+	private Question getQuestionById(HttpServletRequest request ,int questionNumber){
+    	Game game = (Game) request.getSession().getAttribute("game");
+    	System.out.println("[getQuestionById]Game is: " + game);
+    	List<Category> categoryList = game.getCategoryList();
     	for(Category c: categoryList){
     		for(Question q: c.getQuestions()){
     			if(questionNumber == q.getId()){
@@ -227,10 +224,10 @@ public class BigJeopardyServlet extends HttpServlet {
         ServletContext context = request.getServletContext();
         RequestDispatcher dispatcher = context.getRequestDispatcher("/jeopardy.jsp");
         
-        servletFactory = new ServletJeopardyFactory(context);
-        provider = servletFactory.createQuestionDataProvider();
+        ServletJeopardyFactory servletFactory = new ServletJeopardyFactory(context);
+        QuestionDataProvider provider = servletFactory.createQuestionDataProvider();
         
-        categoryList = provider.getCategoryData();
+        List<Category> categoryList = provider.getCategoryData();
         
                 
         Player player1 = new SimplePlayer();
@@ -239,6 +236,8 @@ public class BigJeopardyServlet extends HttpServlet {
         Game game = new SimpleGame(player1, player2);
         
         game.setCategoryList(categoryList);
+        
+        System.out.println("[startQuiz]Game is: " + game);
         
         request.getSession().setAttribute("categoryList", categoryList);
 

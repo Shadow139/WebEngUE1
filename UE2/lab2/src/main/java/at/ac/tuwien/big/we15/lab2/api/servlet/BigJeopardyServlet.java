@@ -30,8 +30,6 @@ public class BigJeopardyServlet extends HttpServlet {
 	ServletJeopardyFactory servletFactory;
 	QuestionDataProvider provider;
 	List<Category> categoryList;
-	
-	int currentQuestionId;
 
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {

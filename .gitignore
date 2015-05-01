@@ -6,3 +6,4 @@ UE2/lab2/src/main/webapp/.idea/vcs.xml
 UE2/lab2/src/main/webapp/.idea/webapp.iml
 UE2/lab2/src/main/webapp/.idea/workspace.xml
 UE2/lab2/src/main/webapp/.idea/scopes/scope_settings.xml
+*.class

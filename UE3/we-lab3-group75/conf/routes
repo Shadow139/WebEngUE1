@@ -10,5 +10,12 @@ GET 	/Login						controllers.Application.index()
 POST	/Login						controllers.Application.index()
 GET 	/Logout						controllers.Application.index()
 
+# Debugging
+
+GET     /new                        controllers.Application.register()
+GET     /create                     controllers.Application.registerUser()
+GET     /list                       controllers.Application.listUsers()
+
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

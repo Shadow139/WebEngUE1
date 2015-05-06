@@ -1,0 +1,11 @@
+@(userForm : play.data.Form[models.Register])
+@import helper._
+
+
+@main("New user") {
+    @form(routes.Application.registerUser()) {
+        @inputText(userForm("name"))
+        @inputText(userForm("password"))
+        <input type="submit" class="btn btn-primary" value="Submit" />
+    }
+}

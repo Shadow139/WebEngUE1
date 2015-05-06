@@ -1,0 +1,23 @@
+@(users : List[models.User])
+
+@main("List of Users"){
+   <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Email</td>
+                <td>@Messages("phone")</td>
+            </tr>
+        </thead>
+        <tbody>
+            @for(user <- users) {
+                <tr style="height: 10px">
+                    <td>@user.getName()</td>
+                    <td>@user.getPassword()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a href="@routes.Application.register()">Register</a>

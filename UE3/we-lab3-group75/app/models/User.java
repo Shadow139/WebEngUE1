@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import play.db.jpa.JPA;
 
 @Entity
-public class User{
+public class User {
 	
 	@Id
 	@Column(unique=true)

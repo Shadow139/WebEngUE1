@@ -9,7 +9,7 @@ import views.html.*;
 public class Application extends Controller {
     @play.db.jpa.Transactional
     public static Result index() {
-        return ok(test.render("hersfkgqoighoqegro"));
+        return ok(registration.render());
     }
 
 }

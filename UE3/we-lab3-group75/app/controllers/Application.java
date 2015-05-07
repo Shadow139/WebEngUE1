@@ -34,8 +34,8 @@ public class Application extends Controller {
     
     @play.db.jpa.Transactional
     public static Result listUsers(){
-    	Query query =  JPA.em().createQuery("SELECT * From Register");
-    	List<User> userList = query.getResultList();
+    	Query query =  JPA.em().createQuery("From Register");
+    	List<Register> userList = query.getResultList();
     	return ok(debugUsers.render(userList));
     }
 

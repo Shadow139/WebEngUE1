@@ -3,12 +3,16 @@ package models;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import play.data.validation.Constraints.MaxLength;
 import play.data.validation.Constraints.MinLength;
 import play.data.validation.Constraints.Required;
 @Entity
 public class Register {	
+	@Id
+	private int id;
+	
 	public String firstname;
 	
 	public String lastname;
@@ -50,5 +54,47 @@ public class Register {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public Date getBirthdate() {
+		return birthdate;
+	}
+
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	
+	
 
 }

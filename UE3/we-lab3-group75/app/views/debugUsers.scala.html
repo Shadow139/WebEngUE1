@@ -1,4 +1,4 @@
-@(users : List[models.User])
+@(users : List[models.Register])
 
 @main("List of Users"){
    <table>
@@ -6,13 +6,12 @@
             <tr>
                 <td>Name</td>
                 <td>Email</td>
-                <td>@Messages("phone")</td>
             </tr>
         </thead>
         <tbody>
             @for(user <- users) {
                 <tr style="height: 10px">
-                    <td>@user.getName()</td>
+                    <td>@user.getUsername()</td>
                     <td>@user.getPassword()</td>
                 </tr>
             }

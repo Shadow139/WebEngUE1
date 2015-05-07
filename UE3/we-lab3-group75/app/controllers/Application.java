@@ -18,7 +18,7 @@ public class Application extends Controller {
     public static Result index() {
         return ok(registration.render());
     }
-
+    @play.db.jpa.Transactional
     public static Result register(){
     	Form<Register> registerForm = Form.form(Register.class);
     	return ok(newUser.render(registerForm));
@@ -31,10 +31,14 @@ public class Application extends Controller {
 		JPA.em().persist(register);
 		return redirect(routes.Application.listUsers());
     }
-    
+    @play.db.jpa.Transactional
     public static Result listUsers(){
+<<<<<<< HEAD
     	Query query =  JPA.em().createQuery("SELECT * From Register");
     	List<User> userList = query.getResultList();
+=======
+    	List<Register> userList = new ArrayList<Register>();
+>>>>>>> cdcb0ec37b28b6380949ad0de890a1f358e4ac3d
     	return ok(debugUsers.render(userList));
     }
 

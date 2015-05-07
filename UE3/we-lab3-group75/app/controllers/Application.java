@@ -16,15 +16,31 @@ import models.*;
 public class Application extends Controller {
     @play.db.jpa.Transactional
     public static Result index() {
-        return ok(registration.render());
+        return ok();
+    }
+    
+    
+    public static Result registration(){
+    	Form<User> userForm = Form.form(User.class);
+    	return ok(registration.render(userForm));
+    	
     }
     @play.db.jpa.Transactional
-    public static Result register(){
+    public static Result submitRegistration(){
+    	Form<User> userForm = Form.form(User.class).bindFromRequest();
+    	User user = userForm.get();
+    	JPA.em().persist(user);
+		return redirect(routes.Application.listUsers());
+    }
+    
+    //úngefähr 10 Bindestriche:-------------- Debugging -------------------
+    @play.db.jpa.Transactional
+    public static Result newUser(){
     	Form<Register> registerForm = Form.form(Register.class);
     	return ok(newUser.render(registerForm));
     }
     @play.db.jpa.Transactional
-    public static Result registerUser(){
+    public static Result createUser(){
     	Form<Register> registerForm = Form.form(Register.class).bindFromRequest();
     	Register register = registerForm.get();
 

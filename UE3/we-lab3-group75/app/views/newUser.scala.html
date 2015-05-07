@@ -3,7 +3,7 @@
 
 
 @main("New user") {
-    @form(routes.Application.registerUser()) {
+    @form(routes.Application.createUser()) {
         @inputText(userForm("username"))
         @inputText(userForm("password"))
         <input type="submit" class="btn btn-primary" value="Submit" />

@@ -21,7 +21,7 @@ public class LoginInformation {
     }
 
 	private boolean authenticate(String username, String password) {
-		User user = User.findUserByName(username);
+		User user = User.findUserByUsername(username);
 		
 		if( user == null){
 			return false;

@@ -1,46 +1,48 @@
 package models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.Id;
+import javax.persistence.Query;
 
 import play.db.jpa.JPA;
 
 @Entity
 public class User {
-	
+
 	@Id
-	@Column(unique=true)
-	private String name;
-	
+	@Column(unique = true)
+	private String username;
+
 	@Column(length = 255)
-	private String password; 
-	
+	private String password;
+
 	@Column(length = 50)
 	private String firstname;
-	
+
 	@Column(length = 50)
 	private String lastname;
-	
+
 	@Column(length = 50)
 	private Date birthdate;
 
 	@Column(length = 30)
 	private String gender;
-	
-	public String getName() {
-		return name;
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setName(String name) {
-		this.name= name;
+	public void setUsername(String name) {
+		this.username = name;
 	}
-	
+
 	public String getId() {
-		return name;
+		return username;
 	}
 
 	public String getPassword() {
@@ -50,7 +52,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String getFirstname() {
 		return firstname;
 	}
@@ -83,8 +85,14 @@ public class User {
 		this.gender = gender;
 	}
 
-	public static User findUserByName(String username) {
+	public static User findUserByUsername(String username) {
 		EntityManager em = JPA.em();
 		return em.find(User.class, username);
+	}
+
+	public static List<User> findAllUser() {
+		Query query = JPA.em().createQuery("From User");
+		List<User> userList = query.getResultList();
+		return userList;
 	}
 }

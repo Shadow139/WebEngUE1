@@ -3,17 +3,17 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
-GET		/Registration				controllers.Application.index()
-POST	/Registration				controllers.Application.index()
+GET     /                           controllers.Application.registration()
+GET		/Registration				controllers.Application.registration()
+POST	/Registration				controllers.Application.registration()
 GET 	/Login						controllers.Application.index()
 POST	/Login						controllers.Application.index()
 GET 	/Logout						controllers.Application.index()
 
 # Debugging
 
-GET     /new                        controllers.Application.register()
-GET     /create                     controllers.Application.registerUser()
+GET     /new                        controllers.Application.newUser()
+GET     /create                     controllers.Application.createUser()
 GET     /list                       controllers.Application.listUsers()
 
 

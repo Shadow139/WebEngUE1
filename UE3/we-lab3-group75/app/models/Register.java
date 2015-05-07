@@ -2,10 +2,12 @@ package models;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+
 import play.data.validation.Constraints.MaxLength;
 import play.data.validation.Constraints.MinLength;
 import play.data.validation.Constraints.Required;
-
+@Entity
 public class Register {	
 	public String firstname;
 	
@@ -15,12 +17,12 @@ public class Register {
 
 	public String gender;
 	
-	@Required
+	//@Required
 	@MinLength(4)
 	@MaxLength(8)
 	public String username;
 	
-	@Required
+	//@Required
 	@MinLength(4)
 	@MaxLength(8)
 	public String password;

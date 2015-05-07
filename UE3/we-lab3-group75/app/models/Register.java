@@ -2,6 +2,7 @@ package models;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -13,12 +14,16 @@ public class Register {
 	@Id
 	private int id;
 	
+	@Column(length = 255)
 	public String firstname;
 	
+	@Column(length = 255)
 	public String lastname;
 	
+	@Column(length = 255)
 	public Date birthdate;
 
+	@Column(length = 255)
 	public String gender;
 	
 	//@Required

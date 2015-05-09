@@ -24,3 +24,7 @@ jeopardy.choose = choose
 
 question.answerSelection = Answer Selection
 question.jumpToQuestionSelection = Jump to Question Selection
+question.clickHereToLogout = Click here to logout
+question.logout = Logout
+question.timeLeft = Time left
+question.answer = answer

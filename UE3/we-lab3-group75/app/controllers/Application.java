@@ -30,8 +30,15 @@ public class Application extends Controller {
     @play.db.jpa.Transactional
     public static Result submitRegistration(){
     	Form<User> userForm = Form.form(User.class).bindFromRequest();
-    	User user = userForm.get();
-    	JPA.em().persist(user);
+    	User user = null;
+    	try{
+    		user = userForm.get();
+    	}catch(Exception e){
+    		return redirect(routes.Application.registration());
+    	}
+    	if(user != null){
+    		JPA.em().persist(user);
+    	}
 		return redirect(routes.Application.listUsers());
     }
     

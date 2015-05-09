@@ -10,8 +10,8 @@
         <title>Business Informatics Group Jeopardy! - @Messages("registration.register")</title>
         <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/base.css")" />
         <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/screen.css")" />
-        <script src="js/jquery.js" type="text/javascript"></script>
-        <script src="js/framework.js" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jquery.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/framework.js")" type="text/javascript"></script>
     </head>
     <body id="register-page">
       <a title="Zur Registrierung springen" class="accessibility" href="#register">@Messages("registration.jumpToRegistration")</a>
@@ -43,15 +43,15 @@
                 <fieldset>
                     <legend>@Messages("registration.personalData")</legend>
                     <label for="firstname">@Messages("registration.firstname"):</label>
-                    @input(userForm("firstname")) { (id, name, value, args) =>
+                    <!-- @input(userForm("firstname")) { (id, name, value, args) => -->
                     <input id="firstname" type="text" name="firstname"/>}
                     
                     <label for="lastname">@Messages("registration.lastname"):</label>
-                    @input(userForm("lastname")) { (id, name, value, args) =>
+                    <!-- @input(userForm("lastname")) { (id, name, value, args) => -->
                     <input id="lastname" type="text" name="lastname"/>}
                     
                     <label for="birthdate">@Messages("registration.birthday"):</label>
-                    @input(userForm("birthdate")) { (id, name, value, args) =>
+                    <!-- @input(userForm("birthdate")) { (id, name, value, args) => -->
                     <input id="birthdate" type="date" name="birthdate"/>}
                     <div id="error_msg_birthdate" class="hide" role="alert">@Messages("registration.dataFormatWarning"): dd.mm.yyyy (z.B. 24.12.2010).</div>
                     
@@ -114,12 +114,12 @@
                     </select>
 					
 					<label for="username">@Messages("registration.username")*:</label>
-					@input(userForm("username")) { (id, name, value, args) =>
+					<!-- @input(userForm("username")) { (id, name, value, args) => -->
                     <input id="username" type="text" required="required" pattern="\w{4,8}" name="username" @toHtmlArgs(args)/>}
                     <div id="error_msg_username" class="hide" role="alert">@Messages("registration.usernameMindLetters")</div>
                     
                     <label for="password">@Messages("registration.password")*:</label>
-                    @input(userForm("password")) { (id, name, value, args) =>
+                    <!-- @input(userForm("password")) { (id, name, value, args) => -->
                     <input id="password" type="password" required="required" pattern="\w{4,8}" name="password" @toHtmlArgs(args)/>}
                     <div id="error_msg_password" class="hide" role="alert">@Messages("registration.passwordMindLetters")</div>
                     <input class="greenlink formlink" type="submit" value="@Messages("registration.register")" accesskey="s"/>

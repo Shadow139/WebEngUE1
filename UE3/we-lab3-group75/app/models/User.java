@@ -28,7 +28,7 @@ public class User {
 	private String lastname;
 
 	@Column(length = 50)
-	private Date birthdate;
+	private String birthdate;
 
 	private String gender;
 
@@ -68,11 +68,11 @@ public class User {
 		this.lastname = lastname;
 	}
 
-	public Date getBirthdate() {
+	public String getBirthdate() {
 		return birthdate;
 	}
 
-	public void setBirthdate(Date birthdate) {
+	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
 	}
 

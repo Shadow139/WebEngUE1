@@ -58,7 +58,10 @@ public class Application extends Controller {
     	.setParameter("usr",user.getUsername());
     	List<User> users = query.getResultList();
     	if (users.size() == 1) {
-    		return redirect(routes.Application.jeoprardy());
+    		GameController gc = new GameController();
+    		user = users.get(0);
+    		gc.startGame(user.getUsername(), user.get);
+    		return ok(jeopardy.render(users.get(0)));
     	}
     	return redirect(routes.Application.registration());
     }
@@ -101,6 +104,7 @@ public class Application extends Controller {
     	return ok(jeopardy.render());
     	
     }
+
     public static Result question(){
     	return ok(question.render());
     	

@@ -46,14 +46,14 @@ public class Application extends Controller {
     public static Result submitLogin() {
     	Form<User> userForm = Form.form(User.class).bindFromRequest();
     	User user = userForm.get();
-    	Query query =   JPA.em().createQuery("SELECT * FROM User WHERE ?1 = password && ?2 = username");
-    	query.setParameter(1,user.getPassword());
-    	query.setParameter(2,user.getUsername());
+    	Query query =   JPA.em().createQuery("SELECT x FROM User x WHERE x.password = :pwd AND x.username = :usr ")
+    	.setParameter("pwd",user.getPassword())
+    	.setParameter("usr",user.getUsername());
     	List<User> users = query.getResultList();
     	if (users.size() == 1) {
     		return redirect(routes.Application.jeoprardy());
     	}
-    	return redirect(routes.Application.login());
+    	return redirect(routes.Application.registration());
     }
     
     // ---------- Jeopary ----------

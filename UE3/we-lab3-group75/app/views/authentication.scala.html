@@ -26,16 +26,18 @@
         <div role="main">
             <section id="login" aria-labelledby="loginheading">
                <h2 id="loginheading" class="accessibility">Login</h2>
-                <form action="jeopardy.xhtml" method="post">
+				@form(routes.Application.submitLogin()) {
                     <fieldset>
                         <legend id="logindata">Login</legend>
                         <label for="username">Benutzername:</label>
-                        <input name="username" id="username" type="text" required="required"/>
+                        @input(userForm("username")) { (id, name, value, args) =>
+                        <input name="username" id="username" type="text" required="required"/>}
                         <label for="password">Passwort:</label>
-                        <input name="password" id="password" type="password" required="required"/>
+                        @input(userForm("password")) { (id, name, value, args) =>
+                        <input name="password" id="password" type="password" required="required"/>}
                         <input name="login" id="loginsubmit" class="greenlink formlink clickable" type="submit" value="Anmelden"/>
                     </fieldset>
-                </form>
+				}
             </section>
             <!-- Register section -->
             <section id="registerforward" aria-labelledby="registerheading">

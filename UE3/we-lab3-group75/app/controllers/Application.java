@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import at.ac.tuwien.big.we15.lab2.api.JeopardyGame;
 import play.*;
 import play.data.Form;
 import play.db.jpa.JPA;
@@ -60,10 +61,11 @@ public class Application extends Controller {
     	if (users.size() == 1) {
     		GameController gc = new GameController();
     		user = users.get(0);
-    		gc.startGame(user.getUsername(), user.get);
-    		return ok(jeopardy.render(users.get(0)));
+    		JeopardyGame jgame = gc.startGame(user.getUsername(), user.getAvatar());
+    		Game game = new Game(jgame);
+    		return ok(jeopardy.render(game));
     	}
-    	return redirect(routes.Application.registration());
+    	return redirect(routes.Application.login());
     }
     
     // ---------- Jeopary ----------
@@ -100,13 +102,14 @@ public class Application extends Controller {
     	List<User> userList = query.getResultList();
     	return ok(listUsers.render(userList));
     }
-    public static Result jeopardy(){
-    	return ok(jeopardy.render());
-    	
-    }
+
 
     public static Result question(){
     	return ok(question.render());
     	
+    }
+    
+    public static Result submitJeopardy(){
+    	return ok();
     }
 }

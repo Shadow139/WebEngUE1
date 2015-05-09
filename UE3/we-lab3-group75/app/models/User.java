@@ -21,6 +21,9 @@ public class User {
 	@Column(length = 255)
 	private String password;
 
+	@Column(length = 255)
+	private String avatar;
+	
 	@Column(length = 50)
 	private String firstname;
 
@@ -82,6 +85,14 @@ public class User {
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 
 	public static User findUserByUsername(String username) {

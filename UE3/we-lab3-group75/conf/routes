@@ -6,9 +6,10 @@
 GET     /                           controllers.Application.registration()
 GET		/Registration				controllers.Application.registration()
 POST	/Registration				controllers.Application.registration()
-GET 	/Login						controllers.Application.index()
-POST	/Login						controllers.Application.index()
+GET 	/Login						controllers.Application.login()
+POST	/Login						controllers.Application.submitLogin()
 GET 	/Logout						controllers.Application.index()
+GET		/Jeopardy					controllers.Application.jeoprardy()
 
 # Debugging
 

@@ -18,7 +18,8 @@ public class Application extends Controller {
     public static Result index() {
         return ok();
     }
-    
+
+    // ---------- Registration ----------
     
     public static Result registration(){
     	Form<User> userForm = Form.form(User.class);
@@ -31,6 +32,33 @@ public class Application extends Controller {
     	User user = userForm.get();
     	JPA.em().persist(user);
 		return redirect(routes.Application.listUsers());
+    }
+    
+    // ---------- Login ----------
+    
+    public static Result login() {
+    	Form<User> userForm = Form.form(User.class);
+    	return ok(authentication.render(userForm));
+    }
+    
+    @play.db.jpa.Transactional
+    public static Result submitLogin() {
+    	Form<User> userForm = Form.form(User.class).bindFromRequest();
+    	User user = userForm.get();
+    	Query query =   JPA.em().createQuery("SELECT * FROM User WHERE ?1 = password && ?2 = username");
+    	query.setParameter(1,user.getPassword());
+    	query.setParameter(2,user.getUsername());
+    	List<User> users = query.getResultList();
+    	if (users.size() == 1) {
+    		return redirect(routes.Application.jeoprardy());
+    	}
+    	return redirect(routes.Application.login());
+    }
+    
+    // ---------- Jeopary ----------
+    
+    public static Result jeoprardy() {
+    	return null;
     }
     
     //úngefähr 10 Bindestriche:-------------- Debugging -------------------

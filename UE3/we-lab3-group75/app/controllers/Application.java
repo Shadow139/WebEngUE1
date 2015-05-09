@@ -19,13 +19,8 @@ public class Application extends Controller {
 		return redirect(routes.Application.registration());
 
     }
-<<<<<<< HEAD
-    
-//    ------------------ Registration ----------------------
-=======
 
     // ---------- Registration ----------
->>>>>>> f755643df7e9da13e25411950bf587b1d291c87e
     
     public static Result registration(){
     	Form<User> userForm = Form.form(User.class);
@@ -89,17 +84,15 @@ public class Application extends Controller {
     	return ok(debugUsers.render(userList));
     }
 
-<<<<<<< HEAD
     @play.db.jpa.Transactional
     public static Result listUsers(){
     	Query query =  JPA.em().createQuery("From User");
     	List<User> userList = query.getResultList();
     	return ok(listUsers.render(userList));
-=======
+    }
     public static Result jeopardy(){
     	Form<User> userForm = Form.form(User.class);
     	return ok(jeopardy.render());
     	
->>>>>>> f755643df7e9da13e25411950bf587b1d291c87e
     }
 }

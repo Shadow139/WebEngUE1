@@ -1,0 +1,23 @@
+jsonFilePath=conf/data.en.json
+next=Next
+
+test.banane = I like to put banananas in my mouth
+jeopardy.questionSelection = Question Selection
+jeopardy.jumpToQuestionSelection = Jump to Question Selection
+jeopardy.gameInformation = Game Information
+jeopardy.leadingPlayer = Leading Player
+jeopardy.playerName = Playername
+jeopardy.playerPoints = Player Points
+jeopardy.secondPlayer = Second Player
+jeopardy.questions = Questions
+jeopardy.playerCorrectAnswer = You gave the correct answer:
+jeopardy.opponentWrongAnswer = gave the wrong answer:
+jeopardy.chose = chose
+jeopardy.for = for
+jeopardy.gewahlt = 
+jeopardy.category = Kategorie
+jeopardy.lastGame = Last Game
+jeopardy.never = Never
+jeopardy.player = Player
+jeopardy.you = you
+jeopardy.choose = choose

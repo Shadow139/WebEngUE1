@@ -83,4 +83,9 @@ public class Application extends Controller {
     	return ok(debugUsers.render(userList));
     }
 
+    public static Result jeopardy(){
+    	Form<User> userForm = Form.form(User.class);
+    	return ok(jeopardy.render());
+    	
+    }
 }

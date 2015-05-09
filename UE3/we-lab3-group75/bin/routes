@@ -16,6 +16,7 @@ GET		/Jeopardy					controllers.Application.jeoprardy()
 GET     /new                        controllers.Application.newUser()
 GET     /create                     controllers.Application.createUser()
 GET     /list                       controllers.Application.listUsers()
+GET     /jeopardy                   controllers.Application.jeopardy()
 
 
 # Map static resources from the /public folder to the /assets URL path

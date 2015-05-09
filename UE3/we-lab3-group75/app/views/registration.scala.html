@@ -27,42 +27,42 @@
 		<nav role="navigation" aria-labelledby="navheading">
 			<h2 id="navheading" class="accessibility">Navigation</h2>
 			<ul>
-				<li><a class="orangelink navigationlink" id="loginlink" title="Klicke hier um dich anzumelden" href="" accesskey="l">Anmelden</a></li>
+				<li><a class="orangelink navigationlink" id="loginlink" title="Klicke hier um dich anzumelden" href="" accesskey="l">@Messages("registration.login")</a></li>
 			</ul>
 		</nav>
       
       <!-- Content -->
       <div id="register" role="main"> 
             <!-- Register section -->
-            <h2 id="registerheading" class="accessibility">Registrierung</h2>
+            <h2 id="registerheading" class="accessibility">@Messages("registration.registration")</h2>
             @form(routes.Application.submitRegistration()) {
                 <fieldset>
-                    <legend>Persönliche Daten</legend>
-                    <label for="firstname">Vorname:</label>
+                    <legend>@Messages("registration.personalData")</legend>
+                    <label for="firstname">@Messages("registration.firstname"):</label>
                     @input(userForm("firstname")) { (id, name, value, args) =>
                     <input id="firstname" type="text" name="firstname"/>}
                     
-                    <label for="lastname">Nachname:</label>
+                    <label for="lastname">@Messages("registration.lastname"):</label>
                     @input(userForm("lastname")) { (id, name, value, args) =>
                     <input id="lastname" type="text" name="lastname"/>}
                     
-                    <label for="birthdate">Geburtstag:</label>
+                    <label for="birthdate">@Messages("registration.birthday"):</label>
                     @input(userForm("birthdate")) { (id, name, value, args) =>
                     <input id="birthdate" type="date" name="birthdate"/>}
-                    <div id="error_msg_birthdate" class="hide" role="alert">Verwenden Sie bitte folgendes Datumsformat: dd.mm.yyyy (z.B. 24.12.2010).</div>
+                    <div id="error_msg_birthdate" class="hide" role="alert">@Messages("registration.dataFormatWarning"): dd.mm.yyyy (z.B. 24.12.2010).</div>
                     
-                    <label>Geschlecht:</label>
+                    <label>@Messages("registration.gender"):</label>
                     <fieldset class="inputset">
                         <input type="radio" name="gender" id="male" value="m" checked="checked" />
-                        <label for="male">Männlich</label>
+                        <label for="male">@Messages("registration.male")</label>
                         <input type="radio" name="gender" id="female" value="f" />
-                        <label for="female">Weiblich</label>
+                        <label for="female">@Messages("registration.female")</label>
                     </fieldset>
                     
                     
                 </fieldset>
                 <fieldset>
-                    <legend>Spielerdaten</legend>
+                    <legend>@Messages("registration.playerData")</legend>
                     <label for="avatar">Avatar:</label>
                     <select id="avatar" name="avatar">
                         <option value="aldrich-killian">Aldrich Killian</option>
@@ -109,17 +109,17 @@
 						<option value="wolverine">Wolverine</option>
                     </select>
 					
-					<label for="username">Benutzername*:</label>
+					<label for="username">@Messages("registration.username")*:</label>
 					@input(userForm("username")) { (id, name, value, args) =>
                     <input id="username" type="text" required="required" pattern="\w{4,8}" name="username" @toHtmlArgs(args)/>}
-                    <div id="error_msg_username" class="hide" role="alert">Der Benutzername muss mindestens 4 Zeichen und darf maximal 8 Zeichen enthalten.</div>
+                    <div id="error_msg_username" class="hide" role="alert">@Messages("registration.usernameMindLetters")</div>
                     
-                    <label for="password">Passwort*:</label>
+                    <label for="password">@Messages("registration.password")*:</label>
                     @input(userForm("password")) { (id, name, value, args) =>
                     <input id="password" type="password" required="required" pattern="\w{4,8}" name="password" @toHtmlArgs(args)/>}
-                    <div id="error_msg_password" class="hide" role="alert">Das Passwort muss mindestens 4 Zeichen und darf maximal 8 Zeichen enthalten.</div>
-                    <input class="greenlink formlink" type="submit" value="Registrieren" accesskey="s"/>
-                    <p id="requiredhint">Mit "*" gekennzeichnete Felder sind Pflichtfelder</p>
+                    <div id="error_msg_password" class="hide" role="alert">@Messages("registration.passwordMindLetters")</div>
+                    <input class="greenlink formlink" type="submit" value="@Messages("registration.register")" accesskey="s"/>
+                    <p id="requiredhint">@Messages("registration.requiredHint")</p>
                 </fieldset>
             }
         </div>

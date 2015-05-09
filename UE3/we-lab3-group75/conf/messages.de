@@ -28,3 +28,6 @@ question.clickHereToLogout = Klicke hier um dich abzumelden
 question.logout = Abmelden
 question.timeLeft = Verbleibende Zeit
 question.answer = antworten
+
+registration.register = Registrieren
+registration.jumpToRegistration = Zur Registrierung springen

@@ -39,7 +39,7 @@ public class Application extends Controller {
     
     public static Result login() {
     	Form<User> userForm = Form.form(User.class);
-    	return ok(authentication.render());
+    	return ok(authentication.render(userForm));
     }
     
     @play.db.jpa.Transactional

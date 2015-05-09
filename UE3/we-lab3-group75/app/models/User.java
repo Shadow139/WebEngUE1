@@ -30,7 +30,6 @@ public class User {
 	@Column(length = 50)
 	private Date birthdate;
 
-	@Column(length = 30)
 	private String gender;
 
 	public String getUsername() {

@@ -1,4 +1,6 @@
 @(userForm : play.data.Form[models.User])
+@import helper._
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
@@ -25,7 +27,7 @@
 		<nav role="navigation" aria-labelledby="navheading">
 			<h2 id="navheading" class="accessibility">Navigation</h2>
 			<ul>
-				<li><a class="orangelink navigationlink" id="loginlink" title="Klicke hier um dich anzumelden" href="login.xhtml" accesskey="l">Anmelden</a></li>
+				<li><a class="orangelink navigationlink" id="loginlink" title="Klicke hier um dich anzumelden" href="" accesskey="l">Anmelden</a></li>
 			</ul>
 		</nav>
       
@@ -33,17 +35,20 @@
       <div id="register" role="main"> 
             <!-- Register section -->
             <h2 id="registerheading" class="accessibility">Registrierung</h2>
-            <form action="login.xhtml" method="post">
+            @form(routes.Application.submitRegistration()) {
                 <fieldset>
                     <legend>Persönliche Daten</legend>
                     <label for="firstname">Vorname:</label>
-                    <input id="firstname" type="text" name="firstname"/>
+                    @input(userForm("firstname")) { (id, name, value, args) =>
+                    <input id="firstname" type="text" name="firstname"/>}
                     
                     <label for="lastname">Nachname:</label>
-                    <input id="lastname" type="text" name="lastname"/>
+                    @input(userForm("lastname")) { (id, name, value, args) =>
+                    <input id="lastname" type="text" name="lastname"/>}
                     
                     <label for="birthdate">Geburtstag:</label>
-                    <input id="birthdate" type="date" name="birthdate"/>
+                    @input(userForm("birthdate")) { (id, name, value, args) =>
+                    <input id="birthdate" type="date" name="birthdate"/>}
                     <div id="error_msg_birthdate" class="hide" role="alert">Verwenden Sie bitte folgendes Datumsformat: dd.mm.yyyy (z.B. 24.12.2010).</div>
                     
                     <label>Geschlecht:</label>
@@ -105,16 +110,18 @@
                     </select>
 					
 					<label for="username">Benutzername*:</label>
-                    <input id="username" type="text" required="required" pattern="\w{4,8}" name="username"/>
+					@input(userForm("username")) { (id, name, value, args) =>
+                    <input id="username" type="text" required="required" pattern="\w{4,8}" name="username" @toHtmlArgs(args)/>}
                     <div id="error_msg_username" class="hide" role="alert">Der Benutzername muss mindestens 4 Zeichen und darf maximal 8 Zeichen enthalten.</div>
                     
                     <label for="password">Passwort*:</label>
-                    <input id="password" type="password" required="required" pattern="\w{4,8}" name="password"/>
+                    @input(userForm("password")) { (id, name, value, args) =>
+                    <input id="password" type="password" required="required" pattern="\w{4,8}" name="password" @toHtmlArgs(args)/>}
                     <div id="error_msg_password" class="hide" role="alert">Das Passwort muss mindestens 4 Zeichen und darf maximal 8 Zeichen enthalten.</div>
                     <input class="greenlink formlink" type="submit" value="Registrieren" accesskey="s"/>
                     <p id="requiredhint">Mit "*" gekennzeichnete Felder sind Pflichtfelder</p>
                 </fieldset>
-            </form>
+            }
         </div>
 
         <!-- Footer -->

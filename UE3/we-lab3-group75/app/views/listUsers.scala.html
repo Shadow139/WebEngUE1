@@ -1,0 +1,29 @@
+@(users : List[models.User])
+
+@main("List of Users"){
+   <table>
+        <thead>
+            <tr>
+                <td>firstname</td>
+                <td>lastname</td>
+                <td>birthdate</td>
+                <td>gender</td>
+                <td>username</td>
+                <td>password</td>
+            </tr>
+        </thead>
+        <tbody>
+            @for(user <- users) {
+                <tr style="height: 10px">
+                    <td>@user.getFirstname()</td>
+                    <td>@user.getLastname()</td>
+                    <td>@user.getBirthdate()</td>
+                    <td>@user.getGender()</td>
+                    <td>@user.getUsername()</td>
+                    <td>@user.getPassword()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

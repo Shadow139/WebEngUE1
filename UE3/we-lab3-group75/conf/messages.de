@@ -24,3 +24,7 @@ jeopardy.choose = wählen
 
 question.answerSelection = Fragenbeantwortung
 question.jumpToQuestionSelection = Zur Fragenauswahl springen
+question.clickHereToLogout = Klicke hier um dich abzumelden
+question.logout = Abmelden
+question.timeLeft = Verbleibende Zeit
+question.answer = antworten

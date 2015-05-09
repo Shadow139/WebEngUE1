@@ -16,9 +16,11 @@ import models.*;
 public class Application extends Controller {
     @play.db.jpa.Transactional
     public static Result index() {
-        return ok();
+		return redirect(routes.Application.registration());
+
     }
     
+//    ------------------ Registration ----------------------
     
     public static Result registration(){
     	Form<User> userForm = Form.form(User.class);
@@ -49,10 +51,16 @@ public class Application extends Controller {
     }
     
     @play.db.jpa.Transactional
-    public static Result listUsers(){
+    public static Result listRegister(){
     	Query query =  JPA.em().createQuery("From Register");
     	List<Register> userList = query.getResultList();
     	return ok(debugUsers.render(userList));
     }
 
+    @play.db.jpa.Transactional
+    public static Result listUsers(){
+    	Query query =  JPA.em().createQuery("From User");
+    	List<User> userList = query.getResultList();
+    	return ok(listUsers.render(userList));
+    }
 }

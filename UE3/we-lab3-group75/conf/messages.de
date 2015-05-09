@@ -21,3 +21,6 @@ jeopardy.never = Nie
 jeopardy.player = Spieler
 jeopardy.you = du
 jeopardy.choose = wählen
+
+question.answerSelection = Fragenbeantwortung
+question.jumpToQuestionSelection = Zur Fragenauswahl springen

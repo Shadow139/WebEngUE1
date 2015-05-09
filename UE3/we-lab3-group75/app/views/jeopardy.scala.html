@@ -1,4 +1,4 @@
-@(user : models.Game)
+@(game : models.Game)
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
@@ -39,11 +39,11 @@
                <table>
                   <tr>
                      <th class="accessibility">@Messages("jeopardy.playerName")</th>
-                     <td class="playername">Black Widow (@Messages("jeopardy.you"))</td>
+                     <td class="playername">@game.getGame().getHuman().getName() (@Messages("jeopardy.you"))</td>
                   </tr>
                   <tr>
                      <th class="accessibility">@Messages("jeopardy.playerPoints")</th>
-                     <td class="playerpoints">2000 €</td>
+                     <td class="playerpoints">@game.getGame().getHumanPlayer().getProfit() €</td>
                   </tr>
                </table>
             </section>
@@ -57,7 +57,7 @@
                   </tr>
                   <tr>
                      <th class="accessibility">@Messages("jeopardy.playerPoints")</th>
-                     <td class="playerpoints">400 €</td>
+                     <td class="playerpoints">@game.getGame().getMarvinPlayer().getProfit() €</td>
                   </tr>
                </table>
             </section>
@@ -67,9 +67,17 @@
          <!-- Question -->
          <section id="question-selection" aria-labelledby="questionheading">
             <h2 id="questionheading" class="black accessibility">Jeopardy</h2>
-            <p class="user-info positive-change">@Messages("jeopardy.playerCorrectAnswer") +1000 €</p>
-            <p class="user-info negative-change">Deadpool @Messages("jeopardy.opponentWrongAnswer") -500 €</p>
-            <p class="user-info">Deadpool @Messages("jeopardy.chose") TUWIEN @Messages("jeopardy.for") € 1000@Messages("jeopardy.gewahlt").</p>
+            @if(2>0){
+            	<p class="user-info positive-change">@Messages("jeopardy.playerCorrectAnswer") + @game.getGame().getHumanPlayer().getLatestProfitChange() €</p>
+            }else{
+            	<p class="user-info negative-change">@Messages("jeopardy.playerWrongAnswer") @game.getGame().getHumanPlayer().getLatestProfitChange() €</p>
+            }
+            @if(@game.getGame().getMarvinPlayer().getLatestProfitChange()>0){
+            	<p class="user-info positive-change">@Messages("jeopardy.opponentCorrectAnswer") + @game.getGame().getMarvinPlayer().getLatestProfitChange() €</p>
+            }else{
+            	<p class="user-info negative-change">@Messages("jeopardy.opponentWrongAnswer") @game.getGame().getMarvinPlayer().getLatestProfitChange() €</p>
+            }
+            <p class="user-info">@game.getGame().getMarvin().getAvatar().getName() @Messages("jeopardy.chose") @game.getGame().getMarvinPlayer().getChosenQuestion().getCategory().getName() @Messages("jeopardy.for") € @game.getGame().getMarvinPlayer().getChosenQuestion().getValue()@Messages("jeopardy.gewahlt").</p>
             <form id="questionform" action="question.xhtml" method="post">
                <fieldset>
                <legend class="accessibility">@Messages("jeopardy.questionSelection")</legend>

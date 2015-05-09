@@ -21,9 +21,7 @@ public class GameController{
 		User user = new SimpleUser();
 		user.setName(username);
 		user.setAvatar(Avatar.getAvatar(avatarId));
-		//play.api.Logger.debug("Attempting risky calculation.");
-		JeopardyGame game = factory.createGame("user"); 
-		//JeopardyGame game = new SimpleJeopardyGame(factory);
+		JeopardyGame game = factory.createGame(user); 
 
 		return game;
 		

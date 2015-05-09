@@ -40,7 +40,7 @@ public class Application extends Controller {
     	if(user != null){
     		JPA.em().persist(user);
     	}
-		return redirect(routes.Application.listUsers());
+		return redirect(routes.Application.submitLogin());
     }
     
     // ---------- Login ----------

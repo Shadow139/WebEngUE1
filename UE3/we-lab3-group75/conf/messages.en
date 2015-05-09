@@ -47,3 +47,4 @@ registration.password = Password
 registration.usernameMindLetters = The username has to have at least 4 and at most 8 characters.
 registration.passwordMindLetters = The password has to have at least 4 and at most 8 characters.
 registration.requiredHint = With "*" marked fields are mandatory
+registration.clickHereToLogin = Click here to login

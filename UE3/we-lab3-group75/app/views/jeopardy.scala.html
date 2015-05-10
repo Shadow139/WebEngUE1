@@ -1,4 +1,5 @@
 @(game : models.Game)
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
@@ -35,11 +36,11 @@
             <h2 id="gameinfoinfoheading" class="accessibility">@Messages("jeopardy.gameInformation")</h2>
             <section id="firstplayer" class="playerinfo leader" aria-labelledby="firstplayerheading">
                <h3 id="firstplayerheading" class="accessibility">@Messages("jeopardy.leadingPlayer")</h3>
-               <img class="avatar" src="@routes.Assets.at(game.getGame().getHuman().getAvatar().getImageFull())" alt="@Messages("jeopardy.player")-Avatar Black Widow" />
+               <img class="avatar" src="/assets/images/avatar/@game.getGame().getHuman().getAvatar().getImageHead()" alt="@Messages("jeopardy.player")-Avatar Black Widow" />
                <table>
                   <tr>
                      <th class="accessibility">@Messages("jeopardy.playerName")</th>
-                     <td class="playername">@game.getGame().getHuman().getAvatar().getName() (@Messages("jeopardy.you"))</td>
+                     <td class="playername">@game.getGame().getHuman().getAvatar().getName() (@Messages("jeopardy.you")) </td>
                   </tr>
                   <tr>
                      <th class="accessibility">@Messages("jeopardy.playerPoints")</th>
@@ -49,7 +50,7 @@
             </section>
             <section id="secondplayer" class="playerinfo" aria-labelledby="secondplayerheading">
                <h3 id="secondplayerheading" class="accessibility">@Messages("jeopardy.secondPlayer")</h3>
-               <img class="avatar" src="@routes.Assets.at(game.getGame().getMarvin().getAvatar().getImageHead())" alt="@Messages("jeopardy.player")-Avatar Deadpool" />
+               <img class="avatar" src="/assets/images/avatar/@game.getGame().getMarvin().getAvatar().getImageHead()" alt="@Messages("jeopardy.player")-Avatar Deadpool" />
                <table>
                   <tr>
                      <th class="accessibility">@Messages("jeopardy.playerName")</th>
@@ -82,7 +83,7 @@
 	            }
             }
             <p class="user-info">@game.getGame().getMarvin().getName() @Messages("jeopardy.chose") MARVIN CATEGORY NAME @Messages("jeopardy.for") € +1000 @Messages("jeopardy.gewahlt").</p>
-            <form id="questionform" action="question.xhtml" method="post">
+            <form id="questionform" action="@routes.Application.submitJeopardy" method="post">
                <fieldset>
                <legend class="accessibility">@Messages("jeopardy.questionSelection")</legend>
                <section class="questioncategory" aria-labelledby="tvheading">

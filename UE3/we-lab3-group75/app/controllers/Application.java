@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import play.cache.Cache;
 import at.ac.tuwien.big.we15.lab2.api.JeopardyGame;
 import play.*;
 import play.data.Form;
@@ -63,6 +64,7 @@ public class Application extends Controller {
     		user = users.get(0);
     		JeopardyGame jgame = gc.startGame(user.getUsername(), user.getAvatar());
     		Game game = new Game(jgame);
+    		Cache.set("game", game);
     		return ok(jeopardy.render(game));
     	}
     	return redirect(routes.Application.login());
@@ -75,10 +77,15 @@ public class Application extends Controller {
     }
     
     public static Result submitJeoprardy() {
-    	Form<Game> gameForm = Form.form(Game.class).bindFromRequest();
-    	Game game = gameForm.get();
+    	Form<Quiz> gameForm = Form.form(Quiz.class).bindFromRequest();
+    	Quiz quiz = gameForm.get();
+    	
+    	Game game = (Game) Cache.get("game");
+    	
+    	game.getGame().chooseHumanQuestion(quiz.getId());
+		Cache.set("game", game);
 
-    	return null;
+    	return ok(question.render());
     }
     
     //úngefähr 10 Bindestriche:-------------- Debugging -------------------
@@ -112,6 +119,8 @@ public class Application extends Controller {
 
 
     public static Result question(){
+    	Game game = (Game) Cache.get("game");
+
     	return ok(question.render());
     	
     }

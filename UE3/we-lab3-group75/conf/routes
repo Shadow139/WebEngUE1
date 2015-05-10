@@ -12,6 +12,8 @@ GET 	/Logout						controllers.Application.index()
 POST	/Jeopardy					controllers.Application.submitJeopardy()
 GET		/Jeopardy					controllers.Application.jeopardy()
 GET		/Question					controllers.Application.question()
+POST	/Question					controllers.Application.submitQuestion()
+
 
 # Debugging
 

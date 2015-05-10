@@ -8,6 +8,7 @@ import javax.persistence.Query;
 import play.cache.Cache;
 import at.ac.tuwien.big.we15.lab2.api.JeopardyGame;
 import play.*;
+import play.data.DynamicForm;
 import play.data.Form;
 import play.db.jpa.JPA;
 import play.mvc.*;
@@ -85,9 +86,13 @@ public class Application extends Controller {
     	Form<Quiz> qidForm = Form.form(Quiz.class);
     	Quiz quiz = qidForm.bindFromRequest().get();
     	
+		DynamicForm form = Form.form().bindFromRequest();
+		String playerAnswer = form.get("question_selection");
+		int choiceId = Integer.valueOf(playerAnswer);
+
     	Game game = (Game) Cache.get("game");
     	
-    	game.getGame().chooseHumanQuestion(quiz.getId());
+    	game.getGame().chooseHumanQuestion(choiceId);
 
 		Cache.set("game", game);
 

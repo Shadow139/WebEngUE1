@@ -38,29 +38,29 @@
             <h2 id="gameinfoinfoheading" class="accessibility">@Messages("jeopardy.gameInformation")</h2>
             <section id="firstplayer" class="playerinfo leader" aria-labelledby="firstplayerheading">
                <h3 id="firstplayerheading" class="accessibility">@Messages("jeopardy.leadingPlayer")</h3>
-               <img class="avatar" src="img/avatar/black-widow_head.png" alt="@Messages("jeopardy.player")-Avatar Black Widow" />
+               <img class="avatar" src="/assets/images/avatar/@game.getGame().getHuman().getAvatar().getImageHead()" alt="@Messages("jeopardy.player")-Avatar Black Widow" />
                <table>
                   <tr>
                      <th class="accessibility">@Messages("jeopardy.playerName")</th>
-                     <td class="playername">Black Widow (Du)</td>
+                     <td class="playername">@game.getGame().getHuman().getAvatar().getName() (@Messages("jeopardy.you"))</td>
                   </tr>
                   <tr>
                      <th class="accessibility">@Messages("jeopardy.playerPoints")</th>
-                     <td class="playerpoints">2000 €</td>
+                     <td class="playerpoints">@game.getGame().getHumanPlayer().getProfit() €</td>
                   </tr>
                </table>
             </section>
             <section id="secondplayer" class="playerinfo" aria-labelledby="secondplayerheading">
                <h3 id="secondplayerheading" class="accessibility">@Messages("jeopardy.secondPlayer")</h3>
-               <img class="avatar" src="img/avatar/deadpool_head.png" alt="@Messages("jeopardy.player")-Avatar Deadpool" />
+               <img class="avatar" src="/assets/images/avatar/@game.getGame().getMarvin().getAvatar().getImageHead()" alt="@Messages("jeopardy.player")-Avatar Deadpool" />
                <table>
                   <tr>
                      <th class="accessibility">@Messages("jeopardy.playerName")</th>
-                     <td class="playername">Deadpool</td>
+                     <td class="playername">@game.getGame().getMarvin().getAvatar().getName()</td>
                   </tr>
                   <tr>
                      <th class="accessibility">@Messages("jeopardy.playerPoints")</th>
-                     <td class="playerpoints">400 €</td>
+                     <td class="playerpoints">@game.getGame().getMarvinPlayer().getProfit() €</td>
                   </tr>
                </table>
             </section>
@@ -74,10 +74,9 @@
                <p id="questiontype">TUWIEN @Messages("jeopardy.for") € 300</p>
                <p id="questiontext">@currentQuestion.getText()</p>
                <ul id="answers">
-                  <li><input name="answers" id="answer_1" value="1" type="checkbox"/><label class="tile clickable" for="answer_1">Was ist IT Strategie?</label></li>
-                  <li><input name="answers" id="answer_2" value="2" type="checkbox"/><label class="tile clickable" for="answer_2">Was ist Web Engineering?</label></li>
-                  <li><input name="answers" id="answer_3" value="3" type="checkbox"/><label class="tile clickable" for="answer_3">Was ist Semistrukturierte Daten?</label></li>
-                  <li><input name="answers" id="answer_4" value="4" type="checkbox"/><label class="tile clickable" for="answer_4">Was ist Objektorientierte Modellierung?</label></li>
+               @for(a <- currentQuestion.getAllAnswers()){
+               		<li><input name="answers" id="answer_@a.getId()" value="@a.getId()" type="checkbox"/><label class="tile clickable" for="answer_@a.getId()">@a.getText()</label></li>
+               }
                </ul>
                <input id="timeleftvalue" type="hidden" value="100"/>
                <input class="greenlink formlink clickable" name="answer_submit" id="next" type="submit" value="@Messages("question.answer")" accesskey="s"/>

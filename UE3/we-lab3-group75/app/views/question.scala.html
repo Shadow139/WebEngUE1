@@ -25,12 +25,7 @@
       </header>
       
       <!-- Navigation -->
-		<nav role="navigation" aria-labelledby="navheading">
-			<h2 id="navheading" class="accessibility">Navigation</h2>
-			<ul>
-				<li><a class="orangelink navigationlink" id="logoutlink" title="@Messages("question.clickHereToLogout")" href="@routes.Application.login()" accesskey="l">@Messages("question.logout")</a></li>
-			</ul>
-		</nav>
+      @navigation(true)
       
       <!-- Content -->
       <div role="main"> 

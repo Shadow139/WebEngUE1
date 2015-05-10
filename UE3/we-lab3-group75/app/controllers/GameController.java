@@ -17,7 +17,11 @@ public class GameController{
 	
 	
 	public JeopardyGame startGame(String username, String avatarId){
-		JeopardyFactory factory = new PlayJeopardyFactory("data.en.json"); 
+		String language = System.getProperty("user.language");
+		JeopardyFactory factory = new PlayJeopardyFactory("data.de.json");
+		if (language.contains("english")||language.contains("en")||language.contains("English")||language.contains("En")||language.contains("EN")) {
+			factory = new PlayJeopardyFactory("data.en.json"); 
+		}
 		User user = new SimpleUser();
 		user.setName(username);
 		user.setAvatar(Avatar.getAvatar(avatarId));

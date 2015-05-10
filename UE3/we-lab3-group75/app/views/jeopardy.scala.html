@@ -25,7 +25,7 @@
 		<nav role="navigation" aria-labelledby="navheading">
 			<h2 id="navheading" class="accessibility">Navigation</h2>
 			<ul>
-				<li><a class="orangelink navigationlink" id="logoutlink" title="Klicke hier um dich abzumelden" href="#" accesskey="l">Abmelden</a></li>
+				<li><a class="orangelink navigationlink" id="logoutlink" title="Klicke hier um dich abzumelden" href="#" accesskey="l">@Messages("question.logout")</a></li>
 			</ul>
 		</nav>
       
@@ -82,7 +82,9 @@
 	            	<p class="user-info negative-change">Messages("jeopardy.opponentWrongAnswer") game.getGame().getMarvinPlayer().getLatestProfitChange() €</p>
 	            }
             }
-            <p class="user-info">@game.getGame().getMarvin().getName() @Messages("jeopardy.chose") MARVIN CATEGORY NAME @Messages("jeopardy.for") € +1000 @Messages("jeopardy.gewahlt").</p>
+            @if(game.getGame().getMarvinPlayer().getChosenQuestion() != null){
+            <p class="user-info">@game.getGame().getMarvin().getName() @Messages("jeopardy.chose") @game.getGame().getMarvinPlayer().getChosenQuestion().getCategory().getName() @Messages("jeopardy.for") € +1000 @Messages("jeopardy.gewahlt").</p>
+            }
             <form id="questionform" action="@routes.Application.submitJeopardy" method="post">
                <fieldset>
                <legend class="accessibility">@Messages("jeopardy.questionSelection")</legend>

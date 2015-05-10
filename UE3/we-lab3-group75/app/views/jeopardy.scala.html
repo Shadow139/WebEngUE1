@@ -39,7 +39,7 @@
                <table>
                   <tr>
                      <th class="accessibility">@Messages("jeopardy.playerName")</th>
-                     <td class="playername">@game.getGame().getHuman().getName() (@Messages("jeopardy.you"))</td>
+                     <td class="playername">@game.getGame().getHuman().getAvatar().getName() (@Messages("jeopardy.you"))</td>
                   </tr>
                   <tr>
                      <th class="accessibility">@Messages("jeopardy.playerPoints")</th>
@@ -53,7 +53,7 @@
                <table>
                   <tr>
                      <th class="accessibility">@Messages("jeopardy.playerName")</th>
-                     <td class="playername">Deadpool</td>
+                     <td class="playername">@game.getGame().getMarvin().getName()</td>
                   </tr>
                   <tr>
                      <th class="accessibility">@Messages("jeopardy.playerPoints")</th>
@@ -61,7 +61,7 @@
                   </tr>
                </table>
             </section>
-            <p id="round">@Messages("jeopardy.questions"): 2 / 10</p>
+            <p id="round">@Messages("jeopardy.questions"): @game.getGame().getHumanPlayer().getAnsweredQuestions().size() / 10</p>
          </section>
 
          <!-- Question -->
@@ -81,12 +81,12 @@
 	            	<p class="user-info negative-change">Messages("jeopardy.opponentWrongAnswer") game.getGame().getMarvinPlayer().getLatestProfitChange() €</p>
 	            }
             }
-            <p class="user-info">@game.getGame().getMarvin().getAvatar().getName() @Messages("jeopardy.chose") @game.getGame().getMarvinPlayer().getChosenQuestion().getCategory().getName() @Messages("jeopardy.for") € @game.getGame().getMarvinPlayer().getChosenQuestion().getValue()@Messages("jeopardy.gewahlt").</p>
+            <p class="user-info">@game.getGame().getMarvin().getName() @Messages("jeopardy.chose") MARVIN CATEGORY NAME @Messages("jeopardy.for") € +1000 @Messages("jeopardy.gewahlt").</p>
             <form id="questionform" action="question.xhtml" method="post">
                <fieldset>
                <legend class="accessibility">@Messages("jeopardy.questionSelection")</legend>
                <section class="questioncategory" aria-labelledby="tvheading">
-                  <h3 id="tvheading" class="tile category-title"><span class="accessibility">@Messages("jeopardy.category"): </span>TV</h3>
+                  <h3 id="tvheading" class="tile category-title"><span class="accessibility">@Messages("jeopardy.category"): </span>@game.getGame().getCategories().get(0).getName()</h3>
                   <ol class="category_questions">
                      <li><input name="question_selection" id="question_1" value="1" type="radio" disabled="disabled" /><label class="tile clickable" for="question_1">€ 100</label></li>
                      <li><input name="question_selection" id="question_2" value="2" type="radio"/><label class="tile clickable" for="question_2">€ 200</label></li>
@@ -95,8 +95,11 @@
                   </ol>
                </section>
                <section class="questioncategory" aria-labelledby="ssdheading">
-                  <h3 id="ssdheading" class="tile category-title"><span class="accessibility">@Messages("jeopardy.category"): </span>SSD</h3>
+                  <h3 id="ssdheading" class="tile category-title"><span class="accessibility">@Messages("jeopardy.category"): </span>@game.getGame().getCategories().get(1).getName()</h3>
                   <ol class="category_questions">
+                  @for(Question q : game.getGame().getCategories().get(1).getQuestions()){
+                  	<li><input name="question_selection" id="question_5" value="q.getId()" type="radio" /><label class="tile clickable" for="question_5">€ q.getValue()</label></li>
+                  }
                      <li><input name="question_selection" id="question_5" value="5" type="radio" /><label class="tile clickable" for="question_5">€ 100</label></li>
                      <li><input name="question_selection" id="question_6" value="6" type="radio" /><label class="tile clickable" for="question_6">€ 200</label></li>
                      <li><input name="question_selection" id="question_7" value="7" type="radio" /><label class="tile clickable" for="question_7">€ 500</label></li>
@@ -105,7 +108,7 @@
                   </ol>
                </section>
                <section class="questioncategory" aria-labelledby="webheading">
-                  <h3 id="webheading" class="tile category-title"><span class="accessibility">@Messages("jeopardy.category"): </span>Web</h3>
+                  <h3 id="webheading" class="tile category-title"><span class="accessibility">@Messages("jeopardy.category"): </span>@game.getGame().getCategories().get(2).getName()</h3>
                   <ol class="category_questions">
                      <li><input name="question_selection" id="question_10" value="10" type="radio" /><label class="tile clickable" for="question_10">€ 100</label></li>
                      <li><input name="question_selection" id="question_11" value="11" type="radio" /><label class="tile clickable" for="question_11">€ 200</label></li>
@@ -115,7 +118,7 @@
                   </ol>
                </section>
                <section class="questioncategory" aria-labelledby="sportheading">
-                  <h3 id="sportheading" class="tile category-title"><span class="accessibility">@Messages("jeopardy.category"): </span>Sport</h3>
+                  <h3 id="sportheading" class="tile category-title"><span class="accessibility">@Messages("jeopardy.category"): </span>@game.getGame().getCategories().get(3).getName()</h3>
                   <ol class="category_questions">
                      <li><input name="question_selection" id="question_15" value="15" type="radio" /><label class="tile clickable" for="question_15">€ 100</label></li>
                      <li><input name="question_selection" id="question_16" value="16" type="radio" disabled="disabled" /><label class="tile clickable" for="question_16">€ 200</label></li>
@@ -124,7 +127,7 @@
                   </ol>
                </section>
                <section class="questioncategory" aria-labelledby="tuwienheading">
-                  <h3 id="tuwienheading" class="tile category-title"><span class="accessibility">@Messages("jeopardy.category"): </span>TUWIEN</h3>
+                  <h3 id="tuwienheading" class="tile category-title"><span class="accessibility">@Messages("jeopardy.category"): </span>@game.getGame().getCategories().get(4).getName()</h3>
                   <ol class="category_questions">
                      <li><input name="question_selection" id="question_19" value="19" type="radio" /><label class="tile clickable" for="question_19">€ 100</label></li>
                      <li><input name="question_selection" id="question_20" value="20" type="radio" /><label class="tile clickable" for="question_20">€ 200</label></li>

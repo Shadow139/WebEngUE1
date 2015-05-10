@@ -1,0 +1,11 @@
+@(loggedIn: Boolean)
+<nav role="navigation" aria-labelledby="navheading">
+	<h2 id="navheading" class="accessibility">Navigation</h2>
+	<ul>
+		@if(loggedIn) {
+			<li><a class="orangelink navigationlink" id="logoutlink" title="@Messages("question.clickHereToLogout")" href="@routes.Application.login()" accesskey="l">@Messages("question.logout")</a></li>
+		} else {
+			<li><a class="orangelink navigationlink" id="loginlink" title="@Messages("registration.clickHereToLogin")" href="@routes.Application.login()" accesskey="l">@Messages("registration.login")</a></li>
+		}
+	</ul>
+</nav>

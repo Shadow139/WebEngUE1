@@ -24,12 +24,7 @@
       </header>
       
       <!-- Navigation -->
-		<nav role="navigation" aria-labelledby="navheading">
-			<h2 id="navheading" class="accessibility">Navigation</h2>
-			<ul>
-				<li><a class="orangelink navigationlink" id="loginlink" title="@Messages("registration.clickHereToLogin")" href="@routes.Application.login()" accesskey="l">@Messages("registration.login")</a></li>
-			</ul>
-		</nav>
+      @navigation(false)
       
       <!-- Content -->
       <div id="register" role="main"> 

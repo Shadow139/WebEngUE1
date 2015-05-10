@@ -62,6 +62,7 @@ public class Application extends Controller {
     	List<User> users = query.getResultList();
     	if (users.size() == 1) {
     		GameController gc = new GameController();
+    		Cache.set("gc", gc);
     		user = users.get(0);
     		JeopardyGame jgame = gc.startGame(user.getUsername(), user.getAvatar());
     		Game game = new Game(jgame);
@@ -156,9 +157,13 @@ public class Application extends Controller {
     }
 
     public static Result newGame(){
-    	Query query =  JPA.em().createQuery("From User");
-    	List<User> userList = query.getResultList();
-    	return ok(listUsers.render(userList));
+    	GameController gc  = (GameController) Cache.get("gc");
+    	JeopardyGame jGame = gc.createGame();
+    	Game game = new Game(jGame);
+    	
+		Cache.set("game", game);
+    	
+    	return redirect(routes.Application.jeopardy());
     }
 
 }

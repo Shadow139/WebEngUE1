@@ -14,6 +14,7 @@ GET		/Jeopardy					controllers.Application.jeopardy()
 GET		/Question					controllers.Application.question()
 POST	/Question					controllers.Application.submitQuestion()
 GET		/Winner						controllers.Application.winner()
+POST	/Winner						controllers.Application.newGame()
 
 
 # Debugging

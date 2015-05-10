@@ -66,7 +66,7 @@ public class Application extends Controller {
     		Game game = new Game(jgame);
     		Cache.set("game", game);
     		//return ok(jeopardy.render(game));
-    		return redirect(routes.Application.jeopardy());
+    		return redirect(routes.Application.jeopardy(game));
 
     	}
     	return redirect(routes.Application.login());
@@ -74,9 +74,8 @@ public class Application extends Controller {
     
     // ---------- Jeopary ----------
     
-    public static Result jeopardy() {
+    public static Result jeopardy(Game game) {
     	Form<Quiz> qidForm = Form.form(Quiz.class);
-    	Game game = (Game) Cache.get("game");
     	return ok(jeopardy.render(game, qidForm));
     }
     
@@ -86,7 +85,7 @@ public class Application extends Controller {
     	
     	Game game = (Game) Cache.get("game");
     	
-    	game.getGame().chooseHumanQuestion(5);
+    	game.getGame().chooseHumanQuestion(quiz.getId());
 		Cache.set("game", game);
 
     	return ok(question.render(game));

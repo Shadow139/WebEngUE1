@@ -70,8 +70,8 @@
          <!-- Question -->
          <section id="question-selection" aria-labelledby="questionheading">
             <h2 id="questionheading" class="black accessibility">Jeopardy</h2>
-            @if(game.getGame().getMarvinPlayer().getLatestProfitChange() != null){
-	            @if(game.getGame().getMarvinPlayer().getLatestProfitChange()<0){
+            @if(game.getGame().getHumanPlayer().getLatestProfitChange() != null){
+	            @if(game.getGame().getHumanPlayer().getLatestProfitChange()>0){
 	            	<p class="user-info positive-change"> @Messages("jeopardy.playerCorrectAnswer") @game.getGame().getHumanPlayer().getLatestProfitChange() €</p>
 	            }else{ 
 	            	<p class="user-info negative-change"> @Messages("jeopardy.playerWrongAnswer") @game.getGame().getHumanPlayer().getLatestProfitChange() €</p>

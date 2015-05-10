@@ -155,5 +155,10 @@ public class Application extends Controller {
     	return ok(listUsers.render(userList));
     }
 
+    public static Result newGame(){
+    	Query query =  JPA.em().createQuery("From User");
+    	List<User> userList = query.getResultList();
+    	return ok(listUsers.render(userList));
+    }
 
 }

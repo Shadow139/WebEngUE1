@@ -40,7 +40,21 @@ public class Application extends Controller {
     		return redirect(routes.Application.registration());
     	}
     	if(user != null){
-    		JPA.em().persist(user);
+    		Query query =   JPA.em().createQuery("SELECT x FROM User x WHERE x.username = :usr ")
+    		.setParameter("usr",user.getUsername());
+    		List<User> users = query.getResultList();
+    		boolean addUser = true;
+    		for (User u : users) {
+    			if (user.getUsername().equals(u.getUsername())) {
+    				addUser = false;
+    			}
+    		}
+    		if (addUser) {
+    			JPA.em().persist(user);
+    		}
+    		else {
+    			return redirect(routes.Application.registration());
+    		}
     	}
 		return redirect(routes.Application.submitLogin());
     }
@@ -84,20 +98,28 @@ public class Application extends Controller {
     }
     
     public static Result submitJeopardy() {
-    	Form<Quiz> qidForm = Form.form(Quiz.class);
-    	Quiz quiz = qidForm.bindFromRequest().get();
-    	
-		DynamicForm form = Form.form().bindFromRequest();
-		String playerAnswer = form.get("question_selection");
-		int choiceId = Integer.valueOf(playerAnswer);
-
-    	Game game = (Game) Cache.get("game");
-    	
-    	game.getGame().chooseHumanQuestion(choiceId);
-
-		Cache.set("game", game);
-
-    	return redirect(routes.Application.question());
+    	try {
+	    	DynamicForm form = Form.form().bindFromRequest();
+	    	if (form == null) {
+	    		return redirect(routes.Application.jeopardy());
+	    	}
+			String playerAnswer = form.get("question_selection");
+			if (playerAnswer == null) {
+				return redirect(routes.Application.jeopardy());
+			}
+			int choiceId = Integer.valueOf(playerAnswer);
+	
+	    	Game game = (Game) Cache.get("game");
+	    	
+	    	game.getGame().chooseHumanQuestion(choiceId);
+	
+			Cache.set("game", game);
+	
+	    	return redirect(routes.Application.question());
+    	}
+    	catch (Exception e) {
+    		return redirect(routes.Application.jeopardy());
+    	}
     }
     //-------------------- Answer -------------------------
     
@@ -109,18 +131,23 @@ public class Application extends Controller {
     }
     
     public static Result submitQuestion() {
-    	Form<Answer> answerForm = Form.form(Answer.class);
-    	Answer answer = answerForm.bindFromRequest().get();
-    	
-    	Game game = (Game) Cache.get("game");
-    	
-    	game.getGame().answerHumanQuestion(answer.getAnswers());
-    	if(game.getGame().isGameOver()){
-    		return redirect(routes.Application.winner());
+    	try {
+	    	Form<Answer> answerForm = Form.form(Answer.class);
+	    	Answer answer = answerForm.bindFromRequest().get();
+	    	
+	    	Game game = (Game) Cache.get("game");
+	    	
+	    	game.getGame().answerHumanQuestion(answer.getAnswers());
+	    	if(game.getGame().isGameOver()){
+	    		return redirect(routes.Application.winner());
+	    	}
+			Cache.set("game", game);
+	
+	    	return redirect(routes.Application.jeopardy());
     	}
-		Cache.set("game", game);
-
-    	return redirect(routes.Application.jeopardy());
+    	catch (Exception e) {
+    		return redirect(routes.Application.question());
+    	}
     }
     
     public static Result winner(){

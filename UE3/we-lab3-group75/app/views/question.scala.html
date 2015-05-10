@@ -11,8 +11,8 @@
         <title>Business Informatics Group Jeopardy! - @Messages("question.answerSelection")</title>
         <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/base.css")" />
         <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/screen.css")" />
-        <script src="js/jquery.js" type="text/javascript"></script>
-        <script src="js/framework.js" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jQuery.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/framework.js")" type="text/javascript"></script>
     </head>
     <body id="question-page">
       <a class="accessibility" href="#questions">@Messages("question.jumpToQuestionSelection")</a>
@@ -27,7 +27,7 @@
 		<nav role="navigation" aria-labelledby="navheading">
 			<h2 id="navheading" class="accessibility">Navigation</h2>
 			<ul>
-				<li><a class="orangelink navigationlink" id="logoutlink" title="@Messages("question.clickHereToLogout")" href="login.xhtml" accesskey="l">@Messages("question.logout")</a></li>
+				<li><a class="orangelink navigationlink" id="logoutlink" title="@Messages("question.clickHereToLogout")" href="@routes.Application.login()" accesskey="l">@Messages("question.logout")</a></li>
 			</ul>
 		</nav>
       
@@ -64,13 +64,13 @@
                   </tr>
                </table>
             </section>
-            <p id="round">Frage: 3 / 10</p>
+            <p id="round">@Messages("jeopardy.playerPoints"): 3 / 10</p>
          </section>
             
       <!-- Question -->
       <section id="question" aria-labelledby="questionheading">
             <form id="questionform" action="jeopardy.xhtml" method="get">
-               <h2 id="questionheading" class="accessibility">Frage</h2>
+               <h2 id="questionheading" class="accessibility">@Messages("question.question")</h2>
                <p id="questiontype">TUWIEN @Messages("jeopardy.for") € 300</p>
                <p id="questiontext">@currentQuestion.getText()</p>
                <ul id="answers">

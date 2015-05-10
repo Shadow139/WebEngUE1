@@ -35,7 +35,7 @@
             <h2 id="gameinfoinfoheading" class="accessibility">@Messages("jeopardy.gameInformation")</h2>
             <section id="firstplayer" class="playerinfo leader" aria-labelledby="firstplayerheading">
                <h3 id="firstplayerheading" class="accessibility">@Messages("jeopardy.leadingPlayer")</h3>
-               <img class="avatar" src="img/avatar/black-widow_head.png" alt="@Messages("jeopardy.player")-Avatar Black Widow" />
+               <img class="avatar" src="@routes.Assets.at(game.getGame().getHuman().getAvatar().getImageFull())" alt="@Messages("jeopardy.player")-Avatar Black Widow" />
                <table>
                   <tr>
                      <th class="accessibility">@Messages("jeopardy.playerName")</th>
@@ -49,7 +49,7 @@
             </section>
             <section id="secondplayer" class="playerinfo" aria-labelledby="secondplayerheading">
                <h3 id="secondplayerheading" class="accessibility">@Messages("jeopardy.secondPlayer")</h3>
-               <img class="avatar" src="img/avatar/deadpool_head.png" alt="@Messages("jeopardy.player")-Avatar Deadpool" />
+               <img class="avatar" src="@routes.Assets.at(game.getGame().getMarvin().getAvatar().getImageHead())" alt="@Messages("jeopardy.player")-Avatar Deadpool" />
                <table>
                   <tr>
                      <th class="accessibility">@Messages("jeopardy.playerName")</th>

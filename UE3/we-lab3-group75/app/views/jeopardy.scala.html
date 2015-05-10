@@ -1,4 +1,4 @@
-@(game : models.Game)
+@(game : models.Game, qidForm : play.data.Form[models.Quiz])
 @import helper._
 
 
@@ -87,7 +87,7 @@
             @if(game.getGame().getMarvinPlayer().getChosenQuestion() != null){
             <p class="user-info">@game.getGame().getMarvin().getName() @Messages("jeopardy.chose") @game.getGame().getMarvinPlayer().getChosenQuestion().getCategory().getName() @Messages("jeopardy.for") € +1000 @Messages("jeopardy.gewahlt").</p>
             }
-              @form(routes.Application.submitJeoprardy()) {
+              @form(routes.Application.submitJeopardy()) {
                <fieldset>
                <legend class="accessibility">@Messages("jeopardy.questionSelection")</legend>
                <section class="questioncategory" aria-labelledby="tvheading">

@@ -82,17 +82,37 @@ public class Application extends Controller {
     }
     
     public static Result submitJeopardy() {
-    	Form<Quiz> qidForm = Form.form(Quiz.class).bindFromRequest();
-    	Quiz quiz = qidForm.get();
+    	Form<Quiz> qidForm = Form.form(Quiz.class);
+    	Quiz quiz = qidForm.bindFromRequest().get();
     	
     	Game game = (Game) Cache.get("game");
-    	
+
     	game.getGame().chooseHumanQuestion(4);
+
 		Cache.set("game", game);
+
+    	return redirect(routes.Application.question());
+    }
+    //-------------------- Answer -------------------------
+    
+    public static Result question() {
+    	Form<Answer> answerForm = Form.form(Answer.class);
+    	Game game = (Game) Cache.get("game");
 
     	return ok(question.render(game));
     }
     
+    public static Result submitQuestion() {
+    	Form<Answer> answerForm = Form.form(Answer.class);
+    	Answer answer = answerForm.bindFromRequest().get();
+    	
+    	Game game = (Game) Cache.get("game");
+    	
+    	game.getGame().chooseHumanQuestion(5);
+		Cache.set("game", game);
+
+    	return ok(question.render(game));
+    }
     //úngefähr 10 Bindestriche:-------------- Debugging -------------------
     @play.db.jpa.Transactional
     public static Result newUser(){
@@ -123,10 +143,4 @@ public class Application extends Controller {
     }
 
 
-    public static Result question(){
-    	Game game = (Game) Cache.get("game");
-
-    	return ok(question.render(game));
-    	
-    }
 }

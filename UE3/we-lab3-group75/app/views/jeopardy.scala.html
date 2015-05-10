@@ -64,7 +64,7 @@
                   </tr>
                </table>
             </section>
-            <p id="round">@Messages("jeopardy.questions"): @game.getGame().getHumanPlayer().getAnsweredQuestions().size() / 10</p>
+            <p id="round">@Messages("jeopardy.questions"): @game.getGame().getHumanPlayer().getAnsweredQuestions().size()+@game.getGame().getMarvinPlayer().getAnsweredQuestions().size() / 10</p>
          </section>
 
          <!-- Question -->

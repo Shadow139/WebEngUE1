@@ -87,7 +87,7 @@ public class Application extends Controller {
     	
     	Game game = (Game) Cache.get("game");
     	
-    	game.getGame().chooseHumanQuestion(quiz.getId());
+    	game.getGame().chooseHumanQuestion(4);
 		Cache.set("game", game);
 
     	return ok(question.render(game));

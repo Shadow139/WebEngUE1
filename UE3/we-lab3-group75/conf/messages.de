@@ -27,7 +27,8 @@ question.jumpToQuestionSelection = Zur Fragenauswahl springen
 question.clickHereToLogout = Klicke hier um dich abzumelden
 question.logout = Abmelden
 question.timeLeft = Verbleibende Zeit
-question.answer = antworten
+question.answer = Antworten
+question.question = Frage
 
 registration.register = Registrieren
 registration.jumpToRegistration = Zur Registrierung springen

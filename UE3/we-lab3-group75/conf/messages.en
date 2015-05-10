@@ -27,7 +27,8 @@ question.jumpToQuestionSelection = Jump to Question Selection
 question.clickHereToLogout = Click here to logout
 question.logout = Logout
 question.timeLeft = Time left
-question.answer = answer
+question.answer = Answer
+question.question = Question
 
 registration.register = Register
 registration.jumpToRegistration = Jump to Registration

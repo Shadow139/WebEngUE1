@@ -1,4 +1,5 @@
-@(game : models.Game)
+@(game : models.Game,  answerForm : play.data.Form[models.Answer])
+@import helper._
 
 @currentQuestion = @{ game.getGame().getHumanPlayer().getChosenQuestion() }
 
@@ -69,7 +70,8 @@
             
       <!-- Question -->
       <section id="question" aria-labelledby="questionheading">
-            <form id="questionform" action="jeopardy.xhtml" method="get">
+            <!-- <form id="questionform" action="@routes.Application.submitQuestion()" method="get"> -->
+            @form(routes.Application.submitQuestion()){
                <h2 id="questionheading" class="accessibility">@Messages("question.question")</h2>
                <p id="questiontype">TUWIEN @Messages("jeopardy.for") € 300</p>
                <p id="questiontext">@currentQuestion.getText()</p>
@@ -80,7 +82,8 @@
                </ul>
                <input id="timeleftvalue" type="hidden" value="100"/>
                <input class="greenlink formlink clickable" name="answer_submit" id="next" type="submit" value="@Messages("question.answer")" accesskey="s"/>
-            </form>
+            <!-- </form> -->
+            }
          </section>
             
          <section id="timer" aria-labelledby="timerheading">

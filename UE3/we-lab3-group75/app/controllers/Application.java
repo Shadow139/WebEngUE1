@@ -99,7 +99,7 @@ public class Application extends Controller {
     	Form<Answer> answerForm = Form.form(Answer.class);
     	Game game = (Game) Cache.get("game");
 
-    	return ok(question.render(game));
+    	return ok(question.render(game,answerForm));
     }
     
     public static Result submitQuestion() {
@@ -108,9 +108,11 @@ public class Application extends Controller {
     	
     	Game game = (Game) Cache.get("game");
     	
+    	game.getGame().answerHumanQuestion(answer.getAnswers());
+    	
 		Cache.set("game", game);
 
-    	return ok(question.render(game));
+    	return redirect(routes.Application.jeopardy());
     }
     //úngefähr 10 Bindestriche:-------------- Debugging -------------------
     @play.db.jpa.Transactional

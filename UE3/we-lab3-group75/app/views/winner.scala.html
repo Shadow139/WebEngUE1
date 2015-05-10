@@ -29,36 +29,36 @@
             <h2 id="winnerinfoheading" class="accessibility">@Messages("winner.winnerInformation")</h2>
             @changes(game)
             <section class="playerinfo leader" aria-labelledby="winnerannouncement">
-               <h3 id="winnerannouncement">@Messages("winner.winner"): @game.getGame().getWinner().getUser().getAvatar().getName()</h3>
-               <img class="avatar" src="/assets/images/avatar/@game.getGame().getWinner().getUser().getAvatar().getImageHead()" alt="Spieler-Avatar @game.getGame().getWinner().getUser().getAvatar().getName()" />
+               <h3 id="winnerannouncement">@Messages("jeopardy.playerName"): @game.getGame().getWinner().getUser().getAvatar().getName()</h3>
+               <img class="avatar" src="/assets/images/avatar/@game.getGame().getWinner().getUser().getAvatar().getImageHead()" alt="@Messages("jeopardy.player")-Avatar @game.getGame().getWinner().getUser().getAvatar().getName()" />
                <table>
                   <tr>
-                     <th class="accessibility">Spielername</th>
+                     <th class="accessibility">@Messages("winner.winner")</th>
                      <td class="playername">@game.getGame().getWinner().getUser().getAvatar().getName()</td>
                   </tr>
                   <tr>
-                     <th class="accessibility">Spielerpunkte</th>
+                     <th class="accessibility">@Messages("jeopardy.playerPoints")</th>
                      <td class="playerpoints">€ @game.getGame().getWinner().getProfit()</td>
                   </tr>
                </table>
             </section>
             <section class="playerinfo" aria-labelledby="loserheading">
-               <h3 id="loserheading" class="accessibility">Verlierer: @game.getGame().getLoser().getUser().getAvatar().getName()</h3>
-               <img class="avatar" src="/assets/images/avatar/@game.getGame().getLoser().getUser().getAvatar().getImageHead()" alt="Spieler-Avatar @game.getGame().getLoser().getUser().getAvatar().getName()" />
+               <h3 id="loserheading" class="accessibility">@Messages("winner.loser"): @game.getGame().getLoser().getUser().getAvatar().getName()</h3>
+               <img class="avatar" src="/assets/images/avatar/@game.getGame().getLoser().getUser().getAvatar().getImageHead()" alt="@Messages("jeopardy.player")-Avatar @game.getGame().getLoser().getUser().getAvatar().getName()" />
                <table>
                   <tr>
-                     <th class="accessibility">Spielername</th>
+                     <th class="accessibility">@Messages("jeopardy.playerName")</th>
                      <td class="playername">@game.getGame().getLoser().getUser().getAvatar().getName()</td>
                   </tr>
                   <tr>
-                     <th class="accessibility">Spielerpunkte</th>
+                     <th class="accessibility">@Messages("jeopardy.playerPoints")</th>
                      <td class="playerpoints">€ @game.getGame().getLoser().getProfit()</td>
                   </tr>
                </table>
             </section>
          </section>
          <section id="newgame" aria-labelledby="newgameheading">
-             <h2 id="newgameheading" class="accessibility">Neues Spiel</h2>
+             <h2 id="newgameheading" class="accessibility">@Messages("winner.newGame")</h2>
          	<form action="@routes.Application.newGame()" method="post">
                	<input class="clickable orangelink contentlink" id="new_game" type="submit" name="restart" value="Neues Spiel" />
             </form>

@@ -60,4 +60,6 @@ authentication.toRegistration = Zur Registrierung
 winner.jumpToWinnerPage = Zur Gewinnanzeige springen
 winner.winnerInformation = Gewinnerinformationen
 winner.winner = Winner
+winner.loser = Loser
+winner.newGame = Neues Spiel
 

@@ -87,7 +87,7 @@ public class Application extends Controller {
     	
     	Game game = (Game) Cache.get("game");
     	
-    	game.getGame().chooseHumanQuestion(5);
+    	game.getGame().chooseHumanQuestion(quiz.getId());
 		Cache.set("game", game);
 
     	return redirect(routes.Application.question());
@@ -107,7 +107,6 @@ public class Application extends Controller {
     	
     	Game game = (Game) Cache.get("game");
     	
-    	game.getGame().chooseHumanQuestion(5);
 		Cache.set("game", game);
 
     	return ok(question.render(game));

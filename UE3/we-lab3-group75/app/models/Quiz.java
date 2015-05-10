@@ -2,7 +2,7 @@ package models;
 
 public class Quiz {
 
-	private int question_selection;
+	private int question_selection = 10;
 
 	public int getId() {
 		return question_selection;

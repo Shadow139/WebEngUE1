@@ -25,12 +25,7 @@
       </header>
       
       <!-- Navigation -->
-		<nav role="navigation" aria-labelledby="navheading">
-			<h2 id="navheading" class="accessibility">Navigation</h2>
-			<ul>
-				<li><a class="orangelink navigationlink" id="logoutlink" title="@Messages("question.clickHereToLogout")" href="@routes.Application.login()" accesskey="l">@Messages("question.logout")</a></li>
-			</ul>
-		</nav>
+      @navigation(true)
       
       <!-- Content -->
       <div role="main"> 
@@ -42,7 +37,7 @@
             <!-- <form id="questionform" action="@routes.Application.submitQuestion()" method="get"> -->
             @form(routes.Application.submitQuestion()){
                <h2 id="questionheading" class="accessibility">@Messages("question.question")</h2>
-               <p id="questiontype">TUWIEN @Messages("jeopardy.for") € 300</p>
+               <p id="questiontype">@currentQuestion.getCategory().getName() @Messages("jeopardy.for") € @currentQuestion.getValue()</p>
                <p id="questiontext">@currentQuestion.getText()</p>
                <ul id="answers">
                @for(a <- currentQuestion.getAllAnswers()){

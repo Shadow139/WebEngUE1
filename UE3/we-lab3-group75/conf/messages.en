@@ -56,3 +56,9 @@ authentication.jumpToLogin = Jump to Login
 authentication.klickToRegister = Klick here to register
 authentication.notRegistered = Not registered?
 authentication.toRegistration = Go to Registration page
+
+winner.jumpToWinnerPage = Jump to Winnerpage
+winner.winnerInformation = Winnerinformation
+winner.winner = Gewinner
+winner.loser = Verlierer
+winner.newGame = New Game

@@ -60,7 +60,7 @@
          <section id="newgame" aria-labelledby="newgameheading">
              <h2 id="newgameheading" class="accessibility">@Messages("winner.newGame")</h2>
          	<form action="@routes.Application.newGame()" method="post">
-               	<input class="clickable orangelink contentlink" id="new_game" type="submit" name="restart" value="Neues Spiel" />
+               	<input class="clickable orangelink contentlink" id="new_game" type="submit" name="restart" value="@Messages("winner.newGame")" />
             </form>
          </section>
       </div>

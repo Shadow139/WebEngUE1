@@ -86,14 +86,9 @@ public class Application extends Controller {
     	Quiz quiz = qidForm.bindFromRequest().get();
     	
     	Game game = (Game) Cache.get("game");
-<<<<<<< HEAD
     	
     	game.getGame().chooseHumanQuestion(quiz.getId());
-=======
 
-    	game.getGame().chooseHumanQuestion(4);
-
->>>>>>> 41f7c7eedcbc7bf84f236cf74ded1d34cdcb0f64
 		Cache.set("game", game);
 
     	return redirect(routes.Application.question());

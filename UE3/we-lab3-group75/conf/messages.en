@@ -30,7 +30,7 @@ question.timeLeft = Time left
 question.answer = answer
 
 registration.register = Register
-registration.jumpToRegistration = jump to Registration
+registration.jumpToRegistration = Jump to Registration
 registration.login = Login
 registration.registration = Registration
 registration.personalData = Personal Data
@@ -48,3 +48,8 @@ registration.usernameMindLetters = The username has to have at least 4 and at mo
 registration.passwordMindLetters = The password has to have at least 4 and at most 8 characters.
 registration.requiredHint = With "*" marked fields are mandatory
 registration.clickHereToLogin = Click here to login
+
+authentication.jumpToLogin = Jump to Login
+authentication.klickToRegister = Klick here to register
+authentication.notRegistered = Not registered?
+authentication.toRegistration = Go to Registration page

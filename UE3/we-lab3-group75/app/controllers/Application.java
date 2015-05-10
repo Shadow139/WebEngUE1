@@ -114,10 +114,17 @@ public class Application extends Controller {
     	Game game = (Game) Cache.get("game");
     	
     	game.getGame().answerHumanQuestion(answer.getAnswers());
-    	
+    	if(game.getGame().isGameOver()){
+    		return redirect(routes.Application.winner());
+    	}
 		Cache.set("game", game);
 
     	return redirect(routes.Application.jeopardy());
+    }
+    
+    public static Result winner(){
+    	Game game = (Game) Cache.get("game");
+    	return ok(winner.render(game));
     }
     //úngefähr 10 Bindestriche:-------------- Debugging -------------------
     @play.db.jpa.Transactional

@@ -1,3 +1,4 @@
+@(game : models.Game)
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
@@ -7,8 +8,8 @@
         <title>Business Informatics Group Jeopardy! - Gewinnanzeige</title>
         <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/base.css")" />
         <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/screen.css")" />
-		  <script src="js/jquery.js" type="text/javascript"></script>
-        <script src="js/framework.js" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jquery.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/framework.js")" type="text/javascript"></script>
     </head>
     <body id="winner-page">
       <a class="accessibility" href="#winner">Zur Gewinnanzeige springen</a>
@@ -32,10 +33,10 @@
          <section id="gameinfo" aria-labelledby="winnerinfoheading">
             <h2 id="winnerinfoheading" class="accessibility">Gewinnerinformationen</h2>
             <p class="user-info positive-change">Du hast richtig geantwortet: +1000 €</p>
-            <p class="user-info negative-change">Deadpool hat falsch geantwortet: -500 €</p>
+            <p class="user-info negative-change">@game.getGame().getMarvin().getName() hat falsch geantwortet: -500 €</p>
             <section class="playerinfo leader" aria-labelledby="winnerannouncement">
                <h3 id="winnerannouncement">Gewinner: Black Widow</h3>
-               <img class="avatar" src="img/avatar/black-widow.png" alt="Spieler-Avatar Black Widow" />
+               <img class="avatar" src="/assets/images/avatar/@game.getGame().getHuman().getAvatar().getImageHead()" alt="Spieler-Avatar Black Widow" />
                <table>
                   <tr>
                      <th class="accessibility">Spielername</th>

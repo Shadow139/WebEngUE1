@@ -74,6 +74,13 @@ public class Application extends Controller {
     	return null;
     }
     
+    public static Result submitJeoprardy() {
+    	Form<Game> gameForm = Form.form(Game.class).bindFromRequest();
+    	Game game = gameForm.get();
+
+    	return null;
+    }
+    
     //úngefähr 10 Bindestriche:-------------- Debugging -------------------
     @play.db.jpa.Transactional
     public static Result newUser(){

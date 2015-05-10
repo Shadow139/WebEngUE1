@@ -9,7 +9,7 @@ POST	/Registration				controllers.Application.submitRegistration()
 GET 	/Login						controllers.Application.login()
 POST	/Login						controllers.Application.submitLogin()
 GET 	/Logout						controllers.Application.index()
-POST	/Jeopardy					controllers.Application.submitJeopardy()
+POST	/Jeopardy					controllers.Application.submitJeoprardy()
 GET		/Jeoprardy					controllers.Application.jeoprardy()
 GET		/Question					controllers.Application.question()
 

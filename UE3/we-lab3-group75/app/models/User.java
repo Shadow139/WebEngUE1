@@ -32,7 +32,8 @@ public class User {
 
 	@Column(length = 50)
 	private String birthdate;
-
+	
+	@Column(length = 50)
 	private String gender;
 
 	public String getUsername() {

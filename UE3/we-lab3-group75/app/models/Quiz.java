@@ -2,14 +2,14 @@ package models;
 
 public class Quiz {
 
-	private int id;
+	private int question_selection;
 
 	public int getId() {
-		return id;
+		return question_selection;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int question_selection) {
+		this.question_selection = question_selection;
 	}
 	
 	

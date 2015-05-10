@@ -82,10 +82,10 @@ public class Application extends Controller {
     	
     	Game game = (Game) Cache.get("game");
     	
-    	game.getGame().chooseHumanQuestion(quiz.getId());
+    	game.getGame().chooseHumanQuestion(5);
 		Cache.set("game", game);
 
-    	return ok(question.render());
+    	return ok(question.render(game));
     }
     
     //úngefähr 10 Bindestriche:-------------- Debugging -------------------
@@ -121,7 +121,7 @@ public class Application extends Controller {
     public static Result question(){
     	Game game = (Game) Cache.get("game");
 
-    	return ok(question.render());
+    	return ok(question.render(game));
     	
     }
     

@@ -1,4 +1,6 @@
 @(game : models.Game)
+@import helper._
+
 
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
@@ -83,14 +85,14 @@
 	            }
             }
             <p class="user-info">@game.getGame().getMarvin().getName() @Messages("jeopardy.chose") MARVIN CATEGORY NAME @Messages("jeopardy.for") € +1000 @Messages("jeopardy.gewahlt").</p>
-            <form id="questionform" action="@routes.Application.submitJeopardy" method="post">
+              @form(routes.Application.submitJeoprardy()) {
                <fieldset>
                <legend class="accessibility">@Messages("jeopardy.questionSelection")</legend>
                <section class="questioncategory" aria-labelledby="tvheading">
                   <h3 id="tvheading" class="tile category-title"><span class="accessibility">@Messages("jeopardy.category"): </span>@game.getGame().getCategories().get(0).getName()</h3>
                   <ol class="category_questions">
                   @for(q <- game.getGame().getCategories().get(0).getQuestions()){
-                  	<li><input name="question_selection" id="question_@q.getId()" value="@q.getId()" type="radio" @if(game.getGame().hasBeenChosen(q)){disabled="disabled"} /><label class="tile clickable" for="question_5">€ @q.getValue()</label></li>
+                  	<li><input name="question_selection" id="question_@q.getId()" value="@q.getId()" type="radio" @if(game.getGame().hasBeenChosen(q)){disabled="disabled"} /><label class="tile clickable" for="question_@q.getId()">€ @q.getValue()</label></li>
                   }
                   </ol>
                </section>
@@ -98,7 +100,7 @@
                   <h3 id="ssdheading" class="tile category-title"><span class="accessibility">@Messages("jeopardy.category"): </span>@game.getGame().getCategories().get(1).getName()</h3>
                   <ol class="category_questions">
                   @for(q <- game.getGame().getCategories().get(1).getQuestions()){
-                  	<li><input name="question_selection" id="question_@q.getId()" value="@q.getId()" type="radio" /><label class="tile clickable" for="question_@q.getId()">€ @q.getValue()</label></li>
+                  	<li><input name="question_selection" id="question_@q.getId()" value="@q.getId()" type="radio" @if(game.getGame().hasBeenChosen(q)){disabled="disabled"} /><label class="tile clickable" for="question_@q.getId()">€ @q.getValue()</label></li>
                   }
                   </ol>
                </section>
@@ -106,7 +108,7 @@
                   <h3 id="webheading" class="tile category-title"><span class="accessibility">@Messages("jeopardy.category"): </span>@game.getGame().getCategories().get(2).getName()</h3>
                   <ol class="category_questions">
                    @for(q <- game.getGame().getCategories().get(2).getQuestions()){
-                  	<li><input name="question_selection" id="question_@q.getId()" value="@q.getId()" type="radio" /><label class="tile clickable" for="question_@q.getId()">€ @q.getValue()</label></li>
+                  	<li><input name="question_selection" id="question_@q.getId()" value="@q.getId()" type="radio" @if(game.getGame().hasBeenChosen(q)){disabled="disabled"} /><label class="tile clickable" for="question_@q.getId()">€ @q.getValue()</label></li>
                   }
                   </ol>
                </section>
@@ -114,7 +116,7 @@
                   <h3 id="sportheading" class="tile category-title"><span class="accessibility">@Messages("jeopardy.category"): </span>@game.getGame().getCategories().get(3).getName()</h3>
                   <ol class="category_questions">
 				  @for(q <- game.getGame().getCategories().get(3).getQuestions()){
-                  	<li><input name="question_selection" id="question_@q.getId()" value="@q.getId()" type="radio" /><label class="tile clickable" for="question_@q.getId()">€ @q.getValue()</label></li>
+                  	<li><input name="question_selection" id="question_@q.getId()" value="@q.getId()" type="radio" @if(game.getGame().hasBeenChosen(q)){disabled="disabled"} /><label class="tile clickable" for="question_@q.getId()">€ @q.getValue()</label></li>
                   }
                   </ol>
                </section>
@@ -122,13 +124,13 @@
                   <h3 id="tuwienheading" class="tile category-title"><span class="accessibility">@Messages("jeopardy.category"): </span>@game.getGame().getCategories().get(4).getName()</h3>
                   <ol class="category_questions">
 				  @for(q <- game.getGame().getCategories().get(4).getQuestions()){
-                  	<li><input name="question_selection" id="question_@q.getId()" value="@q.getId()" type="radio" /><label class="tile clickable" for="question_@q.getId()">€ @q.getValue()</label></li>
+                  	<li><input name="question_selection" id="question_@q.getId()" value="@q.getId()" type="radio" @if(game.getGame().hasBeenChosen(q)){disabled="disabled"} /><label class="tile clickable" for="question_@q.getId()">€ @q.getValue()</label></li>
                   }
                   </ol>
                </section> 
                </fieldset>               
                <input class="greenlink formlink clickable" name="question_submit" id="next" type="submit" value="@Messages("jeopardy.choose")" accesskey="s" />
-            </form>
+            }
          </section>
          
          <section id="lastgame" aria-labelledby="lastgameheading">

@@ -1,0 +1,34 @@
+@(game : models.Game)
+
+<section id="gameinfo" aria-labelledby="gameinfoinfoheading">
+    <h2 id="gameinfoinfoheading" class="accessibility">@Messages("jeopardy.gameInformation")</h2>
+    <section id="firstplayer" class="playerinfo leader" aria-labelledby="firstplayerheading">
+        <h3 id="firstplayerheading" class="accessibility">@Messages("jeopardy.leadingPlayer")</h3>
+        <img class="avatar" src="/assets/images/avatar/@game.getGame().getHuman().getAvatar().getImageHead()" alt="@Messages("jeopardy.player")-Avatar @game.getGame().getHuman().getAvatar()" />
+        <table>
+            <tr>
+                <th class="accessibility">@Messages("jeopardy.playerName")</th>
+                <td class="playername">@game.getGame().getHuman().getAvatar().getName() (@Messages("jeopardy.you")) </td>
+            </tr>
+            <tr>
+                <th class="accessibility">@Messages("jeopardy.playerPoints")</th>
+                <td class="playerpoints">@game.getGame().getHumanPlayer().getProfit() €</td>
+            </tr>
+        </table>
+    </section>
+    <section id="secondplayer" class="playerinfo" aria-labelledby="secondplayerheading">
+        <h3 id="secondplayerheading" class="accessibility">@Messages("jeopardy.secondPlayer")</h3>
+        <img class="avatar" src="/assets/images/avatar/@game.getGame().getMarvin().getAvatar().getImageHead()" alt="@Messages("jeopardy.player")-Avatar @game.getGame().getMarvin().getName()" />
+        <table>
+            <tr>
+                <th class="accessibility">@Messages("jeopardy.playerName")</th>
+                <td class="playername">@game.getGame().getMarvin().getName()</td>
+            </tr>
+            <tr>
+                <th class="accessibility">@Messages("jeopardy.playerPoints")</th>
+                <td class="playerpoints">@game.getGame().getMarvinPlayer().getProfit() €</td>
+            </tr>
+        </table>
+    </section>
+    <p id="round">@Messages("jeopardy.questions"): @game.getGame().getHumanPlayer().getAnsweredQuestions().size()+@game.getGame().getMarvinPlayer().getAnsweredQuestions().size() / 10</p>
+</section>

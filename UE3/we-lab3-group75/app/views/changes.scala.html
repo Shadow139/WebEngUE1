@@ -1,0 +1,14 @@
+@(game : models.Game)
+
+@singlePlayerChange(player: at.ac.tuwien.big.we15.lab2.api.Player, name: String, locPrefix: String) = {
+    @if(player.getLatestProfitChange() != null) {
+        @if(player.getLatestProfitChange()>0) {
+            <p class="user-info positive-change"> @name @Messages("jeopardy."+locPrefix+"CorrectAnswer") @player.getLatestProfitChange() €</p>
+        } else {
+            <p class="user-info negative-change"> @name @Messages("jeopardy."+locPrefix+"WrongAnswer") @player.getLatestProfitChange() €</p>
+        }
+    }
+}
+
+@singlePlayerChange(game.getGame().getHumanPlayer(), "", "player")
+@singlePlayerChange(game.getGame().getMarvinPlayer(), game.getGame().getMarvin().getName(), "opponent")

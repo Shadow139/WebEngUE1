@@ -5,6 +5,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+
 import play.Logger;
 import play.db.jpa.JPA;
 
@@ -95,10 +98,7 @@ public class JeopardyDAO implements IGameDAO {
      */
     @Override
     public <T extends BaseEntity> T findEntity(Long id, Class<T> entityClazz) {
-        String queryStr = "from " + entityClazz.getName() +" where id = :"+id;
-        TypedQuery<T> query = em().createQuery(queryStr, entityClazz);
-
-        return (T) query.getSingleResult();
+    	return em().find(entityClazz, id);
         //throw new UnsupportedOperationException("Not yet implemented.");
     }
 
@@ -113,8 +113,8 @@ public class JeopardyDAO implements IGameDAO {
     @Override
     public <E extends BaseEntity> List<E> findEntities(Class<E> entityClazz) {
         // TODO: Implement Method
-    	
-        throw new UnsupportedOperationException("Not yet implemented.");
+    	Criteria c = ((Session) JPA.em().getDelegate()).createCriteria(entityClazz);
+        return c.list();
     }
 
     /**

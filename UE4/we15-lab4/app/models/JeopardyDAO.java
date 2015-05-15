@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import play.Logger;
 import play.db.jpa.JPA;
 
 /**
@@ -58,7 +59,12 @@ public class JeopardyDAO implements IGameDAO {
     @Override
     public void persist(BaseEntity entity) {
     	String username = ((JeopardyUser) entity).getName();
-    	if((findById(entity.getId()) == null) || getByUserName(username) == null){
+    	if(username == null){
+    		Logger.info("user null for some reason");
+    	}else{
+    		Logger.info("user NOT null for some reason");
+    	}
+    	if(getByUserName(username) == null){
     		em().persist(entity);
     	}else{
     		throw new UnsupportedOperationException("User already exists!");

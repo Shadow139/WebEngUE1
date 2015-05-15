@@ -57,8 +57,13 @@ public class JeopardyDAO implements IGameDAO {
      */
     @Override
     public void persist(BaseEntity entity) {
-        // TODO: Implement Method
-        throw new UnsupportedOperationException("Not yet implemented.");
+    	String username = ((JeopardyUser) entity).getName();
+    	if((findById(entity.getId()) == null) || getByUserName(username) == null){
+    		em().persist(entity);
+    	}else{
+    		throw new UnsupportedOperationException("User already exists!");
+    	}
+        
     }
 
 

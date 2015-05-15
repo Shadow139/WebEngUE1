@@ -86,7 +86,8 @@ public class JeopardyDAO implements IGameDAO {
     @Override
     public <T extends BaseEntity> T merge(T entity) {
         // TODO: Implement Method
-        throw new UnsupportedOperationException("Not yet implemented.");
+        //throw new UnsupportedOperationException("Not yet implemented.");
+    	return em().merge(entity);
     }
 
     /**

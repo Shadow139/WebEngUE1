@@ -95,11 +95,11 @@ public class JeopardyDAO implements IGameDAO {
      */
     @Override
     public <T extends BaseEntity> T findEntity(Long id, Class<T> entityClazz) {
-        String queryStr = "from * where id = :id";
-        TypedQuery<> query = em().createQuery(queryStr,
-        		entityClazz.getClass()).setParameter("id", id);
+        String queryStr = "from " + entityClazz.getName() +" where id = :"+id;
+        TypedQuery<T> query = em().createQuery(queryStr, entityClazz);
 
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return (T) query.getSingleResult();
+        //throw new UnsupportedOperationException("Not yet implemented.");
     }
 
 
@@ -113,6 +113,7 @@ public class JeopardyDAO implements IGameDAO {
     @Override
     public <E extends BaseEntity> List<E> findEntities(Class<E> entityClazz) {
         // TODO: Implement Method
+    	
         throw new UnsupportedOperationException("Not yet implemented.");
     }
 

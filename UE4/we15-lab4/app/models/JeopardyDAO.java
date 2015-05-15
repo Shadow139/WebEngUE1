@@ -95,7 +95,10 @@ public class JeopardyDAO implements IGameDAO {
      */
     @Override
     public <T extends BaseEntity> T findEntity(Long id, Class<T> entityClazz) {
-        // TODO: Implement Method
+        String queryStr = "from * where id = :id";
+        TypedQuery<> query = em().createQuery(queryStr,
+        		entityClazz.getClass()).setParameter("id", id);
+
         throw new UnsupportedOperationException("Not yet implemented.");
     }
 

@@ -4,13 +4,13 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Locale;
 
+import play.Logger;
 import models.Answer;
 import models.Category;
 import models.JeopardyDAO;
 import models.Question;
 
-import org.springframework.ui.Model;
-
+import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.sparql.vocabulary.FOAF;
 import com.hp.hpl.jena.vocabulary.RDF;
@@ -50,17 +50,20 @@ public class DBPediaDataInserter {
 				.addWhereClause(DBPediaOWL.director, director)  
 				.addFilterClause(RDFS.label, Locale.GERMAN)  
 				.addFilterClause(RDFS.label, Locale.ENGLISH);  // retrieve data from dbpedia         
-		Model timBurtonMovies = (Model) DBPediaService.loadStatements(movieQuery.toQueryString());  // get english and german movie names, e.g., for right choices 
+		Model timBurtonMovies = DBPediaService.loadStatements(movieQuery.toQueryString());  // get english and german movie names, e.g., for right choices 
 		List<String> englishTimBurtonMovieNames =     DBPediaService.getResourceNames((com.hp.hpl.jena.rdf.model.Model) timBurtonMovies, Locale.ENGLISH); 
 		List<String> germanTimBurtonMovieNames =     DBPediaService.getResourceNames((com.hp.hpl.jena.rdf.model.Model) timBurtonMovies, Locale.GERMAN);     // alter query to get movies without tim burton 
 		
 		movieQuery.removeWhereClause(DBPediaOWL.director, director); 
 		movieQuery.addMinusClause(DBPediaOWL.director, director);  // retrieve data from dbpedia         
 		
-		Model noTimBurtonMovies = (Model) DBPediaService.loadStatements(movieQuery.toQueryString());  // get english and german movie names, e.g., for wrong choices 
+		Model noTimBurtonMovies = DBPediaService.loadStatements(movieQuery.toQueryString());  // get english and german movie names, e.g., for wrong choices 
 		List<String> englishNoTimBurtonMovieNames =     DBPediaService.getResourceNames((com.hp.hpl.jena.rdf.model.Model) noTimBurtonMovies, Locale.ENGLISH); 
-		List<String> germanNoTimBurtonMovieNames =     DBPediaService.getResourceNames((com.hp.hpl.jena.rdf.model.Model) noTimBurtonMovies, Locale.GERMAN); 		
+		List<String> germanNoTimBurtonMovieNames =     DBPediaService.getResourceNames((com.hp.hpl.jena.rdf.model.Model) noTimBurtonMovies, Locale.GERMAN); 	
 		
+		Logger.info("size of englishNoTimBurtonMovieNames: " + englishNoTimBurtonMovieNames.size());
+		Logger.info("size of germanNoTimBurtonMovieNames: " + germanNoTimBurtonMovieNames.size());
+
 		Category category = new Category();
 		category.setNameDE("TIM BURTONS AlICE FMOCVAFLILEM FILME");
 		category.setNameEN("MOVIES");
@@ -75,10 +78,10 @@ public class DBPediaDataInserter {
 			rightChoice.setTextEN(englishTimBurtonMovieNames.get(i));
 			question.addRightAnswer(rightChoice);
 			
-			for(int j = 0; j < 3; j++){
+			for(int j = 0; j < 3; j++){ // Dieser Teil is noch Buggy wir müssen anschauen wie genau die answers geladen werden
 				Answer wrongChoice = new Answer();
-				wrongChoice.setTextDE(englishNoTimBurtonMovieNames.get(3*i + j));
-				wrongChoice.setTextEN(germanNoTimBurtonMovieNames.get(3*i + j));
+				wrongChoice.setTextDE(englishNoTimBurtonMovieNames.get(j));
+				wrongChoice.setTextEN(germanNoTimBurtonMovieNames.get(j));
 				question.addWrongAnswer(wrongChoice);
 			}
 			

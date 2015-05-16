@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
+import at.ac.tuwien.big.we.dbpedia.api.DBPediaService;
 import models.Category;
 import play.Application;
 import play.GlobalSettings;
@@ -10,6 +11,7 @@ import play.Logger;
 import play.Play;
 import play.db.jpa.JPA;
 import play.libs.F.Function0;
+import data.DBPediaDataInserter;
 import data.JSONDataInserter;
 
 public class Global extends GlobalSettings {
@@ -22,6 +24,7 @@ public class Global extends GlobalSettings {
 		String banane = null;
 		//banane.charAt(9);
 		List<Category> categories = JSONDataInserter.insertData(is);
+		DBPediaDataInserter.insertData();
 		Logger.info(categories.size() + " categories from json file '" + file + "' inserted.");
 	}
 	
@@ -45,5 +48,7 @@ public class Global extends GlobalSettings {
     public void onStop(Application app) {
         Logger.info("Application shutdown...");
     }
+    
+    
 
 }

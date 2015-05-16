@@ -1,5 +1,9 @@
 package controllers;
 
+import global.Global;
+
+import java.io.IOException;
+
 import models.JeopardyDAO;
 import models.JeopardyUser;
 import play.Logger;
@@ -29,6 +33,12 @@ public class Authentication extends Controller {
 		JeopardyUser user = obtainAuthenticatedQuizUser(loginForm);
 		if (user != null) {
 			Secured.addAuthentication(session(), user);
+			try {
+				Global.insertJSonData();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return redirect(routes.GameController.index());
 		} else {
 			loginForm.reject("authentication.unsuccessful");

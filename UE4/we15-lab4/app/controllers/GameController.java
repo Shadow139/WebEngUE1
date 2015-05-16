@@ -54,12 +54,7 @@ public class GameController extends Controller {
 			Collections.shuffle(allCategories);
 			allCategories = allCategories.subList(0, CATEGORY_LIMIT);
 		}
-		try {
-			Global.insertJSonData();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		Logger.info("Start game with " + allCategories.size() + " categories.");
 		JeopardyGame game = new JeopardyGame(user, allCategories);
 		cacheGame(game);

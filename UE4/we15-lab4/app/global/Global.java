@@ -1,3 +1,4 @@
+package global;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -18,6 +19,8 @@ public class Global extends GlobalSettings {
 		String file = Play.application().configuration().getString("questions.filePath");		
 		Logger.info("Data from: " + file);
 		InputStream is = Play.application().resourceAsStream(file);
+		String banane = null;
+		//banane.charAt(9);
 		List<Category> categories = JSONDataInserter.insertData(is);
 		Logger.info(categories.size() + " categories from json file '" + file + "' inserted.");
 	}

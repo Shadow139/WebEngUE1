@@ -61,7 +61,7 @@ public class JeopardyDAO implements IGameDAO {
      */
     @Override
     public void persist(BaseEntity entity) {
-    	String username = ((JeopardyUser) entity).getName();
+    	/*String username = ((JeopardyUser) entity).getName();
     	if(username == null){
     		Logger.info("user null for some reason");
     	}else{
@@ -71,7 +71,8 @@ public class JeopardyDAO implements IGameDAO {
     		em().persist(entity);
     	}else{
     		throw new UnsupportedOperationException("User already exists!");
-    	}
+    	}*/
+    	em().persist(entity);
         
     }
 
@@ -111,6 +112,7 @@ public class JeopardyDAO implements IGameDAO {
      * @param <E>
      * @return
      */
+    @SuppressWarnings("unchecked")
     @Override
     public <E extends BaseEntity> List<E> findEntities(Class<E> entityClazz) {
         // TODO: Implement Method

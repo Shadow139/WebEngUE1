@@ -1,5 +1,8 @@
 package controllers;
 
+import global.Global;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -50,6 +53,12 @@ public class GameController extends Controller {
 			// select 5 categories randomly (simple)
 			Collections.shuffle(allCategories);
 			allCategories = allCategories.subList(0, CATEGORY_LIMIT);
+		}
+		try {
+			Global.insertJSonData();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		Logger.info("Start game with " + allCategories.size() + " categories.");
 		JeopardyGame game = new JeopardyGame(user, allCategories);

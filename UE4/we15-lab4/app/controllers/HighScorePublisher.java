@@ -67,7 +67,7 @@ public class HighScorePublisher implements Runnable{
 		userType.setFirstName("John");
 		userType.setGender(GenderType.FEMALE);
 		userType.setLastName("John");
-		userType.setPassword("John");
+		userType.setPassword("");
 		userType.setPoints(0);
 		
 		return userType;
@@ -75,13 +75,10 @@ public class HighScorePublisher implements Runnable{
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-
 		try {
 
 			PublishHighScoreService service = new PublishHighScoreService();
-			PublishHighScoreEndpoint endpoint = service
-					.getPort(PublishHighScoreEndpoint.class);
+			PublishHighScoreEndpoint endpoint = service.getPort(PublishHighScoreEndpoint.class);
 			UserDataType j = new UserDataType();
 			
 			j.setWinner(winner);

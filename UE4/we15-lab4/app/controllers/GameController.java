@@ -6,11 +6,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import models.Category;
 import models.JeopardyDAO;
 import models.JeopardyGame;
 import models.JeopardyUser;
+import models.Player;
 import play.Logger;
 import play.cache.Cache;
 import play.data.DynamicForm;
@@ -155,8 +158,12 @@ public class GameController extends Controller {
 	@play.db.jpa.Transactional(readOnly = true)
 	public static Result gameOver() {
 		JeopardyGame game = cachedGame(request().username());
+		
 		if(game == null || !game.isGameOver())
 			return redirect(routes.GameController.playGame());
+		
+		ExecutorService executor = Executors.newFixedThreadPool(1);
+		executor.execute(new HighScorePublisher(game.getWinner(), game.getLoser()));
 		
 		Logger.info("[" + request().username() + "] Game over.");		
 		return ok(winner.render(game));

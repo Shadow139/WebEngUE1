@@ -8,6 +8,7 @@ import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.ws.WebServiceException;
 
+import play.Logger;
 import twitter.TwitterClient;
 import twitter.TwitterStatusMessage;
 import at.ac.tuwien.big.we.highscore.Failure;
@@ -107,13 +108,13 @@ public class HighScorePublisher implements Runnable{
 			request.setUserData(j);
 			
 			String uuid = endpoint.publishHighScore(request);
-			//TwitterClient.share(new TwitterStatusMessage(winnerName, uuid,new Date()));
+			Logger.info("Highscore publishing successfull, UUID: "+uuid);
+			TwitterClient.tweet(winner.getFirstName(), uuid);
 
 		} catch (Failure e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger.info("Failed to publishHighScore");
 		} catch (WebServiceException e) {
-			e.printStackTrace();
+			Logger.info("Failed to publishHighScore");
 		}
 	}
 }

@@ -29,4 +29,13 @@ public class TwitterClient implements ITwitterClient {
 				+ "].");
 	}
 
+	public static void tweet(String name, String uuid){
+		try {
+			new TwitterClient().publishUuid(new TwitterStatusMessage(name, uuid, new Date()));
+			Logger.info("Tweeting success!");
+		} catch (Exception e) {
+			Logger.info("Could not tweet. Sad Face.");
+		}
+		
+	}
 }

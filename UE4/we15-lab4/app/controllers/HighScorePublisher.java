@@ -34,26 +34,44 @@ public class HighScorePublisher implements Runnable{
 	
 	private UserType convertToUserType(Player player){
 		UserType userType = new UserType();
-		/*
+		GregorianCalendar c = new GregorianCalendar();
+		XMLGregorianCalendar date2 = null;
+
 		try{
-			GregorianCalendar c = new GregorianCalendar();
 			c.setTime(player.getUser().getBirthDate());
-			XMLGregorianCalendar date2 = null;
-			try {
-				date2 = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
-			} catch (DatatypeConfigurationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			userType.setBirthDate(date2);
 		}catch(NullPointerException n){
-			//wupsydaisy
+			c.setTime(new Date(0));
+
 		}
-		userType.setFirstName(player.getUser().getFirstName());
-		userType.setGender(GenderType.fromValue(player.getUser().getGender().name()));
-		userType.setLastName(player.getUser().getLastName());
+		
+		try {
+			date2 = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
+		} catch (DatatypeConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		userType.setBirthDate(date2);
+		String firstName = player.getUser().getFirstName();
+		if(firstName.equals("")||firstName == null){
+			userType.setFirstName("N A N");
+		}else{
+			userType.setFirstName(firstName);
+		}
+		
+		String lastName = player.getUser().getLastName();
+		if(lastName.equals("")||lastName == null){
+			userType.setLastName("4 0 4");
+		}else{
+			userType.setLastName(lastName);
+		}
+		
+		//userType.setGender(GenderType.fromValue(player.getUser().getGender().name()));
+		userType.setGender(GenderType.FEMALE);
 		userType.setPoints(player.getProfit());
-		*/
+		userType.setPassword("");
+		
+		/*
 		GregorianCalendar c = new GregorianCalendar();
 		c.setTime(new Date(0));
 		XMLGregorianCalendar date2 = null;
@@ -69,7 +87,7 @@ public class HighScorePublisher implements Runnable{
 		userType.setLastName("John");
 		userType.setPassword("");
 		userType.setPoints(0);
-		
+		*/
 		return userType;
 	}
 

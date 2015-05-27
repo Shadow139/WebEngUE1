@@ -10,7 +10,6 @@ import javax.xml.ws.WebServiceException;
 
 import play.Logger;
 import twitter.TwitterClient;
-import twitter.TwitterStatusMessage;
 import at.ac.tuwien.big.we.highscore.Failure;
 import at.ac.tuwien.big.we.highscore.PublishHighScoreEndpoint;
 import at.ac.tuwien.big.we.highscore.PublishHighScoreService;
@@ -18,8 +17,6 @@ import at.ac.tuwien.big.we.highscore.data.GenderType;
 import at.ac.tuwien.big.we.highscore.data.HighScoreRequestType;
 import at.ac.tuwien.big.we.highscore.data.UserDataType;
 import at.ac.tuwien.big.we.highscore.data.UserType;
-import models.JeopardyUser;
-import models.JeopardyUser.Gender;
 import models.Player;
 
 public class HighScorePublisher implements Runnable{
@@ -47,10 +44,7 @@ public class HighScorePublisher implements Runnable{
 		
 		try {
 			date2 = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
-		} catch (DatatypeConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} catch (DatatypeConfigurationException e) {}
 		
 		userType.setBirthDate(date2);
 		String firstName = player.getUser().getFirstName();

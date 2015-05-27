@@ -1,5 +1,13 @@
 package controllers;
 
+import highscore.Failure;
+import highscore.PublishHighScoreEndpoint;
+import highscore.PublishHighScoreService;
+import highscore.data.GenderType;
+import highscore.data.HighScoreRequestType;
+import highscore.data.UserDataType;
+import highscore.data.UserType;
+
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -10,13 +18,6 @@ import javax.xml.ws.WebServiceException;
 
 import play.Logger;
 import twitter.TwitterClient;
-import at.ac.tuwien.big.we.highscore.Failure;
-import at.ac.tuwien.big.we.highscore.PublishHighScoreEndpoint;
-import at.ac.tuwien.big.we.highscore.PublishHighScoreService;
-import at.ac.tuwien.big.we.highscore.data.GenderType;
-import at.ac.tuwien.big.we.highscore.data.HighScoreRequestType;
-import at.ac.tuwien.big.we.highscore.data.UserDataType;
-import at.ac.tuwien.big.we.highscore.data.UserType;
 import models.Player;
 
 public class HighScorePublisher implements Runnable{

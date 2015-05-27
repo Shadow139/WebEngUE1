@@ -1,5 +1,5 @@
 
-package at.ac.tuwien.big.we.highscore;
+package highscore;
 
 import javax.xml.ws.WebFault;
 
